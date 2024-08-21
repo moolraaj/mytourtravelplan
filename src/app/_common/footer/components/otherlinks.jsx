@@ -8,21 +8,11 @@ const FooterLinks = () => {
   const [footerData, setFooterData] = useState(null);
 
   const fetchFooterData = async () => {
-    try {
-      const api = EXPORT_ALL_APIS();
-      const data = await api.loadFooterDeatails();
+    const api = EXPORT_ALL_APIS();
+    const data = await api.loadFooterDeatails();
+      setFooterData(data.result[0]);
   
-      if (data && data.result && data.result.length > 0 && data.result[0].length > 0) {
-        setFooterData(data.result[0]);
-      } else {
-        setFooterData(null);
-      }
-    } catch (error) {
-      console.error('Error fetching footer data:', error);
-      setFooterData(null);
-    }
-  };
-  
+};
 
   useEffect(() => {
     fetchFooterData();
