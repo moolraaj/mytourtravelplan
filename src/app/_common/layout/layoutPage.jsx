@@ -22,9 +22,8 @@ function LayoutPageloading() {
                     api.loadAllPackages(),
                     api.loadAllPackagesActivities(),
                     api.loadAllRegisteredUsers(),
-                    api.loadSingleActivity(),
-                    api.loadSingleBlog(),
-                    api.loadSingleCity(),
+                    api.loadFooterDeatails()
+
                 ]);
                 setLoading(false);
             } catch (error) {
