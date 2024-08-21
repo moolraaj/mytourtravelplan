@@ -28,7 +28,7 @@ function page({ params }) {
         {slugArray.length===1&&(
           <>
           
-                  <Topbanner slug_one={slugArray[0]} />
+                  
                   <CountryCitiesExplorations slug_one={slugArray[0]} />
           
           </>
@@ -36,7 +36,7 @@ function page({ params }) {
          {slugArray.length===2&&(
           <>
           
-                  <Topbanner slug_two={slugArray[1]} />
+                  
                   <CountryAllpackages slug_two={slugArray[1]} />
           
           </>

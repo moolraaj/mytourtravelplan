@@ -1,5 +1,6 @@
 'use client'
  
+import Topbanner from '@/app/_common/layout/topbanner';
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm';
 import LoginPopup from '@/Components/loginPopup/Components/popup';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
@@ -57,6 +58,8 @@ const CityAllpackages = ({ slug_one }) => {
         <>
          {isopenForm && <BookingForm setIsopenForm={setIsopenForm} packageId={selectedPackageId} />}
          {isLogin && <LoginPopup setIsLogin={setIsLogin}  />}
+
+         <Topbanner slug={slug_one}/>
          <div className="container card_main_section">
             <div className="card_discount">
                 <div className="packages">

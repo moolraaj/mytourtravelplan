@@ -29,7 +29,6 @@ function page({ params }) {
         {slugArray.length===1&&(
           <>
           
-                  <Topbanner slug_one={slugArray[0]} />
                   <CityAllpackages slug_one={slugArray[0]} />
           
           </>

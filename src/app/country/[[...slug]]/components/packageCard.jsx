@@ -1,5 +1,6 @@
 'use client'
  
+import Topbanner from '@/app/_common/layout/topbanner';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,6 +26,8 @@ const CountryAllpackages = ({ slug_two }) => {
     let result = data ? data.result : []
 
     return (
+        <>
+        <Topbanner slug={slug_two}/>
         <div className="container card_main_section">
             <div className="card_discount">
                 <div className="packages">
@@ -59,6 +62,7 @@ const CountryAllpackages = ({ slug_two }) => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
