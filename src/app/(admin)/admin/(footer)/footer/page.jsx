@@ -23,7 +23,7 @@ function FooterPage() {
       const response = await fetch('/api/v1/footer-details/get');
       const data = await response.json();
       if (response.ok) {
-        const result = data.result[0][0];
+        const result = data.result[0];
         setFooterData({
           phoneNumbers: result.phoneNumbers,
           emailAddresses: result.emailAddresses,
