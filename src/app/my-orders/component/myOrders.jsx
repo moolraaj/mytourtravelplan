@@ -9,7 +9,6 @@ import Layout from '@/app/_common/layout/layout';
 async function MyOrders() {
     const { data: session } = useSession();
     const user_id = session?.user?._id ? session?.user?._id : null;
-    console.log(`user_id`)
     console.log(user_id)
     let api = EXPORT_ALL_APIS()
 
@@ -22,7 +21,7 @@ async function MyOrders() {
                 setBookings(resp.result)
 
             } catch (error) {
-                console.error('Fetch error:', error);
+                
             }
         }
     };

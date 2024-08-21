@@ -24,7 +24,7 @@ export default async function middleware(request) {
 
   // Redirect regular users who are trying to access user public routes
   if (token && user.role === 'user' && userPublicRoutes.includes(pathname)) {
-    return NextResponse.redirect(new URL(request.headers.get('referer') || '/dashboard', request.url));
+    return NextResponse.redirect(new URL(request.headers.get('referer') || '/', request.url));
 
   }
 
@@ -36,6 +36,11 @@ export default async function middleware(request) {
   // Redirect unauthenticated users trying to access private user routes
   if (!token && userPrivateRoutes.includes(pathname)) {
     return NextResponse.redirect(new URL('/login', request.url));
+  }
+
+  // Redirect admin cant excess the user dashboard
+  if (token && user.role === 'admin' && userPrivateRoutes.includes(pathname)) {
+    return NextResponse.redirect(new URL(request.headers.get('referer') || '/admin/dashboard', request.url));
   }
 
   // Redirect unauthenticated users trying to access admin routes
