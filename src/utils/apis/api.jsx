@@ -273,10 +273,7 @@ export const EXPORT_ALL_APIS = () => {
         body: JSON.stringify({ phoneNumber, name })
     });
     
-    const loadAllRegisteredUsers = () => fetchApi(`/api/v1/otpuser/getallusers`, {
-        method: 'POST',
-        body: JSON.stringify()
-    });
+   
 
     return {
         loadAllContinents,
@@ -300,7 +297,6 @@ export const EXPORT_ALL_APIS = () => {
         sendQueryBookings,
         sendQueryFlights,
         registerUser,
-        loadAllRegisteredUsers,
     };
 };
 
