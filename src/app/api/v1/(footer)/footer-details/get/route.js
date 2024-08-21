@@ -1,18 +1,17 @@
 import { DbConnect } from "@/database/database";
-import { handelAsyncErrors } from "@/helpers/asyncErrors";
 import FooterModel from "@/model/footerModel";
 import { NextResponse } from "next/server";
 
- 
-
-
-DbConnect()
 export async function GET() {
-    return handelAsyncErrors(async()=>{
-        const result = await FooterModel.find();
-        if (!result) {
-            return new NextResponse.json({status:200,message:'there is no record available'});
-        }
-        return NextResponse.json({status:200,result:[result]})
-    })  
+  try {
+    await DbConnect();
+    const result = await FooterModel.find();
+    if (!result || result.length === 0) {
+      return NextResponse.json({ status: 200, message: 'No records available', result: [] });
+    }
+    return NextResponse.json({ status: 200, result });
+  } catch (error) {
+    console.error("Error fetching footer details:", error);
+    return NextResponse.json({ status: 500, message: 'Internal server error' });
+  }
 }

@@ -12,7 +12,7 @@ const ContactLinks = () => {
       const data = await api.loadFooterDeatails();
   
       if (data && data.result && data.result.length > 0 && data.result[0].length > 0) {
-        setFooterData(data.result[0][0]);
+        setFooterData(data.result[0]);
       } else {
         setFooterData(null);
       }
