@@ -1,4 +1,4 @@
-// /api/v1/(searchapi)/search/route.js
+// // /api/v1/search/route.js
 
 import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
@@ -36,35 +36,25 @@ export async function GET(request) {
       });
     }
 
-    // Search in continents
-    results.continents = await continentModel.find({
-      title: { $regex: query, $options: 'i' }
-    });
+    // Split query into words for matching
+    const words = query.split(/\s+/).map(word => new RegExp(word, 'i'));
 
-    // Search in cities
-    results.cities = await CitiesModel.find({
-      title: { $regex: query, $options: 'i' }
-    });
+    // Define search filter that looks into title, slug, or description
+    const searchFilter = {
+      $or: [
+        { title: { $in: words } },
+        { slug: { $in: words } },
+        { description: { $in: words } }
+      ]
+    };
 
-    // Search in countries
-    results.countries = await countriesModel.find({
-      title: { $regex: query, $options: 'i' }
-    });
-
-    // Search in packages
-    results.packages = await PackagesModel.find({
-      title: { $regex: query, $options: 'i' }
-    });
-
-    // Search in activities
-    results.activities = await ActivitiesModel.find({
-      title: { $regex: query, $options: 'i' }
-    });
-
-    // Search in blogs
-    results.blogs = await BlogModel.find({
-      title: { $regex: query, $options: 'i' }
-    });
+    // Search across models
+    results.continents = await continentModel.find(searchFilter);
+    results.cities = await CitiesModel.find(searchFilter);
+    results.countries = await countriesModel.find(searchFilter);
+    results.packages = await PackagesModel.find(searchFilter);
+    results.activities = await ActivitiesModel.find(searchFilter);
+    results.blogs = await BlogModel.find(searchFilter);
 
     return NextResponse.json({
       status: 200,

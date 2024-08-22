@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
 import discountc from '../../assets/home_images/discountcards.png';
@@ -10,9 +9,8 @@ import BookingForm from "@/Components/(bookings)/bookings/bookingForm";
 import LoginPopup from "@/Components/loginPopup/Components/popup";
 
 const PackageResults = ({ results }) => {
-
   const [userVerified, setUserVerified] = useState(false);
-  const [isopenForm, setIsopenForm] = useState(false);
+  const [isOpenForm, setIsOpenForm] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [selectedPackageId, setSelectedPackageId] = useState(null);
 
@@ -38,26 +36,27 @@ const PackageResults = ({ results }) => {
       setIsLogin(true);
     } else {
       setSelectedPackageId(pkgId);
-      setIsopenForm(true);
+      setIsOpenForm(true);
     }
   };
 
+  // Ensure reversedPackages is a valid array
+  const reversedPackages = Array.isArray(results) ? [...results].reverse() : [];
 
-  let reversedPackages = Array.isArray(results) ? [...results].reverse() : [];
-    return (
-      <>
-      <div className="results-section">
-        {isopenForm && <BookingForm setIsopenForm={setIsopenForm} packageId={selectedPackageId} />}
+  return (
+    <div className="results-section">
+      {isOpenForm && <BookingForm setIsOpenForm={setIsOpenForm} packageId={selectedPackageId} />}
       {isLogin && <LoginPopup setIsLogin={setIsLogin} />}
 
-        <h2>Packages:</h2>
-        <div className="container card_main_section">
-          <div className='card_discount'>
-            <div className="packages">
-              {reversedPackages === undefined || reversedPackages === null ? (
-                <EmptyPackageComponent />
-              ) : (
-                reversedPackages.slice(0, 4).map((pkg, index) => (
+      {(reversedPackages === undefined || reversedPackages === null) ? (
+        ''
+      ) : (
+        <>
+          <h2>Packages:</h2>
+          <div className="container card_main_section">
+            <div className='card_discount'>
+              <div className="packages">
+                {reversedPackages.map((pkg) => (
                   <div key={pkg._id} className="package">
                     {pkg.images && pkg.images.length > 0 ? (
                       pkg.images.map((image) => (
@@ -87,20 +86,21 @@ const PackageResults = ({ results }) => {
                       </p>
                       <p className="price">From ₹ {pkg.package_price || 0}</p>
                       <div className="buttons">
-                        <Link href={`/packages/${pkg.slug}`}><button className="details-btn">View Details</button></Link>
+                        <Link href={`/packages/${pkg.slug}`}>
+                          <button className="details-btn">View Details</button>
+                        </Link>
                         <button className="enquiry-btn" onClick={() => bookingAndLogin(pkg._id)}>Book Now</button>
                       </div>
                     </div>
                   </div>
-                ))
-              )}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      </>
-    );
-  };
-  
-  export default PackageResults;
-  
+        </>
+      )}
+    </div>
+  );
+};
+
+export default PackageResults;
