@@ -1,4 +1,5 @@
 'use client'
+import Topbanner from '@/app/_common/layout/topbanner';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,6 +24,8 @@ const CitiesExplorations = ({ slug_one, slug_two }) => {
    
 
     return (
+       <>
+       <Topbanner slug={slug_two} />
         <div className="explorations">
             <div className="explorations-grid">
                 {result === undefined || result === null ? ('no result found') : (result.map((exploration, index) => (
@@ -53,6 +56,7 @@ const CitiesExplorations = ({ slug_one, slug_two }) => {
                 )))}
             </div>
         </div>
+       </>
     );
 };
 

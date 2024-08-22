@@ -1,5 +1,6 @@
 'use client';
 
+import Topbanner from '@/app/_common/layout/topbanner';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,11 +23,13 @@ const CountryCitiesExplorations = ({ slug_one }) => {
   let result = data ? data.result : [];
 
   return (
-    <div className="explorations">
-      <div className="explorations-grid">
-        {result === undefined || result === null
-          ? 'No result found'
-          : result.map((exploration, index) => (
+    <>
+      <Topbanner slug={slug_one} />
+      <div className="explorations">
+        <div className="explorations-grid">
+          {result === undefined || result === null
+            ? 'No result found'
+            : result.map((exploration, index) => (
               <div key={index} className="exploration-item">
                 <Link
                   href={`/country/${slug_one}/${exploration.slug
@@ -36,15 +39,15 @@ const CountryCitiesExplorations = ({ slug_one }) => {
                 >
                   {exploration.images
                     ? exploration.images.map((e) => (
-                        <Image
-                          key={e._id}
-                          src={`/uploads/${e.name}`}
-                          alt={e.title}
-                          width={400}
-                          height={330}
-                          className="exploration-image"
-                        />
-                      ))
+                      <Image
+                        key={e._id}
+                        src={`/uploads/${e.name}`}
+                        alt={e.title}
+                        width={400}
+                        height={330}
+                        className="exploration-image"
+                      />
+                    ))
                     : 'No image found'}
                 </Link>
                 <div className="exploration-details">
@@ -61,8 +64,10 @@ const CountryCitiesExplorations = ({ slug_one }) => {
                 </div>
               </div>
             ))}
+        </div>
       </div>
-    </div>
+    </>
+
   );
 };
 

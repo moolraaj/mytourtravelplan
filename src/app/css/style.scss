@@ -3,6 +3,72 @@
 @import 'extends';
 
 
+
+/* search page style start*/
+
+.searchResults {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background: white;
+	border: 1px solid #ddd;
+	max-height: 300px;
+	overflow-y: auto;
+	z-index: 99999999999;
+	width: 100%;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .searchResults::-webkit-scrollbar {
+	width: 6px;
+  }
+   
+  .searchResults::-webkit-scrollbar-track {
+	  border:1px solid grey;
+	  border-top: none;
+	  border-bottom: none;
+  
+  }
+   
+  .searchResults::-webkit-scrollbar-thumb {
+	background-color: #cf0c2a;
+	outline: 1px solid #666;
+  }
+  
+  .searchResults h4 {
+	margin: 0;
+	padding: 10px;
+	background: #f5f5f5;
+	
+  }
+  
+  .searchResults div {
+	padding: 10px;
+	cursor: pointer;
+  }
+  
+  .searchResults a {
+	display: block;
+	padding: 5px;
+	color: #333;
+	text-decoration: none;
+  }
+  
+  .searchResults a:hover {
+	background: #f0f0f0;
+  }
+  
+
+.search_page_inner{
+	@include main_container;
+	margin: 50px auto;
+	background-repeat: no-repeat !important;
+	background-position: 30px bottom;
+}
+
+/* search page style end */
+
 //// loading
 
 

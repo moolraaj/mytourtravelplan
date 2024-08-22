@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { getSession } from 'next-auth/react'; 
 import LoginPopup from '@/Components/loginPopup/Components/popup';
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm';
+import Topbanner from '@/app/_common/layout/topbanner';
 
 
 const ContinentAllpackages = ({ slug_three }) => {
@@ -59,7 +60,7 @@ const ContinentAllpackages = ({ slug_three }) => {
         <>
         {isopenForm && <BookingForm setIsopenForm={setIsopenForm} packageId={selectedPackageId} />}
       {isLogin && <LoginPopup setIsLogin={setIsLogin}  />}
-
+      <Topbanner slug={slug_three}/>
       <div className="container card_main_section">
             <div className="card_discount">
                 <div className="packages">

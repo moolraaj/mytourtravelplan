@@ -6,6 +6,7 @@ import trending from '../../../../app/assets/home_images/trending.png';
 import ribbon from '../../../../app/assets/home_images/ribbon.png';
 import { useEffect, useState } from 'react';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
+import Topbanner from '@/app/_common/layout/topbanner';
 
 const ContinentCountrycard = ({slug}) => {
     let api=EXPORT_ALL_APIS()
@@ -28,6 +29,8 @@ const ContinentCountrycard = ({slug}) => {
  
 
     return (
+        <>
+        <Topbanner slug={slug}/> 
         <div className="topdestination container inner-w-container country_inner_cards">
             <h2 className='same_heading'>Top Destination By Our Travel Experts</h2>
             <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
@@ -65,6 +68,7 @@ const ContinentCountrycard = ({slug}) => {
                 )))}
             </div>
         </div>
+        </>
     );
 };
 
