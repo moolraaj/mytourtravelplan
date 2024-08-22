@@ -9,6 +9,7 @@ import ActivityResults from '../components/ActivityResults';
 import BlogResults from '../components/BlogResults';
 import Layout from '@/app/_common/layout/layout';
 import camerabg from '../../assets/home_images/camera-bg.png';
+import Link from 'next/link';
 
 const SearchPage = () => {
     const [searchResults, setSearchResults] = useState({
@@ -25,8 +26,11 @@ const SearchPage = () => {
     useEffect(() => {
         const query = new URLSearchParams(window.location.search).get('query') || '';
         setSearchQuery(query);
+        
         if (query) {
             fetchSearchResults(query);
+        } else {
+            setLoading(false); // Stop loading if there is no query
         }
     }, [window.location.search]);
 
@@ -59,10 +63,17 @@ const SearchPage = () => {
                 <div className="search-page">
                     <div className="search_page_inner" style={{ backgroundImage: `url(${camerabg.src})` }}>
                         <div className="search-results">
-                            {loading ? (
+                            {loading && searchQuery ? (
                                 <div className="loading">Loading...</div>
                             ) : (
                                 <>
+                                    {searchQuery === '' && !loading && (
+                                        <div className="no-query-message">
+                                            <h2>Welcome to the Search Page!</h2>
+                                            <p>Enter a keyword to start searching for continents, countries, cities, packages, activities, and blogs.</p>
+                                            <p>Try searching for something like "India" or "Adventure packages".</p>
+                                        </div>
+                                    )}
                                     {hasResults('continents') && <ContinentResults results={searchResults.continents} />}
                                     {hasResults('countries') && <CountryResults results={searchResults.countries} />}
                                     {hasResults('cities') && <CityResults results={searchResults.cities} />}
@@ -70,8 +81,12 @@ const SearchPage = () => {
                                     {hasResults('activities') && <ActivityResults results={searchResults.activities} />}
                                     {hasResults('blogs') && <BlogResults results={searchResults.blogs} />}
                                     
-                                    {Object.keys(searchResults).every(category => !hasResults(category)) && (
-                                        <div className="no-results">No results found</div>
+                                    {Object.keys(searchResults).every(category => !hasResults(category)) && !loading && (
+                                        <div className="no-results">
+                                            <h2>No Results Found</h2>
+                                            <p>We couldn't find anything matching your search. Please try different keywords or check your spelling.</p>
+                                            <p>Need help? <Link href="/contact-us">Contact us</Link> for assistance.</p>
+                                        </div>
                                     )}
                                 </>
                             )}
