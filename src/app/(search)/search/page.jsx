@@ -71,23 +71,24 @@ const SearchPage = () => {
                                         <div className="no-query-message">
                                             <h2>Welcome to the Search Page!</h2>
                                             <p>Enter a keyword to start searching for continents, countries, cities, packages, activities, and blogs.</p>
-                                            <p>Try searching for something like "India" or "Adventure packages".</p>
+                                            <p>Try searching for something like "New Zealand" or "Adventure packages".</p>
                                         </div>
                                     )}
-                                    {hasResults('continents') && <ContinentResults results={searchResults.continents} />}
-                                    {hasResults('countries') && <CountryResults results={searchResults.countries} />}
-                                    {hasResults('cities') && <CityResults results={searchResults.cities} />}
-                                    {hasResults('packages') && <PackageResults results={searchResults.packages} />}
-                                    {hasResults('activities') && <ActivityResults results={searchResults.activities} />}
-                                    {hasResults('blogs') && <BlogResults results={searchResults.blogs} />}
-                                    
-                                    {Object.keys(searchResults).every(category => !hasResults(category)) && !loading && (
+
+                                    {searchQuery && !Object.keys(searchResults).some(hasResults) && !loading && (
                                         <div className="no-results">
                                             <h2>No Results Found</h2>
                                             <p>We couldn't find anything matching your search. Please try different keywords or check your spelling.</p>
                                             <p>Need help? <Link href="/contact-us">Contact us</Link> for assistance.</p>
                                         </div>
                                     )}
+
+                                    {hasResults('continents') && <ContinentResults results={searchResults.continents} />}
+                                    {hasResults('countries') && <CountryResults results={searchResults.countries} />}
+                                    {hasResults('cities') && <CityResults results={searchResults.cities} />}
+                                    {hasResults('packages') && <PackageResults results={searchResults.packages} />}
+                                    {hasResults('activities') && <ActivityResults results={searchResults.activities} />}
+                                    {hasResults('blogs') && <BlogResults results={searchResults.blogs} />}
                                 </>
                             )}
                         </div>
