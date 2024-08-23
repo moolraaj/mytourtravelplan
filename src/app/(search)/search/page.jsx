@@ -24,15 +24,17 @@ const SearchPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const query = new URLSearchParams(window.location.search).get('query') || '';
-        setSearchQuery(query);
-        
-        if (query) {
-            fetchSearchResults(query);
-        } else {
-            setLoading(false); // Stop loading if there is no query
+        if (typeof window !== 'undefined') {
+            const query = new URLSearchParams(window.location.search).get('query') || '';
+            setSearchQuery(query);
+
+            if (query) {
+                fetchSearchResults(query);
+            } else {
+                setLoading(false); // Stop loading if there is no query
+            }
         }
-    }, [window.location.search]);
+    }, []); // Empty dependency array so it runs only once after component mounts
 
     const fetchSearchResults = async (query) => {
         setLoading(true);
@@ -54,48 +56,46 @@ const SearchPage = () => {
         }
     };
 
-    // Check if any results exist for a category
     const hasResults = (category) => searchResults[category] && searchResults[category].length > 0;
 
     return (
-        <>
-            <Layout>
-                <div className="search-page">
-                    <div className="search_page_inner" style={{ backgroundImage: `url(${camerabg.src})` }}>
-                        <div className="search-results">
-                            {loading && searchQuery ? (
-                                <div className="loading">Loading...</div>
-                            ) : (
-                                <>
-                                    {searchQuery === '' && !loading && (
-                                        <div className="no-query-message">
-                                            <h2>Welcome to the Search Page!</h2>
-                                            <p>Enter a keyword to start searching for continents, countries, cities, packages, activities, and blogs.</p>
-                                            <p>Try searching for something like "New Zealand" or "Adventure packages".</p>
-                                        </div>
-                                    )}
+        <Layout>
+            <div className="search-page">
+                <div className="search_page_inner" style={{ backgroundImage: `url(${camerabg.src})` }}>
+                    <div className="search-results">
+                        {loading && searchQuery ? (
+                            <div className="loading">Loading...</div>
+                        ) : (
+                            <>
+                                {searchQuery === '' && !loading && (
+                                    <div className="no-query-message">
+                                        <h2>Welcome to the Search Page!</h2>
+                                        <p>Enter a keyword to start searching for continents, countries, cities, packages, activities, and blogs.</p>
+                                        <p>Try searching for something like {"New Zealand"} or {"Adventure packages"}.</p>
+                                    </div>
+                                )}
 
-                                    {searchQuery && !Object.keys(searchResults).some(hasResults) && !loading && (
-                                        <div className="no-results">
-                                            <h2>No Results Found</h2>
-                                            <p>We couldn't find anything matching your search. Please try different keywords or check your spelling.</p>
-                                            <p>Need help? <Link href="/contact-us">Contact us</Link> for assistance.</p>
-                                        </div>
-                                    )}
-
+                                {searchQuery && !Object.keys(searchResults).some(hasResults) && !loading && (
+                                    <div className="no-results">
+                                        <h2>No Results Found</h2>
+                                        <p>We could not find anything matching your search. Please try different keywords or check your spelling.</p>
+                                        <p>Need help? <Link href="/contact-us">Contact us</Link> for assistance.</p>
+                                    </div>
+                                )}
+                                <div className='outer_section'>
                                     {hasResults('continents') && <ContinentResults results={searchResults.continents} />}
                                     {hasResults('countries') && <CountryResults results={searchResults.countries} />}
                                     {hasResults('cities') && <CityResults results={searchResults.cities} />}
                                     {hasResults('packages') && <PackageResults results={searchResults.packages} />}
                                     {hasResults('activities') && <ActivityResults results={searchResults.activities} />}
                                     {hasResults('blogs') && <BlogResults results={searchResults.blogs} />}
-                                </>
-                            )}
-                        </div>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
-            </Layout>
-        </>
+            </div>
+        </Layout>
     );
 };
 

@@ -70,6 +70,27 @@
 .results-section .blog-bg{
 	background-color: transparent;
 }
+.search-page .outer_section,
+.results-section .blog-bg{
+	padding: 0;
+}
+.results-section .destinations-grid{
+	grid-template-columns: repeat(3,1fr) !important;
+} 
+.results-section  .destinations-grid a:nth-child(1),
+.results-section  .destinations-grid a:nth-child(2) {
+    grid-column: auto !important;
+}
+.results-section .blog-container{
+	grid-template-columns: 1fr;
+	padding: 0;
+}
+.results-section .blog-main{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 30px;
+}
+
 /* search page style end */
 
 //// loading
