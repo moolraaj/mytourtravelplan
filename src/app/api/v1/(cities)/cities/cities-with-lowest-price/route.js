@@ -4,12 +4,19 @@ import PackagesModel from "@/model/packagesModel";
 import { NextResponse } from "next/server";
 import { handelAsyncErrors } from "@/helpers/asyncErrors";
 
-DbConnect();
-
 export async function GET(req) {
-    return handelAsyncErrors(async () => {
+    try {
+        await DbConnect();
+
         // Fetch all cities
         const cities = await CitiesModel.find().exec();
+        if (cities.length === 0) {
+            return NextResponse.json({
+                status: 404,
+                success: false,
+                message: "No cities found.",
+            });
+        }
 
         // Fetch and sort packages for each city, only getting the lowest priced package
         const citiesWithLowestPrices = await Promise.all(cities.map(async (city) => {
@@ -45,5 +52,12 @@ export async function GET(req) {
         }));
 
         return NextResponse.json({ status: 200, success: true, result });
-    });
+    } catch (error) {
+        console.error("Error fetching cities with lowest prices:", error);
+        return NextResponse.json({
+            status: 500,
+            success: false,
+            message: "Internal server error.",
+        });
+    }
 }
