@@ -21,6 +21,11 @@
   }
 
 
+
+  .destinations.expert-travel a.destination h3 {
+    text-align: left;
+}
+
   .searchResults::-webkit-scrollbar {
 	width: 6px;
   }
@@ -3408,6 +3413,23 @@ img.carimage {
 		align-items: center;
 	}
 
+    .world-country .grid-container {
+        grid-template-columns: 1fr 1fr;
+        padding-left: 0px !important;
+    }
+
+	.left_offer_side h2 {
+		font-size: 17px !important;
+		font-weight: 500;
+	}
+
+	.search-page .grid-container {
+		padding-left: 0px !important;
+	}
+	
+
+
+
 	.navbar-item {
 		padding: 0 1rem;
 	}
@@ -3610,6 +3632,19 @@ img.carimage {
 	.imageContainer{
 		grid-template-columns: 1fr;
 	}
+
+
+	.destination .info h3 {
+			font-size: 18px;
+	
+	}
+
+	.link-btn-heading {
+		display: block;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
 	.rightImages{
 		gap: 20px;
 	}
@@ -3735,7 +3770,7 @@ img.carimage {
 	}
 
 	.main_slider_inner .searchInput {
-		padding: 20px 36px;
+		padding: 14px 36px;
 	}
 
 	.world-country .grid-container,
