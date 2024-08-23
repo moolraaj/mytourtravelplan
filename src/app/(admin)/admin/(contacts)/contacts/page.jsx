@@ -22,7 +22,7 @@ function ContactsPage() {
   const [deleteItem, setDeleteItem] = useState(null);
 
   async function fetchContacts() {
-    const response = await fetch(`/api/v1/sendquery/queries/get?page=${currentPage}&limit=${itemsPerPage}`);
+    const response = await fetch(`/api/v1/queries/get?page=${currentPage}&limit=${itemsPerPage}`);
     const data = await response.json();
 
     return handelAsyncErrors(async()=>{
@@ -41,7 +41,7 @@ function ContactsPage() {
   }, [currentPage, itemsPerPage]);
 
   const handleConfirm = async () => {
-        const response = await fetch(`/api/v1/sendquery/query/delete/${deleteItem}`, { method: 'DELETE' });
+        const response = await fetch(`/api/v1/query/delete/${deleteItem}`, { method: 'DELETE' });
         const data = await response.json();
         console.log('API Response:', data);
         return handelAsyncErrors(async()=>{

@@ -13,7 +13,6 @@ const BestSellingPackages = ({ packages, loading }) => {
   const [userVerified, setUserVerified] = useState(false);
   const [isopenForm, setIsopenForm] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  const [isSignup, setIsSignup] = useState(false);
   const [selectedPackageId, setSelectedPackageId] = useState(null);
 
   const checkUserVerification = async () => {

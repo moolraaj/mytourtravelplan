@@ -2856,9 +2856,10 @@ img.carimage {
 	font-family: "Poppins";
 	font-weight: 600;
 	margin: 20px;
+	cursor: pointer;
 }
 
-.transfer-inner-butn a {
+.transfer-inner-butn span {
 	color: #fff;
 	text-decoration: none;
 }

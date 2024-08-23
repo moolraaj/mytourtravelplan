@@ -64,7 +64,7 @@ const EnquiryForm = () => {
       try {
         setLoading(true); // Start loading state
 
-        const resp = await api.sendQueryBookings(formDataToSend); // API call
+        const resp = await api.sendQueryFlights(formDataToSend); // API call
 
         if (resp.success) {
           toast.success(resp.message);

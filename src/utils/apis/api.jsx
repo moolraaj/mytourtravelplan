@@ -264,7 +264,7 @@ export const EXPORT_ALL_APIS = () => {
     
     const loadSingleUserbookingsdetails = (user_id) => fetchApi(`/api/v1/otpuser/getbyid/${user_id}`);
     
-    const sendQueryContactUs = (formData) => fetchApi(`/api/v1/sendquery/query/send`, { method: 'POST', body: formData });
+    const sendQueryContactUs = (formData) => fetchApi(`/api/v1/query/send`, { method: 'POST', body: formData });
     const sendQueryBookings = (formData) => fetchApi(`/api/v1/booking/sendquery`, { method: 'POST', body: formData });
     const sendQueryFlights = (formData) => fetchApi(`/api/v1/flight/query/send`, { method: 'POST', body: formData });
     
