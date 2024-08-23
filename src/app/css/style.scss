@@ -14,9 +14,10 @@
 	border: 1px solid #ddd;
 	max-height: 300px;
 	overflow-y: auto;
-	z-index: 99999999999;
+	z-index: 9999999;
 	width: 100%;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 0px 0px 5px 5px;
   }
 
 
@@ -48,18 +49,17 @@
 	cursor: pointer;
   }
   
-  .searchResults a {
+  .searchResults .resp_url {
 	display: block;
 	padding: 5px;
 	color: #333;
 	text-decoration: none;
   }
   
-  .searchResults a:hover {
-	background: #f0f0f0;
+  .searchResults .resp_url:hover {
+	background-color: #f5f5f5;
   }
-  
-
+ 
 .search_page_inner{
 	@include main_container;
 	margin: 50px auto;
@@ -67,6 +67,9 @@
 	background-position: 30px bottom;
 }
 
+.results-section .blog-bg{
+	background-color: transparent;
+}
 /* search page style end */
 
 //// loading
