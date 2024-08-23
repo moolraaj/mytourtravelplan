@@ -5,7 +5,7 @@ import { Oval } from 'react-loader-spinner'
 function FormLoader() {
     return (
         <>
-        <div className="button_loading">
+        <div className="button_loading" style={{zIndex:'99999999999999999'}}>
 
             <Oval
                 visible={true}
