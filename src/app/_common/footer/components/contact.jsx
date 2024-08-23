@@ -7,11 +7,19 @@ const ContactLinks = () => {
   const [footerData, setFooterData] = useState(null);
 
   const fetchFooterData = async () => {
+    try {
       const api = EXPORT_ALL_APIS();
       const data = await api.loadFooterDeatails();
+      if (data && data.result) {
         setFooterData(data.result[0]);
-    
+      } else {
+        console.error('No data found');
+      }
+    } catch (error) {
+      console.error('Error fetching footer data:', error);
+    }
   };
+  
   
   useEffect(() => {
     fetchFooterData();
