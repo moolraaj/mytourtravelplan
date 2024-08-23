@@ -39,7 +39,7 @@ function LayoutPageloading() {
         return (
 
             <>
-                <div className="loader_wrapper">
+                <div className="loader_wrapper" style={{zIndex:'999999999999999999999999999'}}>
                     <Watch
                         visible={true}
                         height="180"
