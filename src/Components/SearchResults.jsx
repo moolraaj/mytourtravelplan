@@ -1,5 +1,5 @@
 
-// // /app/components/SearchResults.jsx
+// // // /app/components/SearchResults.jsx
 
 'use client';
 
@@ -12,12 +12,12 @@ const rotatingWords = ['continents', 'countries', 'cities', 'packages', 'activit
 
 const SearchResults = ({ query, closePopup }) => {
   const [results, setResults] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const [message, setMessage] = useState(''); // To store the no data message
   const [currentWord, setCurrentWord] = useState(rotatingWords[0]);
-
+  
   const router = useRouter();
 
-  // Change the word every 2 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWord(prevWord => {
@@ -25,37 +25,48 @@ const SearchResults = ({ query, closePopup }) => {
         const nextIndex = (currentIndex + 1) % rotatingWords.length;
         return rotatingWords[nextIndex];
       });
-    }, 2000);
+    }, 2000); // Changed interval to 2 seconds
 
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
+    if (!query) {
+      setResults(null);
+      setMessage(''); // Clear any message when input is empty
+      return;
+    }
+
     const fetchSearchResults = async () => {
-      setLoading(true);
+      setSearching(true);
       try {
         const response = await fetch(`/api/v1/search?query=${encodeURIComponent(query)}`);
         const data = await response.json();
-
-        if (data.success) {
-          setResults(data.results || {});
+        
+        if (data.success && data.results && (
+            data.results.continents.length > 0 ||
+            data.results.cities.length > 0 ||
+            data.results.countries.length > 0 ||
+            data.results.packages.length > 0 ||
+            data.results.activities.length > 0 ||
+            data.results.blogs.length > 0
+          )) {
+          setResults(data.results);
+          setMessage(''); // Clear any previous no data message
         } else {
-          console.error('Search API response error:', data.message);
           setResults({});
+          setMessage('No data found for the given search.'); // Show message if no results found
         }
       } catch (error) {
         console.error('Error fetching search results:', error);
         setResults({});
+        setMessage('Error fetching search results.'); // Show error message
       } finally {
-        setLoading(false);
+        setSearching(false);
       }
     };
 
-    if (query) {
-      fetchSearchResults();
-    } else {
-      setResults(null);
-    }
+    fetchSearchResults();
   }, [query]);
 
   const handleResultClick = (title, type) => {
@@ -66,15 +77,17 @@ const SearchResults = ({ query, closePopup }) => {
 
   return (
     <div className="searchResults">
-      {loading && <div>searching...</div>}
+      {searching && <div>Searching...</div>}
 
-      {!loading && results === null && (<div className="search-placeholder">Start typing to search {currentWord}...</div>)}
+      {!searching && results === null && (
+        <div className="search-placeholder">Start typing to search {currentWord}...</div>
+      )}
 
-      {!loading && results && Object.keys(results).length === 0 && message && (
+      {!searching && results && Object.keys(results).length === 0 && message && (
         <div>{message}</div>
       )}
 
-      {!loading && results && Object.keys(results).length > 0 && (
+      {!searching && results && Object.keys(results).length > 0 && (
         <>
           {results.continents?.length > 0 && (
             <div>

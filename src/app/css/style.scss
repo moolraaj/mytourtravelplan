@@ -2035,7 +2035,10 @@ a.card_outer {
 	justify-content: center;
 	gap: 10px;
 }
-
+.main_slider_inner .searchButton:hover{
+	background-color: #ad0e19;
+	transition: all 0.1s ease-in-out;
+}
 
 .main_slider_inner {
 
