@@ -90,7 +90,10 @@
 	grid-template-columns: 1fr 1fr;
 	gap: 30px;
 }
-
+.search-placeholder {
+	transition: all 0.5s ease-in-out;
+  }
+  
 /* search page style end */
 
 //// loading
