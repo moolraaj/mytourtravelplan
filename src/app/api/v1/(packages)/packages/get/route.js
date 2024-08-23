@@ -4,13 +4,14 @@ import { getPaginationParams } from "@/helpers/paginations";
 import PackagesModel from "@/model/packagesModel";
 import { NextResponse } from "next/server";
 
-DbConnect();
-
 export async function GET(req) {
-    return handelAsyncErrors(async () => {
+    try {
+        await DbConnect();
 
+        // Extract pagination parameters
         let { page, limit, skip } = getPaginationParams(req);
 
+        // Fetch packages with pagination and population
         let data = await PackagesModel.find()
             .skip(skip)
             .limit(limit)
@@ -25,6 +26,7 @@ export async function GET(req) {
             })
             .exec();
 
+        // Format the result
         let result = data.map(e => ({
             _id: e._id,
             images: e.images,
@@ -52,8 +54,16 @@ export async function GET(req) {
             } : null
         }));
 
+        // Count total number of documents
         let totalResults = await PackagesModel.countDocuments();
 
-        return NextResponse.json({status: 200, success: true, totalResults, result, page, limit});
-    });
+        return NextResponse.json({ status: 200, success: true, totalResults, result, page, limit });
+    } catch (error) {
+        console.error("Error fetching packages:", error);
+        return NextResponse.json({
+            status: 500,
+            success: false,
+            message: "Internal server error.",
+        });
+    }
 }
