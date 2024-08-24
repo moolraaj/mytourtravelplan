@@ -3427,6 +3427,7 @@ img.carimage {
 	// 	display: none;
 	// }
 
+	
 	.navbar-menu {
 		flex-direction: row;
 		align-items: center;
@@ -3455,6 +3456,9 @@ img.carimage {
 }
 
 @media(max-width:767px) {
+	.destination .image{
+		min-height: 180px !important;
+	}
 	.loader_wrapper svg{
 		max-width: 100px;
 		width: 100%;
