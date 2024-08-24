@@ -2,25 +2,23 @@ import { useState, useEffect } from 'react';
 import styles from './style.css';
 
 const LoadingBar = () => {
-  const [progress, setProgress] = useState(0); 
+  const [dotCount, setDotCount] = useState(1); 
 
   useEffect(() => {
-  
     const interval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          return 0;  
-        }
-        return prev + 1;  
-      });
-    }, 200);
+      setDotCount((prev) => (prev < 6 ? prev + 1 : 1));
+    }, 300);  
 
     return () => clearInterval(interval);
   }, []);
 
+  const loadingText = `please Wait Loading${'.'.repeat(dotCount)}`;
+
   return (
     <div className={styles.loadingContainer}>
-      <div className={styles.progressText +" " + "loading_bar_handler"}>Please Wait Loading..... {progress} %</div>
+      <div className={`${styles.progressText} loading_bar_handler`}>
+        {loadingText}
+      </div>
     </div>
   );
 };
