@@ -43,6 +43,8 @@ const continentSchema = new mongoose.Schema({
         },
     ],
      
+},{
+    timestamps: true   
 });
 
 

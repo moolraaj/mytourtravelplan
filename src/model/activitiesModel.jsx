@@ -26,6 +26,8 @@ const activitiesSchema = new mongoose.Schema({
         ref: 'cities',
         required: true
     }
+},{
+    timestamps: true   
 });
 
 // Create the package model

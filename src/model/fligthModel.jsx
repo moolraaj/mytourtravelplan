@@ -42,6 +42,8 @@ let flightSchema=new mongoose.Schema({
         default: Date.now()
     }
  
+},{
+    timestamps: true   
 })
 
 let FlightModel=mongoose.models.flights||mongoose.model('flights',flightSchema)

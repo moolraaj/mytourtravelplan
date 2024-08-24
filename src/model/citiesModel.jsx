@@ -50,6 +50,8 @@ const CitiesSchema = new mongoose.Schema({
         ref: 'countries',
        
     }
+},{
+    timestamps: true   
 });
 
 // Create the cities model

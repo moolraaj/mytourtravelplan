@@ -32,6 +32,8 @@ const PackageCategorySchema = new mongoose.Schema({
    
 
     
+},{
+    timestamps: true   
 });
 
 const PackageCategoryModel = mongoose.models.packages_categories || mongoose.model('packages_categories', PackageCategorySchema);

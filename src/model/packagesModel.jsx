@@ -48,6 +48,8 @@ const PackagesSchema = new mongoose.Schema({
         ref: 'packages_categories',
         required: true
     }]
+},{
+    timestamps: true   
 });
 
 // Create the package model

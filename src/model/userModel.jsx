@@ -16,6 +16,8 @@ let contactUsSchema=new mongoose.Schema({
     message:{
         type:String,
     }
+},{
+    timestamps: true   
 })
 
 let ContactModel=mongoose.models.users||mongoose.model('users',contactUsSchema)

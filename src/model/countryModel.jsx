@@ -16,6 +16,8 @@ let imageSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+},{
+    timestamps: true   
 });
 
 // Define the country schema with references to cities, packages, and continent

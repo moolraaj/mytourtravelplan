@@ -12,7 +12,11 @@ const categorySchema = new mongoose.Schema({
         required: true,
         unique: true
     }
+},{
+    timestamps: true   
 });
+
+
 
 const CategoryModel = mongoose.models.categories || mongoose.model('categories', categorySchema);
 
