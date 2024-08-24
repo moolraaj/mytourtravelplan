@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import activitytop from '../../../assets/home_images/activity-top.png';
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 // import styles from './TopActivities.module.css';
 
  
@@ -14,7 +15,7 @@ const TopActivities = ({ result }) => {
         <h2 className="top-act-title">Top Activities</h2>
         <p className="top-act-subtitle">Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="top-act-gridContainer">
-          {reversedActivities === undefined || reversedActivities === null ? ('no result found') : (reversedActivities.slice(0,8).map((activity, index) => (
+          {reversedActivities === undefined || reversedActivities === null ? <LoadingBar/> : (reversedActivities.slice(0,8).map((activity, index) => (
             <Link className="top-act-cardOuter" href={`/activity/${activity.slug.toLowerCase().replace(' ', '-')}`} key={index}>
               <div className="top-act-card">
                 <div className='image-container-act'>

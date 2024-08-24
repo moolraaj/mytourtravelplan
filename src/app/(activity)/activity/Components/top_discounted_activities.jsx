@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import discountactivitybg from '../../../assets/home_images/discount-activity-bg.png';
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 
 const discountedActivities = [
   {
@@ -44,7 +45,7 @@ const TopDiscountedActivities = ({result}) => {
       <h2 className="top-discounted-title">Top Discounted Activities</h2>
       <p className="top-discounted-subtitle">Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
       <div className="top-discounted-gridContainer">
-        {reversedActivities===undefined||reversedActivities===null?('no result found'):(reversedActivities.map((activity, index) => (
+        {reversedActivities===undefined||reversedActivities===null?<LoadingBar/>:(reversedActivities.map((activity, index) => (
           <Link className="top-discounted-cardOuter" href={`/${activity.slug.toLowerCase().replace(' ', '-')}`} key={index}>
             <div className="top-discounted-card">
               <div className="top-discounted-overlay">

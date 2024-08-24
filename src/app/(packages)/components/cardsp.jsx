@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getSession } from 'next-auth/react'; 
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 
 
 const Allpackages = () => {
@@ -63,7 +64,10 @@ const Allpackages = () => {
     <div className="container card_main_section">
       <div className="card_discount">
         <div className="packages">
-          {reversedpackages===undefined||reversedpackages===null?('fetching results......'): (reversedpackages.map((pkg, index) => (
+
+          {
+          
+          reversedpackages===undefined||reversedpackages===null?('no result found'): (reversedpackages.map((pkg, index) => (
             <div key={index} className="package">
               {pkg.images ? pkg.images.map((e) => (
                 <Image

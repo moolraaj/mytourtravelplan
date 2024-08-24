@@ -1,5 +1,6 @@
 'use client'
  
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Topbanner from '@/app/_common/layout/topbanner';
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm';
 import LoginPopup from '@/Components/loginPopup/Components/popup';
@@ -63,7 +64,7 @@ const CityAllpackages = ({ slug_one }) => {
          <div className="container card_main_section">
             <div className="card_discount">
                 <div className="packages">
-                    {result === undefined || result === null ? ('no result found') : (result?.map((pkg, index) => (
+                    {result === undefined || result === null ? <LoadingBar/> : (result?.map((pkg, index) => (
                         <div key={index} className="package">
 
                             {pkg.images ? pkg.images.map((e) => (

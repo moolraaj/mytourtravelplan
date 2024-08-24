@@ -48,6 +48,8 @@ const continentSchema = new mongoose.Schema({
 
 // Create the continent model
 
+
+
 let continentModel = mongoose.models.continents || mongoose.model('continents', continentSchema);
 
 export default continentModel;

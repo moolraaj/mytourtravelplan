@@ -1,4 +1,5 @@
 'use client'
+import LoadingBar from "@/app/_common/innerLoader/innerLoader";
 import { EXPORT_ALL_APIS } from "@/utils/apis/api";
 import { useEffect, useState } from "react";
 
@@ -22,7 +23,7 @@ const ActivityBloggallery = ({ slug }) => {
 
     return (
         <>
-        {result===undefined||result===null?('no result found'):(result.map((ele)=>{
+        {result===undefined||result===null?<LoadingBar/>:(result.map((ele)=>{
             return <div className='overview blog-inner-page' key={ele._id} >
 
             <div className='summary_slider'>

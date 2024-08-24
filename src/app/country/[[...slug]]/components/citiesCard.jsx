@@ -1,5 +1,6 @@
 'use client';
 
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Topbanner from '@/app/_common/layout/topbanner';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 import Image from 'next/image';
@@ -28,7 +29,7 @@ const CountryCitiesExplorations = ({ slug_one }) => {
       <div className="explorations">
         <div className="explorations-grid">
           {result === undefined || result === null
-            ? 'No result found'
+            ? <LoadingBar/>
             : result.map((exploration, index) => (
               <div key={index} className="exploration-item">
                 <Link

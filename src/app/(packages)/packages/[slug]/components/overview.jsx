@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Inclusions from './inclusions';
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
+ 
 
 const Itinerary = ({ result }) => {
 
@@ -41,7 +43,7 @@ const Itinerary = ({ result }) => {
   return (
 
     <>
-      {result === undefined || result === null ? ('no result found') : (result.map((ele) => {
+      {result === undefined || result === null ? <LoadingBar/> : (result.map((ele) => {
         return <div className='overview' key={ele._id}>
 
           <div className='over'>
@@ -65,7 +67,7 @@ const Itinerary = ({ result }) => {
                 <div className='iten_inner'>
                   <h2 className='heading_inner_page'>Itinerary</h2>
                   <div className='day_content'>
-                    {ele.packageItinerary === null || ele.packageItinerary === undefined ? ('no result found') : (ele.packageItinerary.map((item) => (
+                    {ele.packageItinerary === null || ele.packageItinerary === undefined ? <LoadingBar/> : (ele.packageItinerary.map((item) => (
                       <div key={item._id} className="day">
                         <div className="dayHeader" onClick={() => toggleDay(item.day)}>
 

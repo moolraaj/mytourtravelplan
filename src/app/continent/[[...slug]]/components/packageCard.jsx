@@ -7,6 +7,7 @@ import { getSession } from 'next-auth/react';
 import LoginPopup from '@/Components/loginPopup/Components/popup';
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm';
 import Topbanner from '@/app/_common/layout/topbanner';
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 
 
 const ContinentAllpackages = ({ slug_three }) => {
@@ -64,7 +65,7 @@ const ContinentAllpackages = ({ slug_three }) => {
       <div className="container card_main_section">
             <div className="card_discount">
                 <div className="packages">
-                    {result === undefined || result === null ? ('no result found') : (result?.map((pkg, index) => (
+                    {result === undefined || result === null ? <LoadingBar/> : (result?.map((pkg, index) => (
                         <div key={index} className="package">
 
                             {pkg.images ? pkg.images.map((e) => (

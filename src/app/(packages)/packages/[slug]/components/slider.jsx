@@ -1,5 +1,7 @@
 'use client'
 
+import LoadingBar from "@/app/_common/innerLoader/innerLoader";
+
 const TravelGallery = ({ result }) => {
   console.log('awerwrwerwerwreewr',result)
   return (
@@ -7,7 +9,7 @@ const TravelGallery = ({ result }) => {
       
       
         {result === undefined || result === null ? (
-          'No result found'
+            <LoadingBar/>
         ) : (
           result.map((ele, index) => (
             <>

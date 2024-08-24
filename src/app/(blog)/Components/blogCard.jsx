@@ -2,11 +2,12 @@ import commentimg from '../../assets/home_images/comment.svg';
 import calenderimg from '../../assets/home_images/calender.svg';
 import Link from 'next/link';
 import { format } from 'date-fns';
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 
 function BlogCard ({result})  {
     return (
        <>
-       {result===null||result===undefined?('loading....'):(
+       {result===null||result===undefined?<LoadingBar/>:(
         result.map((ele)=>{
             const formattedDate = format(new Date(ele.createdAt), 'dd MMM yyyy');
             return <div className="blogpagecard" key={ele._id}>

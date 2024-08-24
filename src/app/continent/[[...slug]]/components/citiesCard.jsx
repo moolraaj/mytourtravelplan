@@ -1,4 +1,5 @@
 'use client'
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Topbanner from '@/app/_common/layout/topbanner';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 import Image from 'next/image';
@@ -28,7 +29,7 @@ const CitiesExplorations = ({ slug_one, slug_two }) => {
        <Topbanner slug={slug_two} />
         <div className="explorations">
             <div className="explorations-grid">
-                {result === undefined || result === null ? ('no result found') : (result.map((exploration, index) => (
+                {result === undefined || result === null ? <LoadingBar/> : (result.map((exploration, index) => (
                     <div key={index} className="exploration-item">
                         <Link href={`/continent/${slug_one}/${slug_two}/${exploration.slug.trim().toLowerCase().replace(/\s+/g, '-')}`}>
 

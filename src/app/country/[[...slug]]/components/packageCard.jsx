@@ -1,5 +1,6 @@
 'use client'
  
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Topbanner from '@/app/_common/layout/topbanner';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 import Image from 'next/image';
@@ -31,7 +32,7 @@ const CountryAllpackages = ({ slug_two }) => {
         <div className="container card_main_section">
             <div className="card_discount">
                 <div className="packages">
-                    {result === undefined || result === null ? ('no result found') : (result?.map((pkg, index) => (
+                    {result === undefined || result === null ? <LoadingBar/> : (result?.map((pkg, index) => (
                         <div key={index} className="package">
 
                             {pkg.images ? pkg.images.map((e) => (
