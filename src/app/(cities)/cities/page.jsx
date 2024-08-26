@@ -16,6 +16,13 @@ export default function Page() {
   
   const { totalCities = 0 } = pagination;
 
+  console.log(`totalCities`)
+  console.log(totalCities)
+
+   
+
+
+
   // Reverse the array if needed
   const reversedCities = Array.isArray(cities) ? [...cities].reverse() : [];
 
