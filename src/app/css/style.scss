@@ -5,7 +5,9 @@
 
 
 /* search page style start*/
-
+.search-page {
+    width: 100%;
+}
 .searchResults {
 	position: absolute;
 	top: 100%;
@@ -18,116 +20,127 @@
 	width: 100%;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 0px 0px 5px 5px;
-  }
-
-
-
-  .destinations.expert-travel a.destination h3 {
-    text-align: left;
 }
 
-  .searchResults::-webkit-scrollbar {
+
+
+.destinations.expert-travel a.destination h3 {
+	text-align: left;
+}
+
+.searchResults::-webkit-scrollbar {
 	width: 6px;
-  }
-   
-  .searchResults::-webkit-scrollbar-track {
-	  border:1px solid grey;
-	  border-top: none;
-	  border-bottom: none;
-  
-  }
-   
-  .searchResults::-webkit-scrollbar-thumb {
+}
+
+.searchResults::-webkit-scrollbar-track {
+	border: 1px solid grey;
+	border-top: none;
+	border-bottom: none;
+
+}
+
+.searchResults::-webkit-scrollbar-thumb {
 	background-color: #cf0c2a;
 	outline: 1px solid #666;
-  }
-  
-  .searchResults h4 {
+}
+
+.searchResults h4 {
 	margin: 0;
 	padding: 10px;
 	background: #f5f5f5;
-	
-  }
-  
-  .searchResults div {
+
+}
+
+.searchResults div {
 	padding: 10px;
 	cursor: pointer;
-  }
-  
-  .searchResults .resp_url {
+}
+
+.searchResults .resp_url {
 	display: block;
 	padding: 5px;
 	color: #333;
 	text-decoration: none;
-  }
-  
-  span.error_field {
-    color: #ff000091;
 }
-  .searchResults .resp_url:hover {
+
+span.error_field {
+	color: #ff000091;
+}
+
+.searchResults .resp_url:hover {
 	background-color: #f5f5f5;
-  }
- 
-.search_page_inner{
+}
+
+.search_page_inner {
 	@include main_container;
 	margin: 50px auto;
 	background-repeat: no-repeat !important;
 	background-position: 30px bottom;
 }
 
-.results-section .blog-bg{
+.results-section .blog-bg {
 	background-color: transparent;
 }
+
 .search-page .outer_section,
-.results-section .blog-bg{
+.results-section .blog-bg {
 	padding: 0;
 }
-.results-section .destinations-grid{
-	grid-template-columns: repeat(3,1fr) !important;
-} 
-.results-section  .destinations-grid a:nth-child(1),
-.results-section  .destinations-grid a:nth-child(2) {
-    grid-column: auto !important;
+
+.results-section .destinations-grid a:nth-child(1),
+.results-section .destinations-grid a:nth-child(2),
+.results-section .world-country .card_outer {
+	grid-column: auto !important;
 }
-.results-section .blog-container{
+
+.results-section .blog-container {
 	grid-template-columns: 1fr;
 	padding: 0;
 }
-.results-section .blog-main{
+
+.results-section .grid-container,
+.results-section .destinations,
+.results-section .destinations-grid {
+	grid-template-columns: repeat(4, 1fr) !important;
+	width: 100% !important;
+}
+
+.results-section .blog-main {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 30px;
 }
+
 .search-placeholder {
 	transition: all 0.5s ease-in-out;
-  }
-  
+}
+
 /* search page style end */
 
 //// loading
 
 
 .loader_wrapper {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #fff;
-    top: 0;
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #fff;
+	top: 0;
 }
 
 
 .loading_wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: #fff;
 }
 
 
@@ -235,45 +248,45 @@ ul.destinations-list li {
 
 .images {
 	display: flex;
-  }
-  
-  .imageContainer {
+}
+
+.imageContainer {
 	display: grid;
 	grid-template-columns: 2fr 1.5fr;
 	gap: 20px;
 	width: 100%;
 	margin-bottom: 50px;
-  }
-  
-  .leftImage {
+}
+
+.leftImage {
 	width: 100%;
 	height: 500px;
-  }
-  
-  .largeImage {
+}
+
+.largeImage {
 	border-radius: 5px;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-  }
-  
-  .rightImages {
+}
+
+.rightImages {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-  }
-  
-  .smallImage {
+}
+
+.smallImage {
 	border-radius: 5px;
 	width: 100%;
 	height: 240px;
 	object-fit: cover;
-  }
-  
-  
+}
 
-  
+
+
+
 .gallery,
 .overview {
 	@include main_container;
@@ -287,11 +300,11 @@ ul.destinations-list li {
 }
 
 .privacy-policy-container h1 {
-    font-size: 40px;
+	font-size: 40px;
 }
 
 .disclaimer-container h1 {
-    font-size: 40px;
+	font-size: 40px;
 }
 
 .term-conditions-container h1 {
@@ -300,19 +313,19 @@ ul.destinations-list li {
 
 body::-webkit-scrollbar {
 	width: 14px;
-  }
-   
-  body::-webkit-scrollbar-track {
-	  border:1px solid grey;
-	  border-top: none;
-	  border-bottom: none;
-  
-  }
-   
-  body::-webkit-scrollbar-thumb {
+}
+
+body::-webkit-scrollbar-track {
+	border: 1px solid grey;
+	border-top: none;
+	border-bottom: none;
+
+}
+
+body::-webkit-scrollbar-thumb {
 	background-color: #cf0c2a;
 	outline: 1px solid #666;
-  }
+}
 
 
 
@@ -355,9 +368,9 @@ body::-webkit-scrollbar {
 }
 
 .card_main_section .package img {
-    height: 189px;
-    object-fit: cover;
-    max-width: 236px;
+	height: 189px;
+	object-fit: cover;
+	max-width: 236px;
 }
 
 
@@ -413,16 +426,17 @@ body::-webkit-scrollbar {
 	@include main_container;
 	margin: auto;
 }
+
 .PhoneInput {
-    display: flex;
-    align-items: center;
-    box-shadow: 2px 2px 12px #9b9b9b29;
-    padding: 10px;
-    border-radius: 10px;
+	display: flex;
+	align-items: center;
+	box-shadow: 2px 2px 12px #9b9b9b29;
+	padding: 10px;
+	border-radius: 10px;
 }
 
 .form-section p {
-    display:none;
+	display: none;
 }
 
 .explorations-grid {
@@ -465,14 +479,14 @@ p.description {
 }
 
 .info {
-    width: 100%;
+	width: 100%;
 }
 
 
 h2.same_heading {
-    font-size: 25px;
-    margin: 0px;
-    font-weight: 500;
+	font-size: 25px;
+	margin: 0px;
+	font-weight: 500;
 }
 
 .link_heading a {
@@ -501,27 +515,27 @@ h2.same_heading {
 }
 
 .info p {
-    color: #000;
-    text-align: left;
-    font-weight: 500;
-    margin: 0px;
-    padding-bottom: 5px;
+	color: #000;
+	text-align: left;
+	font-weight: 500;
+	margin: 0px;
+	padding-bottom: 5px;
 }
 
 
 .card_main_section .buttons button {
 	padding: 7px 15px;
-    margin-right: 10px;
-    border-color: #000;
-    border-radius: 4px;
-    border-width: 1px;
-    font-size: 16px;
-    font-family: jost;
-    border: 1px solid #1802A0;
-    background: #cf0c2a;
-    font-weight: 500;
-    cursor: pointer;
-    color: white;
+	margin-right: 10px;
+	border-color: #000;
+	border-radius: 4px;
+	border-width: 1px;
+	font-size: 16px;
+	font-family: jost;
+	border: 1px solid #1802A0;
+	background: #cf0c2a;
+	font-weight: 500;
+	cursor: pointer;
+	color: white;
 }
 
 
@@ -629,7 +643,7 @@ h2.top-dest-title {
 
 .title_date .category {
 	font-size: 18px;
-	color:black;
+	color: black;
 }
 
 
@@ -642,8 +656,8 @@ h2.top-dest-title {
 .privacy-policy-container,
 .term-conditions-container,
 .disclaimer-container {
-    max-width: 1389px;
-    margin: auto;
+	max-width: 1389px;
+	margin: auto;
 }
 
 
@@ -685,7 +699,7 @@ h2.top-dest-title {
 
 
 .destinations-container-countries .destination img {
-    border-radius: 50%;
+	border-radius: 50%;
 }
 
 
@@ -789,7 +803,8 @@ p.description {
 	align-items: center;
 	column-gap: 20px;
 }
-.social-icon{
+
+.social-icon {
 	padding: 7px;
 	background-color: $primrywhite;
 	border-radius: 50px;
@@ -797,6 +812,7 @@ p.description {
 	align-items: center;
 	justify-content: center;
 }
+
 .social-icons img {
 	width: 22px;
 	height: 22px;
@@ -855,8 +871,9 @@ ul.footer-list {
 	font-size: 25px;
 	font-weight: 500;
 }
+
 input#phone-number::placeholder {
-    color: black;
+	color: black;
 }
 
 
@@ -1339,7 +1356,7 @@ a.navbar-item {
 		justify-content: space-between;
 		gap: 10px;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
-    	row-gap: 40px;
+		row-gap: 40px;
 	}
 
 	.top-act-Details {
@@ -1683,9 +1700,9 @@ span.trending img {
 
 .top-dest-image {
 	width: 100%;
-    height: 201px;
-    z-index: -1;
-    object-fit: cover;
+	height: 201px;
+	z-index: -1;
+	object-fit: cover;
 }
 
 .top-dest-Details {
@@ -1928,10 +1945,10 @@ span.trending img {
 
 .main_slider_inner .title {
 	color: #fff;
-    font-size: 50px;
-    margin-bottom: 45px;
-    font-weight: 500;
-    text-shadow: 0 3px 3px black;
+	font-size: 50px;
+	margin-bottom: 45px;
+	font-weight: 500;
+	text-shadow: 0 3px 3px black;
 
 }
 
@@ -2043,7 +2060,8 @@ a.card_outer {
 	justify-content: center;
 	gap: 10px;
 }
-.main_slider_inner .searchButton:hover{
+
+.main_slider_inner .searchButton:hover {
 	background-color: #ad0e19;
 	transition: all 0.1s ease-in-out;
 }
@@ -2088,8 +2106,8 @@ a.card_outer {
 
 
 .outer_section a .label img {
-      top: 27px;
-  
+	top: 27px;
+
 }
 
 //  akash css start
@@ -2383,26 +2401,27 @@ form.form.flight-form h3 {
 /* MyOrders.css */
 
 .my-orders-container {
-    padding: 20px;
-    background-color: #f9f9f9;
+	padding: 20px;
+	background-color: #f9f9f9;
 }
 
 .no-bookings {
-    text-align: center;
-    font-size: 18px;
-    color: #555;
-    margin-top: 20px;
+	text-align: center;
+	font-size: 18px;
+	color: #555;
+	margin-top: 20px;
 }
 
 .booking-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 15px;
+	margin: 10px 0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.booking-card:hover{
+
+.booking-card:hover {
 	background-color: #edeaea;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.142);
 }
@@ -2411,26 +2430,26 @@ form.form.flight-form h3 {
 .booking-description,
 .booking-package-id,
 .booking-date {
-    margin: 5px 0;
-    font-size: 16px;
-    color: #333;
+	margin: 5px 0;
+	font-size: 16px;
+	color: #333;
 }
 
 .booking-id {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .booking-description {
-    color: #555;
+	color: #555;
 }
 
 .booking-package-id {
-    color: #777;
+	color: #777;
 }
 
 .booking-date {
-    font-style: italic;
-    color: #999;
+	font-style: italic;
+	color: #999;
 }
 
 
@@ -2582,9 +2601,9 @@ h2.heading_inner_page {
 // }
 
 .galleryGrid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 .iten_inner {
@@ -3038,6 +3057,13 @@ img.carimage {
 // Responsive Screen Start Here 
 
 @media only screen and (max-width: 1450px) {
+
+	.results-section .grid-container,
+	.results-section .destinations,
+	.results-section .destinations-grid {
+		grid-template-columns: repeat(3, 1fr) !important;
+	}
+
 	.explorations {
 		width: auto;
 	}
@@ -3075,6 +3101,24 @@ img.carimage {
 }
 
 @media only screen and (max-width:1360px) {
+
+	.results-section .grid-container,
+	.results-section .destinations,
+	.results-section .destinations-grid {
+		grid-template-columns: repeat(2, 1fr) !important;
+	}
+
+	.results-section .grid-container,
+	.results-section .container,
+	.results-section .inner-w-container,
+	.results-section .latest-blog{
+		padding: 0 !important;
+	}
+
+	.results-section .blog-main {
+		grid-template-columns: 1fr !important;
+	}
+
 	.car-inner-box .car-text-container {
 		gap: 10px;
 		padding: 0px 5px;
@@ -3312,7 +3356,7 @@ img.carimage {
 		font-weight: 600;
 	}
 
-	
+
 	button.mobile-button a {
 		color: #fff;
 		text-decoration: unset;
@@ -3351,7 +3395,7 @@ img.carimage {
 	}
 
 	img.blog-image,
-	.blog-main img{
+	.blog-main img {
 		max-width: 340px;
 		width: 100%;
 		height: 219px;
@@ -3427,16 +3471,16 @@ img.carimage {
 	// 	display: none;
 	// }
 
-	
+
 	.navbar-menu {
 		flex-direction: row;
 		align-items: center;
 	}
 
-    .world-country .grid-container {
-        grid-template-columns: 1fr 1fr;
-        padding-left: 0px !important;
-    }
+	.world-country .grid-container {
+		grid-template-columns: 1fr 1fr;
+		padding-left: 0px !important;
+	}
 
 	.left_offer_side h2 {
 		font-size: 17px !important;
@@ -3446,7 +3490,7 @@ img.carimage {
 	.search-page .grid-container {
 		padding-left: 0px !important;
 	}
-	
+
 
 
 
@@ -3456,22 +3500,24 @@ img.carimage {
 }
 
 @media(max-width:767px) {
-	.destination .image{
+	.destination .image {
 		min-height: 180px !important;
 	}
-	.loader_wrapper svg{
+
+	.loader_wrapper svg {
 		max-width: 100px;
 		width: 100%;
 		height: 100px;
 	}
+
 	.transferinner-vehicle-section {
 		grid-template-columns: 1fr;
 	}
 
 	.login-wrapper .image-section {
-    padding: 20px;
-    display: none;
-}
+		padding: 20px;
+		display: none;
+	}
 
 
 	.main_slider_inner .slider img {
@@ -3657,14 +3703,14 @@ img.carimage {
 }
 
 @media(max-width:467px) {
-	.imageContainer{
+	.imageContainer {
 		grid-template-columns: 1fr;
 	}
 
 
 	.destination .info h3 {
-			font-size: 18px;
-	
+		font-size: 18px;
+
 	}
 
 	.link-btn-heading {
@@ -3672,15 +3718,16 @@ img.carimage {
 		align-items: center;
 		justify-content: space-between;
 	}
-	
-	.rightImages{
+
+	.rightImages {
 		gap: 20px;
 	}
+
 	.car-inner-box .car-text-container {
 		display: block;
 	}
 
-    .login-modal {
+	.login-modal {
 		display: block;
 		background-color: white;
 		border-radius: 10px;
@@ -3726,14 +3773,14 @@ img.carimage {
 		object-fit: cover;
 	}
 
-	.grid-container{
+	.grid-container {
 		display: grid !important;
 		grid-template-columns: 1fr 1fr !important;
 	}
 
 	.outer_section .text {
-			font-size: 19px;
-		
+		font-size: 19px;
+
 	}
 
 	a.card_outer .card:before {
@@ -3745,7 +3792,7 @@ img.carimage {
 		z-index: 99;
 		border-radius: 10px;
 	}
-	
+
 
 	.explorations-grid {
 		grid-template-columns: 1fr;
@@ -3802,8 +3849,7 @@ img.carimage {
 	}
 
 	.world-country .grid-container,
-	.destinations.expert-travel
- {
+	.destinations.expert-travel {
 		grid-template-columns: 1fr 1fr;
 		display: grid;
 	}
@@ -3812,16 +3858,18 @@ img.carimage {
 	.destinations-grid a:nth-child(2) {
 		grid-column: auto;
 	}
+
 	.destinations-grid {
-        display: grid;
-    }
+		display: grid;
+	}
 
 	.destination-card .destination-image {
-        height: 180px;
-    }
+		height: 180px;
+	}
+
 	.destinations-grid {
-				row-gap: 10px;
-		
+		row-gap: 10px;
+
 	}
 
 	.destination-card .destination-image {
@@ -3835,7 +3883,7 @@ img.carimage {
 	}
 
 	.destination-card h3 {
-        font-size: 18px;
+		font-size: 18px;
 	}
 
 	.destination-card:hover:after {
@@ -3853,6 +3901,7 @@ img.carimage {
 	.header_best_selling {
 		margin-top: 45px;
 	}
+
 	.card_main_section .package img {
 		height: 169px;
 		object-fit: cover;
@@ -3904,5 +3953,3 @@ img.carimage {
 		width: 100%;
 	}
 }
-
-
