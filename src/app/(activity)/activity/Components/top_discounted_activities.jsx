@@ -38,14 +38,14 @@ const discountedActivities = [
 ];
 
 const TopDiscountedActivities = ({result}) => {
-  let reversedActivities=Array.isArray(result)?[...result].reverse():[]
+  
   return (
     <div className="top-discounted-container" style={{ backgroundImage: `url(${discountactivitybg.src})`}} >
     <div className="inner-w-container">
       <h2 className="top-discounted-title">Top Discounted Activities</h2>
       <p className="top-discounted-subtitle">Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
       <div className="top-discounted-gridContainer">
-        {reversedActivities===undefined||reversedActivities===null?<LoadingBar/>:(reversedActivities.map((activity, index) => (
+        {result===undefined||result===null?<LoadingBar/>:(result?.map((activity, index) => (
           <Link className="top-discounted-cardOuter" href={`/${activity.slug.toLowerCase().replace(' ', '-')}`} key={index}>
             <div className="top-discounted-card">
               <div className="top-discounted-overlay">

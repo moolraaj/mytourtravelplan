@@ -6,11 +6,20 @@ import emptyImage from '../app/assets/empty.jpg';
 import exploresection from '../app/assets/home_images/explore-bg.png';
 
 function ExplorationsFarAway({ loading, city }) {
-  let data = city ? city.result : [];
 
-  let reversedFilterCities = data ? [...data].reverse() : [];
 
-  console.log('werwerwerwere',reversedFilterCities)
+
+  console.log('in package page')
+  console.log(city)
+
+
+  
+
+
+
+  
+
+ 
 
   return (
     <div
@@ -27,10 +36,10 @@ function ExplorationsFarAway({ loading, city }) {
         </div>
 
         <div className="destinations-grid">
-          {reversedFilterCities===null && reversedFilterCities===undefined ? (
+          {city===null && city===undefined ? (
             ''
           ) : (
-            reversedFilterCities.slice(0, 6).map((destination) =>{
+            city?.slice(0, 6)?.map((destination) =>{
               return(
                 <>
                 <Link href={`/city/${destination.slug}`} key={destination._id}>

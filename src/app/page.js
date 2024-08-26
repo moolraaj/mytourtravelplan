@@ -1,15 +1,15 @@
 
- 
+
 
 // 'use client' 
 // import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 // import Layout from './_common/layout/layout';
 // import Homepage from './_homepage/homepage';
 // import { useEffect, useState } from 'react';
- 
+
 
 // export default  function Home() {
-  
+
 //   let api=EXPORT_ALL_APIS()
 //   let [loading, setLoading] = useState(true);
 //   let[continent,setContinent]=useState([])
@@ -66,17 +66,17 @@
 
 
 
-  
 
 
- 
+
+
 
 //   return (
-    
+
 //     <>
 //       <Layout>
-    
-      
+
+
 //         <Homepage continent={continent} loading={loading} country={country} city={city} packages={packages} blogs={blogs} packagescat={packagescat}/>
 
 //       </Layout>
@@ -96,53 +96,31 @@ import { useEffect, useState } from 'react';
 import { getSession } from 'next-auth/react';
 import LoginPopup from '@/Components/loginPopup/Components/popup';
 import QueryForm from '@/Components/autoloadPopup/QueryForm';
+import useFetchAllSections from '@/hooks/useLoadApiHook';
 
 export default function Home() {
-    const [loading, setLoading] = useState(true);
-    const [continent, setContinent] = useState([]);
-    const [country, setCountry] = useState([]);
-    const [city, setCity] = useState([]);
-    const [packages, setPackages] = useState([]);
-    const [blogs, setBlogs] = useState([]);
-    const [packagescat, setPackagesCat] = useState([]);
 
-    // State for managing pop-ups
+    let response = useFetchAllSections()
+    let {continents,countries,cities,packages,blogs,packageCategories} = response.data
+    let {loading}=response
+ 
+    
     const [isopenForm, setIsopenForm] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
     const [userVerified, setUserVerified] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false); // Add state for admin check
+    const [isAdmin, setIsAdmin] = useState(false);  
 
     useEffect(() => {
-        // Function to fetch all necessary data
-        const fetchData = async () => {
-            let api = EXPORT_ALL_APIS();
-            let data;
 
-            data = await api.loadAllContinents();
-            setContinent(data);
-            data = await api.loadAllCountries();
-            setCountry(data);
-            data = await api.loadAllCitiesWithLowestPrices();
-            setCity(data);
-            data = await api.loadAllPackages();
-            setPackages(data);
-            data = await api.loadAllBlogs();
-            setBlogs(data);
-            data = await api.loadAllPackagesActivities();
-            setPackagesCat(data);
-            setLoading(false);
-        };
-
-        // Check session and handle pop-ups
         const checkSessionAndShowPopups = async () => {
             const popupShown = sessionStorage.getItem('popupShown');
-            
+
             if (!popupShown) {
                 try {
                     const session = await getSession();
                     if (session && session.user) {
                         setUserVerified(session.user.role === 'user');
-                        setIsAdmin(session.user.role === 'admin'); // Set admin status
+                        setIsAdmin(session.user.role === 'admin');  
 
                         // Show BookingForm only if user is verified and not an admin
                         setIsopenForm(session.user.role === 'user' && !isAdmin);
@@ -162,7 +140,7 @@ export default function Home() {
             }
         };
 
-        fetchData().then(() => checkSessionAndShowPopups());
+        checkSessionAndShowPopups()
     }, []);
 
     return (
@@ -172,14 +150,14 @@ export default function Home() {
             {isLogin && <LoginPopup setIsLogin={setIsLogin} />}
 
             <Layout>
-                <Homepage 
-                    continent={continent} 
-                    loading={loading} 
-                    country={country} 
-                    city={city} 
-                    packages={packages} 
-                    blogs={blogs} 
-                    packagescat={packagescat}
+                <Homepage
+                    continent={continents}
+                    loading={loading}
+                    country={countries}
+                    city={cities}
+                    packages={packages}
+                    blogs={blogs}
+                    packagescat={packageCategories}
                 />
             </Layout>
         </>

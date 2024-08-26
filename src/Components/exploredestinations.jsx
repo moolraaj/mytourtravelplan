@@ -7,9 +7,9 @@ const ExploreDestinations = ({ packagescat }) => {
 
 
 
-  let result = packagescat ? packagescat.result : []
+  // let result = packagescat ? packagescat.result : []
 
-  let reversedPackagesCat=Array.isArray(result)?[...result].reverse():[]
+  // let reversedPackagesCat=Array.isArray(result)?[...result].reverse():[]
 
 
   return (
@@ -18,7 +18,7 @@ const ExploreDestinations = ({ packagescat }) => {
         <h2 className='same_heading'>Explore Destinations By Theme</h2>
         <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="destinations-container-countries">
-          {reversedPackagesCat === null || reversedPackagesCat === undefined ? ('no result found') : (reversedPackagesCat.slice(0, 6).map((destination, index) => (
+          {packagescat === null || packagescat === undefined ? ('no result found') : (packagescat?.slice(0, 6)?.map((destination, index) => (
             <div key={index} className="destination">
               <Link href={`/${destination.slug}`}>
 

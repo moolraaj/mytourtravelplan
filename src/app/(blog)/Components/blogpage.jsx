@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 
 import BlogCard from './blogCard';
+import useFetchAllSections from '@/hooks/useLoadApiHook';
  
 
  
@@ -15,22 +16,17 @@ import BlogCard from './blogCard';
  
 
 const BlogCardsContainer = () => {
-  let api=EXPORT_ALL_APIS()
-  let [data,setData]=useState([])
-  let LoadAllBlogs=async()=>{
-    let resp=await api.loadAllBlogs()
-    setData(resp)
-  }
-  useEffect(()=>{
-    LoadAllBlogs()
-  },[])
+
+  let response=useFetchAllSections()
+  let {blogs}=response.data
+  
 
 
-  let result=data?data.result:[]
+  
 
   return (
     <div className="blog-page">
-      <BlogCard result={result}/>
+      <BlogCard result={blogs}/>
     </div>
   );
 };

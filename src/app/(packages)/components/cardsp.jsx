@@ -7,22 +7,19 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getSession } from 'next-auth/react'; 
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
+import useFetchAllSections from '@/hooks/useLoadApiHook';
 
 
 const Allpackages = () => {
 
-  let api = EXPORT_ALL_APIS()
-
-  let [data, setData] = useState([])
+  let response=useFetchAllSections()
+  let {packages}=response.data
   const [userVerified, setUserVerified] = useState(false);
   const [isopenForm, setIsopenForm] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [selectedPackageId, setSelectedPackageId] = useState(null);
 
-  let fetchAllPackages = async () => {
-    let resp = await api.loadAllPackages()
-    setData(resp)
-  }
+  
 
   const checkUserVerification = async () => {
     try {
@@ -47,14 +44,12 @@ const Allpackages = () => {
   };
 
   useEffect(() => {
-    fetchAllPackages()
     checkUserVerification();
   }, [])
 
-  let result = data ? data.result : []
-  let reversedpackages=Array.isArray(result)?[...result].reverse():[]
+ 
 
-
+ 
 
   return (
     <>
@@ -67,7 +62,7 @@ const Allpackages = () => {
 
           {
           
-          reversedpackages===undefined||reversedpackages===null?('no result found'): (reversedpackages.map((pkg, index) => (
+          packages===undefined||packages===null?<LoadingBar/>: (packages?.map((pkg, index) => (
             <div key={index} className="package">
               {pkg.images ? pkg.images.map((e) => (
                 <Image

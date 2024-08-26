@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 
 const LatestBlog = ({blogs}) => {
 
-  let result=blogs?blogs.result:[]
+  // let result=blogs?blogs.result:[]
    
 
   return (
@@ -23,13 +23,13 @@ const LatestBlog = ({blogs}) => {
         </div>
 
         <div className="blog-container">
-          {result=== undefined||result===null ? (
+          {blogs=== undefined||blogs===null ? (
             <EmptyBlogComponent/>
           ) : (
             <>
         
               <div className="blog-main">
-                {result.slice(0, 1).map((ele) => {
+                {blogs?.slice(0, 1)?.map((ele) => {
                   const formattedDate = format(new Date(ele.createdAt), 'dd MMM yyyy');
 
                   return (
@@ -60,7 +60,7 @@ const LatestBlog = ({blogs}) => {
               </div>
 
               <div className="blog-side">
-                {result.slice(0, 2).map((blog, index) => {
+                {blogs?.slice(1, 3)?.map((blog, index) => {
                   const formattedDate = format(new Date(blog.createdAt), 'dd MMM yyyy');
                   return (
                     <Link href={`/blog/${blog.slug}`} key={index}>
