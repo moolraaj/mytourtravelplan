@@ -5,8 +5,8 @@
 
 
 /* search page style start*/
-.results-section {
-    width: fit-content;
+.search-page {
+    width: 100%;
 }
 .searchResults {
 	position: absolute;
@@ -72,7 +72,8 @@ span.error_field {
 }
 
 .search_page_inner {
-	@include main_container;
+	max-width: 1410px;
+	padding: 0px 20px;
 	margin: 50px auto;
 	background-repeat: no-repeat !important;
 	background-position: 30px bottom;
