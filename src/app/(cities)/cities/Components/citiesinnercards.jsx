@@ -43,7 +43,7 @@ const Explorations = ({ reversedCities, setPage, page, totalCities, limit}) => {
       <Paginations
           page={page}
           limit={limit}
-          totalCities={totalCities}
+          totalItems={totalCities}
           setPage={setPage}
         />
     </div>

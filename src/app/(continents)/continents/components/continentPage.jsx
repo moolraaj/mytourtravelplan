@@ -45,7 +45,7 @@ const ContinentPage = ({ reversedContinents,setPage, page, totalContinents, limi
       <Paginations
           page={page}
           limit={limit}
-          totalContinents={totalContinents}
+          totalItems={totalContinents}
           setPage={setPage}
         />
     </div>

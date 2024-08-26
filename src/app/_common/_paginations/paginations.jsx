@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Paginations({ page, limit, totalCountries, setPage }) {
-  const totalPages = Math.ceil(totalCountries / limit);
+function Paginations({ page, limit, totalItems, setPage }) {
+  const totalPages = Math.ceil(totalItems / limit);
 
   const handlePageChange = (pageNumber) => {
     setPage(pageNumber);
