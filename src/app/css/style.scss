@@ -5,8 +5,8 @@
 
 
 /* search page style start*/
-.search-page {
-    width: 100%;
+.results-section {
+    width: fit-content;
 }
 .searchResults {
 	position: absolute;
@@ -3106,6 +3106,7 @@ img.carimage {
 	.results-section .destinations,
 	.results-section .destinations-grid {
 		grid-template-columns: repeat(2, 1fr) !important;
+		gap: 10px !important;
 	}
 
 	.results-section .grid-container,
