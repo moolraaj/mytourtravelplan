@@ -1,3 +1,4 @@
+import Paginations from '@/app/_common/_paginations/paginations';
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Image from 'next/image';
 import Link from 'next/link';
