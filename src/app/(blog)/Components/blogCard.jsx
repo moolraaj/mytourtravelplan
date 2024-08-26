@@ -3,10 +3,12 @@ import calenderimg from '../../assets/home_images/calender.svg';
 import Link from 'next/link';
 import { format } from 'date-fns';
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
+import Paginations from '@/app/_common/_paginations/paginations';
 
-function BlogCard ({result})  {
+function BlogCard ({result,setPage, page, totalBlogs, limit})  {
     return (
        <>
+       <div className="blog-page">
        {result===null||result===undefined?<LoadingBar/>:(
         result?.map((ele)=>{
             const formattedDate = format(new Date(ele.createdAt), 'dd MMM yyyy');
@@ -39,6 +41,13 @@ function BlogCard ({result})  {
           </div>
         })
        )}
+       </div>
+       {result && <Paginations
+          page={page}
+          limit={limit}
+          totalItems={totalBlogs}
+          setPage={setPage}
+        />}
        </>
     );
   };

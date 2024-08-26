@@ -2,36 +2,29 @@
 import React, { useEffect, useState } from 'react';
 
 
-import { EXPORT_ALL_APIS } from '@/utils/apis/api';
+import { PER_PAGE_LIMIT } from '@/utils/apis/api';
 
 import BlogCard from './blogCard';
 import useFetchAllSections from '@/hooks/useLoadApiHook';
  
-
- 
-
-
-
-
- 
-
 const BlogCardsContainer = () => {
 
-  let response=useFetchAllSections()
-   
+const [page, setPage] = useState(1);
 
-  const {
-    blogs = [],
-} = response.data || {};
-  
-
-
-  
+  const response = useFetchAllSections(page, PER_PAGE_LIMIT);
+  const { blogs = [], pagination = {} } = response.data || {};
+  const { totalBlogs = 0 } = pagination;
 
   return (
-    <div className="blog-page">
-      <BlogCard result={blogs}/>
-    </div>
+    <>
+      <BlogCard 
+      result={blogs} 
+      setPage={setPage}
+      page={page}
+      totalBlogs={totalBlogs}
+      limit={PER_PAGE_LIMIT}
+      />
+    </>
   );
 };
 

@@ -9,7 +9,9 @@ function page() {
       <Layout>
           <Topbanner/>   
           <div className="inner-w-container">
+            <div className="blog_page_wrapper">
             <BlogCardsContainer/>  
+          </div>
           </div>
           
       </Layout>
