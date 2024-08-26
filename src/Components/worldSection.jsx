@@ -1,31 +1,24 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import triangle from '../app/assets/home_images/triangle.png';
 import camerabg from '../app/assets/home_images/camera-bg.png';
-
 import emptyImage from '../app/assets/empty.jpg';
 
-function WorldSection({loading,continent}) {
-
-  // let result=continent?continent.result:[]
-   
-
-  // let reversedContinents =Array.isArray(result)? [...result].reverse():[];
-
-  
+function WorldSection({ continent }) {
+ 
+  let reversedContinents = Array.isArray(continent) ? [...continent].reverse() : [];
 
   return (
     <div className='world-country' style={{ backgroundImage: `url(${camerabg.src})` }}>
       <div className="grid-container">
-        {continent === undefined||continent===null ? (
+        {reversedContinents.length===0 ? (
           <EmptyComponent />
         ) : (
-          continent.slice(0, 5).map((country, index) => (
+          reversedContinents.slice(0, 5).map((country, index) => (
             <Link className="card_outer" href={`/continent/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
               <div className="card">
                 <div className="overlay">
-                  <div className="label">{country.total_countries} Countries <Image src={triangle} alt="Triangle" style={{width: 'auto', height: 'auto'}}/></div>
+                  <div className="label">{country.total_countries} Countries <Image src={triangle} alt="Triangle" style={{ width: 'auto', height: 'auto' }} /></div>
                 </div>
                 {country.images && country.images.length > 0 ? (
                   <Image
@@ -56,7 +49,7 @@ function EmptyComponent() {
         <Link className="card_outer" href="#" key={index}>
           <div className="card">
             <div className="overlay">
-              <div className="label">Loading... <Image src={triangle} alt="Triangle"  style={{width: 'auto', height: 'auto'}}/></div>
+              <div className="label">Loading... <Image src={triangle} alt="Triangle" style={{ width: 'auto', height: 'auto' }} /></div>
             </div>
             <Image
               src={emptyImage.src}

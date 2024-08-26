@@ -9,20 +9,23 @@ import fishbg from '../app/assets/home_images/fish-bg.png';
 import emptyImage from '../app/assets/empty.jpg';
  
 
-function Destinations({country,loading}) {
+function Destinations({country}) {
 
-  // let result=country?country.result:[]
+  
   
 
-  // let reversedCountries = Array.isArray(result) ? [...result].reverse() : [];
+  let reversedCountries = Array.isArray(country) ? [...country].reverse() : [];
 
+ 
+   
   return (
     <div className='top-destination' style={{ backgroundImage: `url(${fishbg.src})` }}>
       <div className="topdestination container inner-w-container">
         <h2 className='same_heading'>Top Destination By Our Travel Experts</h2>
         <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="destinations expert-travel">
-          {country===null||country===undefined?(<EmptyDestinationComponent/>):(country.slice(0,8).map((country, index) => (
+          
+          {reversedCountries.length===0?(<EmptyDestinationComponent/>):(reversedCountries.slice(0,8).map((country, index) => (
             <Link className="destination" href={`/country/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
 
             <div key={index} >

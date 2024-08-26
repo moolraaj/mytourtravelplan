@@ -99,12 +99,15 @@ import QueryForm from '@/Components/autoloadPopup/QueryForm';
 import useFetchAllSections from '@/hooks/useLoadApiHook';
 
 export default function Home() {
-
     let response = useFetchAllSections()
+
     let {continents,countries,cities,packages,blogs,packageCategories} = response.data
     let {loading}=response
  
-    
+
+   
+
+    // State for managing pop-ups
     const [isopenForm, setIsopenForm] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
     const [userVerified, setUserVerified] = useState(false);
@@ -120,7 +123,7 @@ export default function Home() {
                     const session = await getSession();
                     if (session && session.user) {
                         setUserVerified(session.user.role === 'user');
-                        setIsAdmin(session.user.role === 'admin');  
+                        setIsAdmin(session.user.role === 'admin'); // Set admin status
 
                         // Show BookingForm only if user is verified and not an admin
                         setIsopenForm(session.user.role === 'user' && !isAdmin);

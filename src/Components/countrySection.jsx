@@ -37,7 +37,7 @@ function ExplorationsFarAway({ loading, city }) {
 
         <div className="destinations-grid">
           {city===null && city===undefined ? (
-            ''
+           <EmptyExplorationComponent/>
           ) : (
             city?.slice(0, 6)?.map((destination) =>{
               return(
