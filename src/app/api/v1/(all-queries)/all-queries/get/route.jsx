@@ -16,118 +16,106 @@ export async function GET(req) {
   return handelAsyncErrors(async () => {
     const { page, limit, skip } = getPaginationParams(req);
 
-    // Fetch paginated data for all sections
-
-    // Continents
-    const continents = await continentModel
-      .find()
-      .populate({
-        path: "all_countries",
-        populate: {
+    // Fetch data in parallel
+    const [continents, countries, cities, packages, blogs, activities, packageCategories] = await Promise.all([
+      continentModel.find()
+        .populate({
+          path: "all_countries",
+          select: "_id images title description slug",
+          populate: {
+            path: "all_cities",
+            select: "_id title all_packages",
+            populate: {
+              path: "all_packages",
+              select: "_id title package_price package_discounted_price",
+            },
+          },
+        })
+        .limit(limit)
+        .skip(skip)
+        .lean()
+        .exec(),
+      countriesModel.find()
+        .populate({
           path: "all_cities",
+          select: "_id title all_packages",
           populate: {
             path: "all_packages",
+            select: "_id title package_price package_discounted_price",
           },
-        },
-      })
-      .limit(limit)
-      .skip(skip)
-      .lean()
-      .exec();
-    const totalContinents = await continentModel.countDocuments();
-
-    // Countries
-    const countries = await countriesModel
-      .find()
-      .populate({
-        path: "all_cities",
-        populate: {
-          path: "all_packages",
-        },
-      })
-      .limit(limit)
-      .skip(skip)
-      .lean()
-      .exec();
-    const totalCountries = await countriesModel.countDocuments();
-
-    // Cities
-    const cities = await CitiesModel.find().exec();
-    const citiesWithLowestPrices = await Promise.all(
-      cities.map(async (city) => {
-        const packages = await PackagesModel.find({ city_id: city._id })
-          .sort({ package_price: 1 })
-          .limit(1)
-          .lean()
-          .exec();
-        return {
-          city,
-          lowestPricedPackage: packages.length ? packages[0] : null,
-          lowestPrice: packages.length ? packages[0].package_price : Infinity,
-        };
-      })
-    );
-    citiesWithLowestPrices.sort((a, b) => a.lowestPrice - b.lowestPrice);
-    const paginatedCities = citiesWithLowestPrices.slice(skip, skip + limit);
-    const totalCities = citiesWithLowestPrices.length;
-
-    // Packages
-    const packages = await PackagesModel.find()
-      .limit(limit)
-      .skip(skip)
-      .populate({
-        path: "city_id",
-        populate: {
-          path: "country_id",
+        })
+        .limit(limit)
+        .skip(skip)
+        .lean()
+        .exec(),
+      CitiesModel.find()
+        .lean()
+        .exec(),
+      PackagesModel.find()
+        .limit(limit)
+        .skip(skip)
+        .populate({
+          path: "city_id",
+          select: "_id title slug",
           populate: {
-            path: "continent_id",
+            path: "country_id",
+            select: "_id title slug",
+            populate: {
+              path: "continent_id",
+              select: "_id title slug",
+            },
           },
-        },
-      })
-      .lean()
-      .exec();
-    const totalPackages = await PackagesModel.countDocuments();
+        })
+        .select("_id images title description slug package_price package_discounted_price package_days package_nights")
+        .lean()
+        .exec(),
+      BlogModel.find()
+        .populate("blog_category", "_id name slug")
+        .limit(limit)
+        .skip(skip)
+        .select("_id images title description slug blog_category blog_overview blog_description createdAt")
+        .lean()
+        .exec(),
+      ActivitiesModel.find()
+        .limit(limit)
+        .skip(skip)
+        .select("_id icon images title description slug activity_price activity_discounted_price")
+        .lean()
+        .exec(),
+      PackageCategoryModel.find()
+        .limit(limit)
+        .skip(skip)
+        .select("_id image title description slug")
+        .lean()
+        .exec(),
+    ]);
 
-    // Blogs
-    const blogs = await BlogModel.find()
-      .populate("blog_category")
-      .limit(limit)
-      .skip(skip)
-      .lean()
-      .exec();
-    const totalBlogs = await BlogModel.countDocuments();
-
-    // Activities
-    const activities = await ActivitiesModel.find()
-      .limit(limit)
-      .skip(skip)
-      .lean()
-      .exec();
-    const totalActivities = await ActivitiesModel.countDocuments();
-
-    // Package Categories
-    const packageCategories = await PackageCategoryModel.find()
-      .limit(limit)
-      .skip(skip)
-      .lean()
-      .exec();
-    const totalPackageCategories = await PackageCategoryModel.countDocuments();
+    // Fetch total counts separately
+    const totalCounts = await Promise.all([
+      continentModel.countDocuments(),
+      countriesModel.countDocuments(),
+      CitiesModel.countDocuments(),
+      PackagesModel.countDocuments(),
+      BlogModel.countDocuments(),
+      ActivitiesModel.countDocuments(),
+      PackageCategoryModel.countDocuments()
+    ]);
 
     // Format results
     const result = {
-      continents: continents.map((continent) => ({
+      continents: continents.map(continent => ({
         _id: continent._id,
         images: continent.images,
         title: continent.title,
         description: continent.description,
         slug: continent.slug,
-        countries: continent.all_countries.map((country) => ({
+        countries: continent.all_countries.map(country => ({
           _id: country._id,
           images: country.images,
           title: country.title,
           description: country.description,
           slug: country.slug,
-          cities: country.all_cities.map((city) => ({
+          cities: country.all_cities.map(city => ({
             _id: city._id,
             city_name: city.title,
             city_packages_count: city.all_packages.length,
@@ -136,37 +124,28 @@ export async function GET(req) {
         })),
         total_countries: continent.all_countries.length,
       })),
-      countries: countries.map((country) => ({
+      countries: countries.map(country => ({
         _id: country._id,
         images: country.images,
         title: country.title,
         description: country.description,
         slug: country.slug,
-        cities: country.all_cities.map((city) => ({
+        cities: country.all_cities.map(city => ({
           _id: city._id,
           city_name: city.title,
           city_packages_count: city.all_packages.length,
         })),
         totalCities: country.all_cities.length,
       })),
-      cities: paginatedCities.map(({ city, lowestPricedPackage }) => ({
+      cities: cities.map(city => ({
         _id: city._id,
         images: city.images,
         title: city.title,
         description: city.description,
         slug: city.slug,
-        package: lowestPricedPackage
-          ? {
-              _id: lowestPricedPackage._id,
-              title: lowestPricedPackage.title,
-              price: lowestPricedPackage.package_price,
-              discounted_price:
-                lowestPricedPackage.package_discounted_price,
-            }
-          : null,
-        packagesCount: lowestPricedPackage ? 1 : 0,
+        packagesCount: city.all_packages.length,
       })),
-      packages: packages.map((pkg) => ({
+      packages: packages.map(pkg => ({
         _id: pkg._id,
         images: pkg.images,
         title: pkg.title,
@@ -198,7 +177,7 @@ export async function GET(req) {
             }
           : null,
       })),
-      blogs: blogs.map((blog) => ({
+      blogs: blogs.map(blog => ({
         _id: blog._id,
         images: blog.images,
         title: blog.title,
@@ -215,7 +194,7 @@ export async function GET(req) {
         blog_description: blog.blog_description,
         createdAt: blog.createdAt,
       })),
-      activities: activities.map((activity) => {
+      activities: activities.map(activity => {
         const discount =
           activity.activity_price && activity.activity_discounted_price
             ? (
@@ -238,7 +217,7 @@ export async function GET(req) {
           city_id: activity.city_id,
         };
       }),
-      packageCategories: packageCategories.map((category) => ({
+      packageCategories: packageCategories.map(category => ({
         _id: category._id,
         image: category.image,
         title: category.title,
@@ -248,13 +227,13 @@ export async function GET(req) {
       pagination: {
         page,
         limit,
-        totalContinents,
-        totalCountries,
-        totalCities,
-        totalPackages,
-        totalBlogs,
-        totalActivities,
-        totalPackageCategories,
+        totalContinents: totalCounts[0],
+        totalCountries: totalCounts[1],
+        totalCities: totalCounts[2],
+        totalPackages: totalCounts[3],
+        totalBlogs: totalCounts[4],
+        totalActivities: totalCounts[5],
+        totalPackageCategories: totalCounts[6],
       },
     };
 
