@@ -9,8 +9,16 @@ function WorldSection({ continent }) {
   let reversedContinents = Array.isArray(continent) ? [...continent].reverse() : [];
 
   return (
+    <>
+    
+   
     <div className='world-country' style={{ backgroundImage: `url(${camerabg.src})` }}>
+    <div className='link_heading'>
+    <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
+    <Link href="/continents"><span className="view-all">View All Continents</span></Link>
+  </div>
       <div className="grid-container">
+        
         {reversedContinents.length===0 ? (
           <EmptyComponent />
         ) : (
@@ -39,6 +47,7 @@ function WorldSection({ continent }) {
         )}
       </div>
     </div>
+    </>
   );
 }
 
