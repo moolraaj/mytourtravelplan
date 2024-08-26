@@ -3,20 +3,16 @@
 import React, { useEffect, useState } from 'react'
 import LatestBlog from '@/Components/blogs';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
+import useFetchAllSections from '@/hooks/useLoadApiHook';
 
 function TransferPage() {
-    const [blogs, setBlogs] = useState([]);
-
-    const fetchData = async () => {
-      let api = EXPORT_ALL_APIS();
-      let data;
-      data = await api.loadAllBlogs();
-      setBlogs(data);
-    };
+  let response=useFetchAllSections()
+  let {blogs}=response.data
   
-    useEffect(() => {
-      fetchData();
-    }, [])
+
+   
+  
+    
   
 
 

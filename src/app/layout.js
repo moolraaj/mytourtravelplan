@@ -4,7 +4,7 @@ import './css/style.scss'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NextAuthProvide from "@/provider/authProvider";
-import LayoutPageloading from "./_common/layout/layoutPage";
+ 
  
 
 
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <LayoutPageloading/>
+     
       <ToastContainer style={{zIndex: '9999999999999999'}}/>
         <NextAuthProvide>
         {children}

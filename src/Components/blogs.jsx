@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 
 const LatestBlog = ({blogs}) => {
 
-  // let result=blogs?blogs.result:[]
+ 
    
 
   return (
