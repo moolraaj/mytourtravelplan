@@ -8,7 +8,7 @@ const Bloggallery = ({ data }) => {
     let result=data?data.result:[]
     return (
         <>
-        {result===undefined||result===null?<LoadingBar/>:(result.map((ele)=>{
+        {result===undefined||result===null? <div className='overview blog-inner-page' style={{marginTop: '20px'}}><LoadingBar/></div>:(result.map((ele)=>{
             return <div className='overview blog-inner-page' key={ele._id} >
 
             <div className='summary_slider'>

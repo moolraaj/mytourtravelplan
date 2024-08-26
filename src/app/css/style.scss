@@ -1726,7 +1726,12 @@ h2.same_heading {
 .world-country-inner {
     max-width: 1410px;
     margin: 0 auto;
+	padding: 0px 20px;
 }
+.continents-headers {
+    margin-bottom: 20px;
+}
+
 .card_discount {
 	display: flex;
 	column-gap: 20px;
@@ -2078,7 +2083,7 @@ span.trending img {
 
 
 .outer_section {
-	padding-top: 100px;
+	padding-top: 60px;
 }
 
 .outer_section a.card_outer:nth-child(4) {
@@ -2114,10 +2119,6 @@ a.card_outer {
 	overflow: hidden;
 }
 
-
-.outer_section {
-	padding-top: 100px;
-}
 
 .main_slider_inner .searchContainer {
 	position: relative;
@@ -3634,6 +3635,10 @@ img.carimage {
 		min-height: 180px !important;
 	}
 
+	.world-country .grid-container{
+		padding: 0;
+		gap: 10px;
+	}
 	.loader_wrapper svg {
 		max-width: 100px;
 		width: 100%;

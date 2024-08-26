@@ -1,52 +1,43 @@
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Image from 'next/image';
 import Link from 'next/link';
- 
- 
-
 
 const Explorations = ({ reversedCities }) => {
+  
+  if (!reversedCities || reversedCities.length === 0) {
+    return  <div className="explorations"><LoadingBar /></div>;
+  }
 
   return (
     <div className="explorations">
       <div className="explorations-grid">
-        {reversedCities===null||reversedCities===undefined?(<LoadingBar/>):(reversedCities?.map((exploration, index) => (
+        {reversedCities.map((exploration, index) => (
           <div key={index} className="exploration-item">
-            <Link href={`/cities/${exploration.slug}`}  >
-             
+            <Link href={`/cities/${exploration.slug}`} passHref>
               {exploration.images && exploration.images.length > 0 ? (
                 exploration.images.map((image) => (
                   <Image
                     key={image._id}
                     src={`/uploads/${image.name}`}
-                    alt='cities'
+                    alt={exploration.title}
                     width={400}
                     height={330}
                     className="exploration-image"
                   />
                 ))
-              ) : (
-                // <Image
-                //   src={emptyImage.src}
-                //   alt="No Image Available"
-                //   width={400}
-                //   height={330}
-                //   className="exploration-image"
-                // />
-                null
-              )}
+              ) : null}
             </Link>
             <div className="exploration-details">
-              <div className='explore_l'>
+              <div className="explore_l">
                 <h3>Explorations {exploration.title}</h3>
-                <p>Packges in {exploration.title} {exploration.packagesCount}</p>
+                <p>Packages in {exploration.title}: {exploration.packagesCount}</p>
               </div>
-              <div className='icon_custom'>
-                <img src='/images/arrowu.png' />
+              <div className="icon_custom">
+                <img src="/images/arrowu.png" alt="Arrow" />
               </div>
             </div>
           </div>
-        )))}
+        ))}
       </div>
     </div>
   );
