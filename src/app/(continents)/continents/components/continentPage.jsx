@@ -3,7 +3,7 @@ import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ContinentPage = ({ reversedContinents }) => {
+const ContinentPage = ({ reversedContinents , setPage, page, totalContinents, limit}) => {
 
   if (!reversedContinents || reversedContinents.length === 0) {
     return <div className="explorations"><LoadingBar /></div>;
