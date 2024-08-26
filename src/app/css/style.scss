@@ -3354,6 +3354,9 @@ img.carimage {
 
 
 @media only screen and (max-width:1023px) {
+	.right_query {
+		margin-top: 20px;
+	}
 	.contact-us-container .dropdown-menu {
 		min-width: 150px;
 		right: 0;
@@ -3806,6 +3809,17 @@ img.carimage {
 }
 
 @media(max-width:467px) {
+	.logo-container .logo{
+		max-width: 150px;
+		height: 50px;
+	}
+	.loader-ring {
+		width: 100px;
+		height: 100px;
+	  }
+	  .loading-text{
+		font-size: 16px;
+	  }
 
 	.top_banner_destination{
 		min-height: 200px !important;

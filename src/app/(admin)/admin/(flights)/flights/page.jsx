@@ -70,7 +70,7 @@ function FlightsPage() {
   };
 
   return (
-    <div className="packages">
+    <div className="admin-packages">
       <ModalWrapper
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -78,8 +78,8 @@ function FlightsPage() {
       />
       <Breadcrumb path="/admin/flights" />
       {error && <div className="error">{error}</div>}
-      <div className="packages-table-container">
-        <table className="packages-table">
+      <div className="admin-packages-table-container">
+        <table className="admin-packages-table">
           <thead>
             <tr>
               <th>flight ID</th>

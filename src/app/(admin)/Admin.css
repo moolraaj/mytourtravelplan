@@ -438,7 +438,7 @@ g.recharts-layer.recharts-pie:focus{
 }
 /* Packages Page Styles */
 
-.packages {
+.admin-packages {
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -446,7 +446,7 @@ g.recharts-layer.recharts-pie:focus{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.packages h2 {
+.admin-packages h2 {
   color: #4a00e0;
   text-align: center;
   margin-bottom: 20px;
@@ -470,7 +470,7 @@ g.recharts-layer.recharts-pie:focus{
 }
 
 .action-bar input[type="checkbox"],
-.packages-table input[type="checkbox"] {
+.admin-packages-table input[type="checkbox"] {
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -482,7 +482,7 @@ g.recharts-layer.recharts-pie:focus{
   color: #cf0c2a;
 }
 
-.packages-table {
+.admin-packages-table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
@@ -490,21 +490,21 @@ g.recharts-layer.recharts-pie:focus{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.packages-table th,
-.packages-table td {
+.admin-packages-table th,
+.admin-packages-table td {
   padding: 15px 10px;
   border: 1px solid #ddd;
   text-align: left;
   font-size: 1rem;
 }
 
-.packages-table th {
+.admin-packages-table th {
   background-color: #cf0c2a;
   color: white;
   font-weight: bold;
 }
 
-.packages-table td {
+.admin-packages-table td {
   background-color: #fff;
 }
 
@@ -1240,8 +1240,8 @@ g.recharts-layer.recharts-pie:focus{
   /* add continent page  style end*******************************/
 
   /* package page style starts ****************************** */
-  .packages-table th,
-  .packages-table td {
+  .admin-packages-table th,
+  .admin-packages-table td {
     font-size: 0.875rem;
     /* Adjust font size */
     padding: 8px;
@@ -1273,17 +1273,17 @@ g.recharts-layer.recharts-pie:focus{
 
 @media (max-width: 480px) {
 
-  .packages-table-container {
+  .admin-packages-table-container {
     display: block;
     overflow-x: auto;
   }
 
-  .packages-table {
+  .admin-packages-table {
     min-width: 480px;
     /* Set a smaller minimum width */
   }
   .action-bar input[type="checkbox"],
-  .packages-table input[type="checkbox"] {
+  .admin-packages-table input[type="checkbox"] {
     width: 12px;
     height: 12px;
   }

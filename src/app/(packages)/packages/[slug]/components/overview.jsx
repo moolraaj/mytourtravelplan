@@ -43,7 +43,7 @@ const Itinerary = ({ result }) => {
   return (
 
     <>
-      {result === undefined || result === null ? <LoadingBar/> : (result.map((ele) => {
+      {result === undefined || result === null ? <div className='overview' style={{margin: '20px auto'}}><LoadingBar/></div> : (result.map((ele) => {
         return <div className='overview' key={ele._id}>
 
           <div className='over'>
