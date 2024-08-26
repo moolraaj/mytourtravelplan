@@ -1,9 +1,9 @@
+import Layout from "@/app/_common/layout/layout";
+import CountryAllpackages from "./components/packagesCard";
+import CountryCitiesExplorations from "./components/cityCard";
 
 
-import Layout from '@/app/_common/layout/layout'
-import React from 'react'
-import CountryCitiesExplorations from './components/citiesCard';
-import CountryAllpackages from './components/packageCard';
+ 
 
  
  

@@ -15,7 +15,7 @@ function WorldSection({ continent }) {
           <EmptyComponent />
         ) : (
           reversedContinents.slice(0, 5).map((country, index) => (
-            <Link className="card_outer" href={`/continent/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
+            <Link className="card_outer" href={`/continents/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
               <div className="card">
                 <div className="overlay">
                   <div className="label">{country.total_countries} Countries <Image src={triangle} alt="Triangle" style={{ width: 'auto', height: 'auto' }} /></div>

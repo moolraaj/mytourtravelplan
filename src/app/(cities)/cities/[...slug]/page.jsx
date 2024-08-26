@@ -1,9 +1,9 @@
+import Layout from "@/app/_common/layout/layout";
+import CityAllpackages from "./components/cityAllPackages";
+ 
 
 
-import Layout from '@/app/_common/layout/layout'
-import Topbanner from '@/app/_common/layout/topbanner'
-import React from 'react'
-import CityAllpackages from './components/packagesCard';
+ 
  
  
 

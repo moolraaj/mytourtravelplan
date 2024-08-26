@@ -1,11 +1,13 @@
 
 
-import Layout from '@/app/_common/layout/layout'
-import Topbanner from '@/app/_common/layout/topbanner'
+ 
+import Layout from '@/app/_common/layout/layout';
 import React from 'react'
-import ContinentCountrycard from './components/countriesCard'
-import CitiesExplorations from './components/citiesCard'
-import ContinentAllpackages from './components/packageCard'
+import CitiesExplorations from './components/citiesCard';
+import ContinentAllpackages from './components/packagesCard';
+import ContinentCountrycard from './components/countriesCard';
+ 
+ 
 
 function page({ params }) {
   let { slug } = params

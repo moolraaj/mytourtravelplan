@@ -22,11 +22,15 @@ function Destinations({country}) {
     <div className='top-destination' style={{ backgroundImage: `url(${fishbg.src})` }}>
       <div className="topdestination container inner-w-container">
         <h2 className='same_heading'>Top Destination By Our Travel Experts</h2>
+        <div className='link_heading'>
         <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
+        <Link href="/countries"><span className="view-all">View All Countries</span></Link>
+            </div>
+    
         <div className="destinations expert-travel">
           
           {reversedCountries.length===0?(<EmptyDestinationComponent/>):(reversedCountries.slice(0,8).map((country, index) => (
-            <Link className="destination" href={`/country/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
+            <Link className="destination" href={`/countries/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
 
             <div key={index} >
              
@@ -54,7 +58,7 @@ function Destinations({country}) {
               </span>
               <div className="info">
                 <h3>{country.title}</h3>
-                <p>{country.countries} Packages</p>
+                <p>{country.totalCities||0} cities</p>
 
               </div>
             </div>

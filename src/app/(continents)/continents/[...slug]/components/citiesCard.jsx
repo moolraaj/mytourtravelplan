@@ -31,7 +31,7 @@ const CitiesExplorations = ({ slug_one, slug_two }) => {
             <div className="explorations-grid">
                 {result === undefined || result === null ? <LoadingBar/> : (result.map((exploration, index) => (
                     <div key={index} className="exploration-item">
-                        <Link href={`/continent/${slug_one}/${slug_two}/${exploration.slug.trim().toLowerCase().replace(/\s+/g, '-')}`}>
+                        <Link href={`/continents/${slug_one}/${slug_two}/${exploration.slug.trim().toLowerCase().replace(/\s+/g, '-')}`}>
 
                             {exploration.images ? exploration.images.map((e) => (
                                 <Image

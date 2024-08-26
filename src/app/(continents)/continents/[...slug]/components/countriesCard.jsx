@@ -2,8 +2,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import trending from '../../../../app/assets/home_images/trending.png';
-import ribbon from '../../../../app/assets/home_images/ribbon.png';
+import trending from '../../../../../app/assets/home_images/trending.png';
+ 
+import ribbon from '../../../../../app/assets/home_images/ribbon.png';
+
 import { useEffect, useState } from 'react';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 import Topbanner from '@/app/_common/layout/topbanner';
@@ -38,7 +40,7 @@ const ContinentCountrycard = ({slug}) => {
             <div className="destinations expert-travel">
                 { result===null || result===undefined ? <LoadingBar/> : (result.map((country, index) => (
                     <div key={index} className="destination">
-                        <Link href={`/continent/${slug}/${country.slug.trim().toLowerCase().replace(/\s+/g, '-')}`}>
+                        <Link href={`/continents/${slug}/${country.slug.trim().toLowerCase().replace(/\s+/g, '-')}`}>
                             {country.images ? country.images.map((e) => (
                                 <Image
                                     key={e._id}

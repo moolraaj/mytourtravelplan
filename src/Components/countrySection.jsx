@@ -8,19 +8,6 @@ import exploresection from '../app/assets/home_images/explore-bg.png';
 function ExplorationsFarAway({ loading, city }) {
 
 
-
-  console.log('in package page')
-  console.log(city)
-
-
-  
-
-
-
-  
-
- 
-
   return (
     <div
       className="explore-section"
@@ -30,7 +17,7 @@ function ExplorationsFarAway({ loading, city }) {
         <h2 className="same_heading">Explore Best Cities</h2>
         <div className="link_heading">
           <p>Ideal for 5-14 days trip</p>
-          <Link href="/packages">
+          <Link href="/cities">
             <span className="view-all">View All Cities</span>
           </Link>
         </div>
@@ -42,7 +29,7 @@ function ExplorationsFarAway({ loading, city }) {
             city?.slice(0, 6)?.map((destination) =>{
               return(
                 <>
-                <Link href={`/city/${destination.slug}`} key={destination._id}>
+                <Link href={`/cities/${destination.slug}`} key={destination._id}>
                 <div className="destination-card">
                   {destination.images && destination.images.length > 0 ? (
                     <Image

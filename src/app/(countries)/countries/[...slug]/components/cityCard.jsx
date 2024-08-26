@@ -33,7 +33,7 @@ const CountryCitiesExplorations = ({ slug_one }) => {
             : result.map((exploration, index) => (
               <div key={index} className="exploration-item">
                 <Link
-                  href={`/country/${slug_one}/${exploration.slug
+                  href={`/countries/${slug_one}/${exploration.slug
                     .trim()
                     .toLowerCase()
                     .replace(/\s+/g, '-')}`}
