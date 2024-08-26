@@ -41,12 +41,13 @@ const CountryPage = ({ country, setPage, page, totalCountries, limit }) => {
           </div>
         ))}
       </div>
-      <Paginations
+      {country && <Paginations
           page={page}
           limit={limit}
           totalCountries={totalCountries}
           setPage={setPage}
-        />
+        />}
+      
     </div>
   );
 };
