@@ -1,3 +1,4 @@
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Image from 'next/image';
 import Link from 'next/link';
  
@@ -9,7 +10,7 @@ const ContinentPage = ({ reversedContinents }) => {
   return (
     <div className="explorations">
       <div className="explorations-grid">
-        {reversedContinents?.map((exploration, index) => (
+        {reversedContinents===undefined||reversedContinents===null?(<LoadingBar/>):(reversedContinents?.map((exploration, index) => (
           <div key={index} className="exploration-item">
             <Link href={`/continents/${exploration.slug}`}  >
              
@@ -45,7 +46,7 @@ const ContinentPage = ({ reversedContinents }) => {
               </div>
             </div>
           </div>
-        ))}
+        )))}
       </div>
     </div>
   );

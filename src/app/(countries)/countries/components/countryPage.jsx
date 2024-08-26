@@ -1,3 +1,4 @@
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Image from 'next/image';
 import Link from 'next/link';
  
@@ -9,7 +10,7 @@ const CountryPage = ({ country }) => {
   return (
     <div className="explorations">
       <div className="explorations-grid">
-        {country?.map((exploration, index) => (
+        {country===null||country===undefined?(<LoadingBar/>):(country?.map((exploration, index) => (
           <div key={index} className="exploration-item">
             <Link href={`/countries/${exploration.slug}`}  >
              
@@ -45,7 +46,7 @@ const CountryPage = ({ country }) => {
               </div>
             </div>
           </div>
-        ))}
+        )))}
       </div>
     </div>
   );
