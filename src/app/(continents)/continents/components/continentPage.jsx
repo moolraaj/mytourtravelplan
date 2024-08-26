@@ -41,6 +41,12 @@ const ContinentPage = ({ reversedContinents }) => {
           </div>
         ))}
       </div>
+        {reversedContinents && <Paginations
+          page={page}
+          limit={limit}
+          totalItems={totalContinents}
+          setPage={setPage}
+        />}
     </div>
   );
 };

@@ -40,12 +40,12 @@ const Explorations = ({ reversedCities, setPage, page, totalCities, limit}) => {
           </div>
         ))}
       </div>
-      <Paginations
+         {reversedCities && <Paginations
           page={page}
           limit={limit}
           totalItems={totalCities}
           setPage={setPage}
-        />
+        />}
     </div>
   );
 };

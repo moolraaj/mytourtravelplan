@@ -6,28 +6,32 @@
 
 /* search page style start*/
 .search-page {
-    width: 100%;
+	width: 100%;
 }
+
 .paginations {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin-top: 30px;
+	display: flex;
+	justify-content: center;
+	gap: 14px;
+	margin-top: 30px;
 }
+
 .paginations button {
-    background: unset;
-    border: unset;
-    background: gray;
-    padding: 10px 16px;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 16px;
+	background: unset;
+	border: unset;
+	background: gray;
+	padding: 10px 16px;
+	border-radius: 6px;
+	color: #fff;
+	font-size: 16px;
 	cursor: pointer;
 }
+
 button.paginations.active {
-    background: #1802A0;
-	
+	background: #1802A0;
+
 }
+
 .searchResults {
 	position: absolute;
 	top: 100%;
@@ -172,88 +176,96 @@ span.error_field {
 	bottom: 0;
 	z-index: 9999;
 	overflow: hidden;
-  }
-  
-  .loader {
+}
+
+.loader {
 	text-align: center;
 	color: #ffffff;
-  }
-  
-  .logo-container {
-	margin-bottom: 30px; 
+}
+
+.logo-container {
+	margin-bottom: 30px;
 	animation: pulse 2s infinite ease-in-out;
 
 	.logo {
 		max-width: 220px;
-		width: 100%; 
+		width: 100%;
 		height: 80px;
-	  }
-  }
-  
-  .loader-ring {
+	}
+}
+
+.loader-ring {
 	position: relative;
 	width: 120px;
 	height: 120px;
 	margin: 0 auto;
-  }
-  
-  .inner-ring, .outer-ring {
+}
+
+.inner-ring,
+.outer-ring {
 	position: absolute;
 	border: 4px solid transparent;
 	border-radius: 50%;
 	animation: rotate 2s infinite linear;
-  }
-  
-  .inner-ring {
+}
+
+.inner-ring {
 	width: 60px;
 	height: 60px;
 	border-top-color: #ffffff;
 	top: 30px;
 	left: 30px;
-  }
-  
-  .outer-ring {
+}
+
+.outer-ring {
 	width: 100px;
 	height: 100px;
 	border-top-color: #ffffff;
-  }
-  
-  .loading-text {
+}
+
+.loading-text {
 	margin-top: 20px;
 	font-size: 18px;
 	letter-spacing: 1.5px;
 	text-transform: uppercase;
 	animation: fade-in 3s infinite;
-  }
-  
-  @keyframes rotate {
-	0% {
-	  transform: rotate(0deg);
-	}
-	100% {
-	  transform: rotate(360deg);
-	}
-  }
-  
-  @keyframes pulse {
-	0%, 100% {
-	  transform: scale(1);
-	}
-	50% {
-	  transform: scale(1.1);
-	}
-  }
-  
-  @keyframes fade-in {
-	0%, 100% {
-	  opacity: 0;
-	}
-	50% {
-	  opacity: 1;
-	}
-  }
+}
 
-  /* loading page css ends here */
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes pulse {
+
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+}
+
+@keyframes fade-in {
+
+	0%,
+	100% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+}
+
+/* loading page css ends here */
 
 .loading_wrapper {
 	display: flex;
@@ -869,6 +881,9 @@ p.price {
 	text-transform: capitalize;
 }
 
+.card_sections {
+	padding: 20px;
+}
 
 .card_main_section {
 	@include main_container;
@@ -1724,19 +1739,19 @@ h2.same_heading {
 }
 
 .world-country-inner {
-    max-width: 1410px;
-    margin: 0 auto;
+	max-width: 1410px;
+	margin: 0 auto;
 	padding: 0px 20px;
 }
+
 .continents-headers {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .card_discount {
 	display: flex;
 	column-gap: 20px;
 	padding-top: 20px;
-	padding-bottom: 50px;
 }
 
 
@@ -2877,9 +2892,11 @@ img.carimage {
 
 
 // Blog Page 
-
+.blog_page_wrapper{
+	margin-bottom: 50px;
+}
 .blog-page {
-	margin: 50px 0px;
+	margin: 50px 0px 0px 0px;
 	display: grid;
 	gap: 30px;
 	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -3238,7 +3255,7 @@ img.carimage {
 	.results-section .grid-container,
 	.results-section .container,
 	.results-section .inner-w-container,
-	.results-section .latest-blog{
+	.results-section .latest-blog {
 		padding: 0 !important;
 	}
 
@@ -3382,6 +3399,7 @@ img.carimage {
 	.right_query {
 		margin-top: 20px;
 	}
+
 	.contact-us-container .dropdown-menu {
 		min-width: 150px;
 		right: 0;
@@ -3635,10 +3653,11 @@ img.carimage {
 		min-height: 180px !important;
 	}
 
-	.world-country .grid-container{
+	.world-country .grid-container {
 		padding: 0;
 		gap: 10px;
 	}
+
 	.loader_wrapper svg {
 		max-width: 100px;
 		width: 100%;
@@ -3838,19 +3857,21 @@ img.carimage {
 }
 
 @media(max-width:467px) {
-	.logo-container .logo{
+	.logo-container .logo {
 		max-width: 150px;
 		height: 50px;
 	}
+
 	.loader-ring {
 		width: 100px;
 		height: 100px;
-	  }
-	  .loading-text{
-		font-size: 16px;
-	  }
+	}
 
-	.top_banner_destination{
+	.loading-text {
+		font-size: 16px;
+	}
+
+	.top_banner_destination {
 		min-height: 200px !important;
 		height: auto !important;
 	}

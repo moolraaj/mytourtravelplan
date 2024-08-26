@@ -1,29 +1,26 @@
-'use client'
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm';
 import LoginPopup from '@/Components/loginPopup/Components/popup';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { getSession } from 'next-auth/react'; 
+import { getSession } from 'next-auth/react';
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import useFetchAllSections from '@/hooks/useLoadApiHook';
-
+import Paginations from '@/app/_common/_paginations/paginations';
+import { PER_PAGE_LIMIT } from '@/utils/apis/api';
 
 const Allpackages = () => {
-
-  let response=useFetchAllSections()
- 
-
-  const {
-    packages = [],
-} = response.data || {};
- 
+  const [page, setPage] = useState(1);
   const [userVerified, setUserVerified] = useState(false);
   const [isopenForm, setIsopenForm] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [selectedPackageId, setSelectedPackageId] = useState(null);
 
-  
+  const { data, loading } = useFetchAllSections(page, PER_PAGE_LIMIT); 
+  const { packages = [], pagination = {} } = data;
+  const { totalPackages = 0 } = pagination;
 
   const checkUserVerification = async () => {
     try {
@@ -49,11 +46,7 @@ const Allpackages = () => {
 
   useEffect(() => {
     checkUserVerification();
-  }, [])
-
- 
-
- 
+  }, []);
 
   return (
     <>
@@ -95,6 +88,12 @@ const Allpackages = () => {
           ))}
         </div>
       </div>
+      {packages && <Paginations
+          page={page}
+          limit={PER_PAGE_LIMIT}
+          totalItems={totalPackages}
+          setPage={setPage}
+        />}
     </div>
     </>
   );
