@@ -24,7 +24,8 @@ const activitiesSchema = new mongoose.Schema({
     city_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'cities',
-        required: true
+        required: true,
+        index: true 
     }
 },{
     timestamps: true   

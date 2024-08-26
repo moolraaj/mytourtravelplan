@@ -37,17 +37,20 @@ const CitiesSchema = new mongoose.Schema({
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'packages',
+          index: true 
         },
     ],
     all_activities: [
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'activities',
+          index: true 
         },
     ],
     country_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'countries',
+        index: true 
        
     }
 },{

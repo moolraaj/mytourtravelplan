@@ -1,13 +1,13 @@
 'use client'
 import { useState, useEffect } from 'react';
-const useFetchAllSections = () => {
+const useFetchAllSections = (page,limit) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/v1/all-queries/get`);
+        const response = await fetch(`/api/v1/all-queries/get?page=${page}&limit=${limit}`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -20,7 +20,7 @@ const useFetchAllSections = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [page]);
   return { data, loading};
 };
 export default useFetchAllSections;

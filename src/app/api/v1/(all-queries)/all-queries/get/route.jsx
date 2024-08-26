@@ -32,6 +32,7 @@ export async function GET(req) {
       })
       .limit(limit)
       .skip(skip)
+      .lean()
       .exec();
     const totalContinents = await continentModel.countDocuments();
 
@@ -46,6 +47,7 @@ export async function GET(req) {
       })
       .limit(limit)
       .skip(skip)
+      .lean()
       .exec();
     const totalCountries = await countriesModel.countDocuments();
 
@@ -56,6 +58,7 @@ export async function GET(req) {
         const packages = await PackagesModel.find({ city_id: city._id })
           .sort({ package_price: 1 })
           .limit(1)
+          .lean()
           .exec();
         return {
           city,
@@ -81,6 +84,7 @@ export async function GET(req) {
           },
         },
       })
+      .lean()
       .exec();
     const totalPackages = await PackagesModel.countDocuments();
 
@@ -89,6 +93,7 @@ export async function GET(req) {
       .populate("blog_category")
       .limit(limit)
       .skip(skip)
+      .lean()
       .exec();
     const totalBlogs = await BlogModel.countDocuments();
 
@@ -96,6 +101,7 @@ export async function GET(req) {
     const activities = await ActivitiesModel.find()
       .limit(limit)
       .skip(skip)
+      .lean()
       .exec();
     const totalActivities = await ActivitiesModel.countDocuments();
 
@@ -103,6 +109,7 @@ export async function GET(req) {
     const packageCategories = await PackageCategoryModel.find()
       .limit(limit)
       .skip(skip)
+      .lean()
       .exec();
     const totalPackageCategories = await PackageCategoryModel.countDocuments();
 

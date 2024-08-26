@@ -9,7 +9,11 @@ import useFetchAllSections from '@/hooks/useLoadApiHook'
 
 export default function page() {
   let response=useFetchAllSections()
-  let {cities}=response.data
+  
+  const {
+    cities = [],
+} = response.data || {};
+ 
   let reversedCities=Array.isArray(cities)?[...cities].reverse():[]
   return (
     <Layout>

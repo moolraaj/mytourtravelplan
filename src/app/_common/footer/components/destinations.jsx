@@ -1,30 +1,18 @@
-// components/Destinations.jsx
+ 
 
 'use client';
-import React, { useEffect, useState } from 'react';
-import { EXPORT_ALL_APIS } from '@/utils/apis/api';
+ 
+import useFetchAllSections from '@/hooks/useLoadApiHook';
 import Link from 'next/link';
 
 const Destinations = () => {
-  const [countryLinks, setCountryLinks] = useState([]);
 
-  const fetchCountryLinks = async () => {
-    try {
-      const api = EXPORT_ALL_APIS();
-      const data = await api.loadAllCountries();
-      setCountryLinks(data.result || []);
-    } catch (error) {
-      console.error('Error fetching country links:', error);
-      setCountryLinks([]);
-    }
-  };
+  let response=useFetchAllSections()
+  let{countries=[]}=response.data
+   
 
-  useEffect(() => {
-    fetchCountryLinks();
-  }, []);
-
-  // Reverse the country list safely
-  const reversedCountryLinks = countryLinks.length > 0 ? [...countryLinks].reverse() : [];
+   
+  const reversedCountryLinks = Array.isArray(countries)?[...countries].reverse():[]
 
   return (
     <div className="destinations-container">
@@ -33,7 +21,7 @@ const Destinations = () => {
         {reversedCountryLinks.length > 0 ? (
           reversedCountryLinks.slice(0, 7).map((destination, index) => (
             <li key={index} className="destinations-item">
-              <Link href={`/country/${destination.slug}`}>
+              <Link href={`/countries/${destination.slug}`}>
                 {destination.title}
               </Link>
             </li>

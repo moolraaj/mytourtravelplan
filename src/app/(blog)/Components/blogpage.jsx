@@ -18,7 +18,11 @@ import useFetchAllSections from '@/hooks/useLoadApiHook';
 const BlogCardsContainer = () => {
 
   let response=useFetchAllSections()
-  let {blogs}=response.data
+   
+
+  const {
+    blogs = [],
+} = response.data || {};
   
 
 

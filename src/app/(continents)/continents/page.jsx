@@ -12,7 +12,10 @@ import ContinentPage from './components/continentPage'
 
 export default function page() {
   let response=useFetchAllSections()
-  let {continents}=response.data
+  
+  const {
+    continents = [],
+} = response.data || {};
   let reversedContinents=Array.isArray(continents)?[...continents].reverse():[]
   return (
     <Layout>

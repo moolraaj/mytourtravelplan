@@ -1,7 +1,6 @@
 'use client'
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm';
 import LoginPopup from '@/Components/loginPopup/Components/popup';
-import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -13,7 +12,12 @@ import useFetchAllSections from '@/hooks/useLoadApiHook';
 const Allpackages = () => {
 
   let response=useFetchAllSections()
-  let {packages}=response.data
+ 
+
+  const {
+    packages = [],
+} = response.data || {};
+ 
   const [userVerified, setUserVerified] = useState(false);
   const [isopenForm, setIsopenForm] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
@@ -62,7 +66,7 @@ const Allpackages = () => {
 
           {
           
-          packages===undefined||packages===null?<LoadingBar/>: (packages?.map((pkg, index) => (
+          packages===undefined||packages===null ? <LoadingBar/> : packages?.map((pkg, index) => (
             <div key={index} className="package">
               {pkg.images ? pkg.images.map((e) => (
                 <Image
@@ -88,7 +92,7 @@ const Allpackages = () => {
                 </div>
               </div>
             </div>
-          )))}
+          ))}
         </div>
       </div>
     </div>

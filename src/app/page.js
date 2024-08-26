@@ -101,7 +101,14 @@ import useFetchAllSections from '@/hooks/useLoadApiHook';
 export default function Home() {
     let response = useFetchAllSections()
 
-    let {continents,countries,cities,packages,blogs,packageCategories} = response.data
+    const {
+        continents = [],
+        countries = [],
+        cities = [],
+        packages = [],
+        blogs = [],
+        packageCategories = []
+    } = response.data || {};
     let {loading}=response
  
 

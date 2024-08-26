@@ -39,17 +39,20 @@ const countrySchema = new mongoose.Schema({
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'cities',
+          index: true 
         },
     ],
     all_packages: [
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'packages',
+          index: true 
         },
     ],
     continent_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'continents',
+        index: true 
     }
 });
 
