@@ -43,9 +43,7 @@ const BestSellingPackages = ({ packages, loading }) => {
 
   // Ensure result is an array; if not, use an empty array as a fallback
   // let result = Array.isArray(packages?.result) ? packages.result : [];
-
-  // // Reverse the array if it has elements
-  // let reversedPackages = result.length > 0 ? [...result].reverse() : [];
+ 
 
   return (
     <>

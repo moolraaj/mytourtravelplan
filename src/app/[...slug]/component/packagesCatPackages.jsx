@@ -58,7 +58,7 @@ function PackagesCatPackages({ slug }) {
     checkUserVerification();
   }, [slug]);
 
-  console.log('single activity data:', data);
+  
 
 
 

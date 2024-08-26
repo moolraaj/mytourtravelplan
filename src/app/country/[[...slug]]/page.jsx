@@ -1,7 +1,6 @@
 
 
 import Layout from '@/app/_common/layout/layout'
-import Topbanner from '@/app/_common/layout/topbanner'
 import React from 'react'
 import CountryCitiesExplorations from './components/citiesCard';
 import CountryAllpackages from './components/packageCard';
