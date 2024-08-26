@@ -3857,6 +3857,31 @@ img.carimage {
 }
 
 @media(max-width:467px) {
+	.login-wrapper{
+		width: 90%;
+		margin: auto;
+	}
+	.login-wrapper .form-section{
+		padding-right: 20px;
+	}
+	.login-wrapper .input-group{
+		margin-top: 10px;
+	}
+	.login-wrapper .input-group input{
+		height: 30px;
+	}
+	.login-wrapper .input-group input::placeholder{
+		font-size: 12px;
+	}
+	.form-section h2{
+		font-size: 20px;
+		margin-top: 0;
+	}
+	.login-wrapper form button{
+		font-size: 16px;
+		margin-top: 30px;
+		height: 40px;
+	}
 	.logo-container .logo {
 		max-width: 150px;
 		height: 50px;
@@ -3875,11 +3900,29 @@ img.carimage {
 		min-height: 200px !important;
 		height: auto !important;
 	}
-
-	.imageContainer {
-		grid-template-columns: 1fr;
+	.main_slider_inner .content{
+		top: 22%;
 	}
-
+	.outer_section{
+		padding-top: 30px;
+	}
+	.main_slider_inner .slider{
+		height: 320px;
+	}
+	.main_slider_inner .title{
+		margin-top: 0;
+		margin-bottom: 25px;
+	}
+	.imageContainer,
+	.rightImages{
+		gap: 12px;
+	}
+	.smallImage{
+		height: 90px;
+	}
+	.leftImage {
+		height: 200px;
+	}
 
 	.destination .info h3 {
 		font-size: 18px;
@@ -4055,8 +4098,11 @@ img.carimage {
 		border-radius: 5px;
 	}
 
-	.destination-card h3 {
-		font-size: 18px;
+	.destination-card{
+		h3,
+		p{
+			font-size: 16px;
+		}
 	}
 
 	.destination-card:hover:after {
