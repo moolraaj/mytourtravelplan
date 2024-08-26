@@ -16,7 +16,7 @@ export async function GET(req) {
   return handelAsyncErrors(async () => {
     const { page, limit, skip } = getPaginationParams(req);
 
-    // Fetch data in parallel
+    // Fetch data in parallel with lean() and selective fields
     const [continents, countries, cities, packages, blogs, activities, packageCategories] = await Promise.all([
       continentModel.find()
         .populate({
@@ -49,6 +49,8 @@ export async function GET(req) {
         .lean()
         .exec(),
       CitiesModel.find()
+        .limit(limit)
+        .skip(skip)
         .lean()
         .exec(),
       PackagesModel.find()

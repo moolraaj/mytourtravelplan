@@ -1,9 +1,8 @@
-import Paginations from '@/app/_common/_paginations/paginations';
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ContinentPage = ({ reversedContinents,setPage, page, totalContinents, limit }) => {
+const ContinentPage = ({ reversedContinents }) => {
 
   if (!reversedContinents || reversedContinents.length === 0) {
     return <div className="explorations"><LoadingBar /></div>;
@@ -42,12 +41,6 @@ const ContinentPage = ({ reversedContinents,setPage, page, totalContinents, limi
           </div>
         ))}
       </div>
-      <Paginations
-          page={page}
-          limit={limit}
-          totalItems={totalContinents}
-          setPage={setPage}
-        />
     </div>
   );
 };
