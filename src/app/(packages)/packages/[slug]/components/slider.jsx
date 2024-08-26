@@ -9,7 +9,7 @@ const TravelGallery = ({ result }) => {
       
       
         {result === undefined || result === null ? (
-            <LoadingBar/>
+           ''
         ) : (
           result.map((ele, index) => (
             <>

@@ -49,7 +49,7 @@ function ContinentPage() {
   const handleConfirm = async () => {
 
     return handelAsyncErrors(async () => {
-      // Add similar checks for cities and packages if necessary
+      // Add similar checks for cities and admin-packages if necessary
       const response = await fetch(`/api/v1/continent/delete/${deleteItem}`, { method: 'DELETE' });
       const data = await response.json();
       if (data.success) {
@@ -84,7 +84,7 @@ function ContinentPage() {
   };
 
   return (
-    <div className="packages">
+    <div className="admin-packages">
       <ModalWrapper
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -99,8 +99,8 @@ function ContinentPage() {
         </div>
       </div>
 
-      <div className="packages-table-container">
-        <table className="packages-table">
+      <div className="admin-packages-table-container">
+        <table className="admin-packages-table">
           <thead>
             <tr>
               <th>Image</th>

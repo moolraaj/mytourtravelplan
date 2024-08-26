@@ -83,7 +83,7 @@ function CityPage() {
   };
 
   return (
-    <div className="packages">
+    <div className="admin-packages">
       <ModalWrapper
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -97,8 +97,8 @@ function CityPage() {
         </div>
       </div>
 
-      <div className="packages-table-container">
-        <table className="packages-table">
+      <div className="admin-packages-table-container">
+        <table className="admin-packages-table">
           <thead>
             <tr>
               <th>Image</th>
@@ -131,7 +131,7 @@ function CityPage() {
                   <td data-label="ID">{city._id}</td>
                   <td data-label="Title">{city.title}</td>
                   <td data-label="Description">{city.description}</td>
-                  <td data-label="Package Count">{city.packages ? city.packages.length : 0}</td>
+                  <td data-label="Package Count">{city.admin-packages ? city.admin-packages.length : 0}</td>
                   <td data-label="Actions">
                     <span className="actions">
                       <FaEye className="action-icon view" title="View" onClick={() => handlePreview(city._id)} />

@@ -84,7 +84,7 @@ function ActivityPage() {
     };
   
     return (
-      <div className="packages">
+      <div className="admin-packages">
         <ModalWrapper
         isOpen={isOpen}
         onClose={()=>setIsOpen(false)}
@@ -97,8 +97,8 @@ function ActivityPage() {
           <div className="add_tooltip">Add Activity</div>
         </div>
         </div>
-        <div className="packages-table-container">
-          <table className="packages-table">
+        <div className="admin-packages-table-container">
+          <table className="admin-packages-table">
             <thead>
               <tr>
                 <th>Image</th>

@@ -79,7 +79,7 @@ function CountryPage() {
   };
 
   return (
-    <div className="packages">
+    <div className="admin-packages">
       <ModalWrapper
       isOpen={isOpen}
       onClose={()=>setIsOpen(false)}
@@ -93,8 +93,8 @@ function CountryPage() {
       </div>
       </div>
       
-      <div className="packages-table-container">
-        <table className="packages-table">
+      <div className="admin-packages-table-container">
+        <table className="admin-packages-table">
           <thead>
             <tr>
               <th>Image</th>
