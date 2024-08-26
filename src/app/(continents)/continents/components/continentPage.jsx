@@ -5,14 +5,14 @@ import Link from 'next/link';
  
 
 
-const CountryPage = ({ country }) => {
+const ContinentPage = ({ reversedContinents }) => {
 
   return (
     <div className="explorations">
       <div className="explorations-grid">
-        {country===null||country===undefined?(<LoadingBar/>):(country?.map((exploration, index) => (
+        {reversedContinents===undefined||reversedContinents===null?(<LoadingBar/>):(reversedContinents?.map((exploration, index) => (
           <div key={index} className="exploration-item">
-            <Link href={`/countries/${exploration.slug}`}  >
+            <Link href={`/continents/${exploration.slug}`}  >
              
               {exploration.images && exploration.images.length > 0 ? (
                 exploration.images.map((image) => (
@@ -39,7 +39,7 @@ const CountryPage = ({ country }) => {
             <div className="exploration-details">
               <div className='explore_l'>
                 <h3>Explorations {exploration.title}</h3>
-                <p>Cities in {exploration.title} {exploration.totalCities}</p>
+                <p>Countries in {exploration.title} {exploration.total_countries}</p>
               </div>
               <div className='icon_custom'>
                 <img src='/images/arrowu.png' />
@@ -52,4 +52,4 @@ const CountryPage = ({ country }) => {
   );
 };
 
-export default CountryPage;
+export default ContinentPage;
