@@ -6,44 +6,33 @@ import TopDiscountedActivities from './top_discounted_activities'
 import TopDestinations from './Top_destination'
 import LatestBlog from '@/Components/blogs'
 import { EXPORT_ALL_APIS } from '@/utils/apis/api'
+import useFetchAllSections from '@/hooks/useLoadApiHook'
 
 function CombineActivitiesPage() {
-    let api=EXPORT_ALL_APIS()
-    let [data,setData]=useState([]) 
-    let [city,setCity]=useState([]) 
-    let [blog,setBlog]=useState([])
+    let response=useFetchAllSections()
+    let {cities,blogs,activities} = response.data
+ 
+   
+     
 
-    let fetchAllActivities=async()=>{
-        let resp=await api.loadAllActivities()
-        setData(resp)
-    }
-    let fetchAllCountries=async()=>{
-        let resp=await api.loadAllCities()
-        setCity(resp)
-    }
-    let fetchAllBlog=async()=>{
-        let resp=await api.loadAllBlogs()
-        setBlog(resp)
-    }
-    useEffect(()=>{
-        fetchAllActivities()
-        fetchAllCountries()
-        fetchAllBlog()
-    },[])
+    
+    
+    
+    
 
-    let result=data?data.result:[]
-    let response=city?city.result:[]
+ 
+   
   
   return (
      <>
       <div className='outer_section_abanner'>
       <Topbanner/>
      </div> 
-      <TopActivities result={result}/>
-      <TopDiscountedActivities result={result}/>
-      <TopDestinations response={response}/>
+      <TopActivities result={activities}/>
+      <TopDiscountedActivities result={activities}/>
+      <TopDestinations response={cities}/>
      <div className='blog_custom'>
-      <LatestBlog blogs={blog}/>
+      <LatestBlog blogs={blogs}/>
       </div>
      </>
   )

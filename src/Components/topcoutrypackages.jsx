@@ -11,10 +11,10 @@ import emptyImage from '../app/assets/empty.jpg';
 
 function Destinations({country,loading}) {
 
-  let result=country?country.result:[]
+  // let result=country?country.result:[]
   
 
-  let reversedCountries = Array.isArray(result) ? [...result].reverse() : [];
+  // let reversedCountries = Array.isArray(result) ? [...result].reverse() : [];
 
   return (
     <div className='top-destination' style={{ backgroundImage: `url(${fishbg.src})` }}>
@@ -22,7 +22,7 @@ function Destinations({country,loading}) {
         <h2 className='same_heading'>Top Destination By Our Travel Experts</h2>
         <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="destinations expert-travel">
-          {reversedCountries===null||reversedCountries===undefined?(<EmptyDestinationComponent/>):(reversedCountries.slice(0,8).map((country, index) => (
+          {country===null||country===undefined?(<EmptyDestinationComponent/>):(country.slice(0,8).map((country, index) => (
             <Link className="destination" href={`/country/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
 
             <div key={index} >

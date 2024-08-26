@@ -8,7 +8,7 @@ function BlogCard ({result})  {
     return (
        <>
        {result===null||result===undefined?<LoadingBar/>:(
-        result.map((ele)=>{
+        result?.map((ele)=>{
             const formattedDate = format(new Date(ele.createdAt), 'dd MMM yyyy');
             return <div className="blogpagecard" key={ele._id}>
        

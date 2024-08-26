@@ -8,20 +8,20 @@ import emptyImage from '../app/assets/empty.jpg';
 
 function WorldSection({loading,continent}) {
 
-  let result=continent?continent.result:[]
+  // let result=continent?continent.result:[]
    
 
-  let reversedContinents =Array.isArray(result)? [...result].reverse():[];
+  // let reversedContinents =Array.isArray(result)? [...result].reverse():[];
 
   
 
   return (
     <div className='world-country' style={{ backgroundImage: `url(${camerabg.src})` }}>
       <div className="grid-container">
-        {reversedContinents === undefined||reversedContinents===null ? (
+        {continent === undefined||continent===null ? (
           <EmptyComponent />
         ) : (
-          reversedContinents.slice(0, 5).map((country, index) => (
+          continent.slice(0, 5).map((country, index) => (
             <Link className="card_outer" href={`/continent/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
               <div className="card">
                 <div className="overlay">

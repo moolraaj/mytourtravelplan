@@ -8,14 +8,14 @@ import LoadingBar from '@/app/_common/innerLoader/innerLoader';
  
 
 const TopActivities = ({ result }) => {
-  let reversedActivities=Array.isArray(result)?[...result].reverse():[]
+  
   return (
     <div className="top-act-container" style={{ backgroundImage: `url(${activitytop.src})` }} >
       <div className="inner-w-container">
         <h2 className="top-act-title">Top Activities</h2>
         <p className="top-act-subtitle">Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="top-act-gridContainer">
-          {reversedActivities === undefined || reversedActivities === null ? <LoadingBar/> : (reversedActivities.slice(0,8).map((activity, index) => (
+          {result === undefined || result === null ? <LoadingBar/> : (result?.slice(0,8)?.map((activity, index) => (
             <Link className="top-act-cardOuter" href={`/activity/${activity.slug.toLowerCase().replace(' ', '-')}`} key={index}>
               <div className="top-act-card">
                 <div className='image-container-act'>

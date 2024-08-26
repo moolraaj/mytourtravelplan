@@ -42,10 +42,10 @@ const BestSellingPackages = ({ packages, loading }) => {
   };
 
   // Ensure result is an array; if not, use an empty array as a fallback
-  let result = Array.isArray(packages?.result) ? packages.result : [];
+  // let result = Array.isArray(packages?.result) ? packages.result : [];
 
-  // Reverse the array if it has elements
-  let reversedPackages = result.length > 0 ? [...result].reverse() : [];
+  // // Reverse the array if it has elements
+  // let reversedPackages = result.length > 0 ? [...result].reverse() : [];
 
   return (
     <>
@@ -64,10 +64,10 @@ const BestSellingPackages = ({ packages, loading }) => {
 
           <div className='card_discount'>
             <div className="packages">
-              {reversedPackages.length === 0 ? (
+              {packages=null||packages===undefined ? (
                 <EmptyPackageComponent />
               ) : (
-                reversedPackages.slice(0, 4).map((pkg, index) => (
+                packages?.slice(0, 4)?.map((pkg, index) => (
                   <div key={pkg._id} className="package">
                     {pkg.images && pkg.images.length > 0 ? (
                       <Image
