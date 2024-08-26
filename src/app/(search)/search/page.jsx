@@ -10,6 +10,7 @@ import BlogResults from '../components/BlogResults';
 import Layout from '@/app/_common/layout/layout';
 import camerabg from '../../assets/home_images/camera-bg.png';
 import Link from 'next/link';
+import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 
 const SearchPage = () => {
     const [searchResults, setSearchResults] = useState({
@@ -64,7 +65,7 @@ const SearchPage = () => {
                 <div className="search_page_inner" style={{ backgroundImage: `url(${camerabg.src})` }}>
                     <div className="search-results">
                         {loading && searchQuery ? (
-                            <div className="loading">Loading...</div>
+                            <LoadingBar/>
                         ) : (
                             <>
                                 {searchQuery === '' && !loading && (
