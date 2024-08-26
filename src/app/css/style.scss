@@ -1706,7 +1706,12 @@ h2.same_heading {
 .world-country-inner {
     max-width: 1410px;
     margin: 0 auto;
+	padding: 0px 20px;
 }
+.continents-headers {
+    margin-bottom: 20px;
+}
+
 .card_discount {
 	display: flex;
 	column-gap: 20px;
@@ -3614,6 +3619,10 @@ img.carimage {
 		min-height: 180px !important;
 	}
 
+	.world-country .grid-container{
+		padding: 0;
+		gap: 10px;
+	}
 	.loader_wrapper svg {
 		max-width: 100px;
 		width: 100%;
