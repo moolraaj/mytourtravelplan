@@ -1,8 +1,9 @@
+import Paginations from '@/app/_common/_paginations/paginations';
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Explorations = ({ reversedCities }) => {
+const Explorations = ({ reversedCities, setPage, page, totalCities, limit}) => {
   
   if (!reversedCities || reversedCities.length === 0) {
     return  <div className="explorations"><LoadingBar /></div>;
@@ -39,6 +40,12 @@ const Explorations = ({ reversedCities }) => {
           </div>
         ))}
       </div>
+      <Paginations
+          page={page}
+          limit={limit}
+          totalCities={totalCities}
+          setPage={setPage}
+        />
     </div>
   );
 };

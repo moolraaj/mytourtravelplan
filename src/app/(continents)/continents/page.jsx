@@ -1,28 +1,34 @@
-'use client'
-import React from 'react'
+// /app/continentPage/page.js
+'use client';
 
+import React, { useState } from 'react';
+import Layout from '@/app/_common/layout/layout';
+import Topbanner from '@/app/_common/layout/topbanner';
+import ContinentPage from './components/continentPage';
+import useFetchAllSections from '@/hooks/useLoadApiHook';
+import { PER_PAGE_LIMIT } from '@/utils/apis/api';
 
- 
- 
-import useFetchAllSections from '@/hooks/useLoadApiHook'
-import Layout from '@/app/_common/layout/layout'
-import Topbanner from '@/app/_common/layout/topbanner'
-import ContinentPage from './components/continentPage'
+export default function PageComponent() {
+  const [page, setPage] = useState(1);
 
+  const response = useFetchAllSections(page, PER_PAGE_LIMIT);
+  const { continents = [], pagination = {} } = response.data || {};
+  const { totalContinents = 0 } = pagination;
 
-export default function page() {
-  let response=useFetchAllSections()
-  
-  const {
-    continents = [],
-} = response.data || {};
-  let reversedContinents=Array.isArray(continents)?[...continents].reverse():[]
+  const reversedContinents = Array.isArray(continents) ? [...continents].reverse() : [];
+
   return (
     <Layout>
-    <div>
-      <Topbanner/>
-      <ContinentPage reversedContinents={reversedContinents}/>
-    </div>
+      <div>
+        <Topbanner />
+        <ContinentPage
+          reversedContinents={reversedContinents}
+          setPage={setPage}
+          page={page}
+          totalContinents={totalContinents}
+          limit={PER_PAGE_LIMIT}
+        />
+      </div>
     </Layout>
-  )
+  );
 }

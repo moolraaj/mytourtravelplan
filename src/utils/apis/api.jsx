@@ -300,7 +300,7 @@ export const EXPORT_ALL_APIS = () => {
     };
 };
 
-export const PER_PAGE_LIMIT = 9;
+export const PER_PAGE_LIMIT = 6;
 
 
  
