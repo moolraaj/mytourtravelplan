@@ -5,48 +5,53 @@ import camerabg from '../app/assets/home_images/camera-bg.png';
 import emptyImage from '../app/assets/empty.jpg';
 
 function WorldSection({ continent }) {
- 
+
   let reversedContinents = Array.isArray(continent) ? [...continent].reverse() : [];
 
   return (
     <>
-    
-   
-    <div className='world-country' style={{ backgroundImage: `url(${camerabg.src})` }}>
-    <div className='link_heading'>
-    <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
-    <Link href="/continents"><span className="view-all">View All Continents</span></Link>
-  </div>
-      <div className="grid-container">
-        
-        {reversedContinents.length===0 ? (
-          <EmptyComponent />
-        ) : (
-          reversedContinents.slice(0, 5).map((country, index) => (
-            <Link className="card_outer" href={`/continents/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
-              <div className="card">
-                <div className="overlay">
-                  <div className="label">{country.total_countries} Countries <Image src={triangle} alt="Triangle" style={{ width: 'auto', height: 'auto' }} /></div>
+
+
+      <div className='world-country' style={{ backgroundImage: `url(${camerabg.src})` }}>
+        <div className="world-country-inner">
+          <div className="continents-headers">
+            <h2 className='same_heading'>Explore Continents</h2>
+            <div className='link_heading'>
+              <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
+              <Link href="/continents"><span className="view-all">View All Continents</span></Link>
+            </div>
+          </div>
+        <div className="grid-container">
+
+          {reversedContinents.length === 0 ? (
+            <EmptyComponent />
+          ) : (
+            reversedContinents.slice(0, 5).map((country, index) => (
+              <Link className="card_outer" href={`/continents/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
+                <div className="card">
+                  <div className="overlay">
+                    <div className="label">{country.total_countries} Countries <Image src={triangle} alt="Triangle" style={{ width: 'auto', height: 'auto' }} /></div>
+                  </div>
+                  {country.images && country.images.length > 0 ? (
+                    <Image
+                      src={`/uploads/${country.images[0].name}`}
+                      alt={country.name || "loading..."}
+                      style={{ width: '100%', height: '100%' }}
+                      width={1000}
+                      height={300}
+                      className="image"
+                    />
+                  ) : (
+                    <div className="no-image">No Image Available</div>
+                  )}
+                  <div className="text">{country.title}</div>
                 </div>
-                {country.images && country.images.length > 0 ? (
-                  <Image
-                    src={`/uploads/${country.images[0].name}`}
-                    alt={country.name || "loading..."}
-                    style={{ width: '100%', height: '100%' }}
-                    width={1000}
-                    height={300}
-                    className="image"
-                  />
-                ) : (
-                  <div className="no-image">No Image Available</div>
-                )}
-                <div className="text">{country.title}</div>
-              </div>
-            </Link>
-          ))
-        )}
+              </Link>
+            ))
+          )}
+        </div>
       </div>
-    </div>
+      </div>
     </>
   );
 }
