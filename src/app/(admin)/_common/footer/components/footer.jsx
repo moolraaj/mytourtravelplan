@@ -5,6 +5,7 @@ import React from 'react';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import Link from 'next/link'; // Import Link from next/link
 import logo from '../../../../assets/home_images/logo.png'; // Import logo
+
 import './footer.css'; // Import the global CSS
 
 function AdminFooter() {

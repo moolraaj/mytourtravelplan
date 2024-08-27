@@ -8,6 +8,7 @@ import PackagesModel from "@/model/packagesModel";
 import BlogModel from "@/model/blogModel";
 import ActivitiesModel from "@/model/activitiesModel";
 import PackageCategoryModel from "@/model/packageCategories";
+import FooterModel from "@/model/footerModel";
 import { NextResponse } from "next/server";
 
 DbConnect();
@@ -17,7 +18,7 @@ export async function GET(req) {
     const { page, limit, skip } = getPaginationParams(req);
 
     // Fetch data in parallel with lean() and selective fields
-    const [continents, countries, cities, packages, blogs, activities, packageCategories] = await Promise.all([
+    const [continents, countries, cities, packages, blogs, activities, packageCategories, footer] = await Promise.all([
       continentModel.find()
         .populate({
           path: "all_countries",
@@ -88,6 +89,9 @@ export async function GET(req) {
         .limit(limit)
         .skip(skip)
         .select("_id image title description slug")
+        .lean()
+        .exec(),
+      FooterModel.find()
         .lean()
         .exec(),
     ]);
@@ -226,6 +230,7 @@ export async function GET(req) {
         description: category.description,
         slug: category.slug,
       })),
+      footer: footer.length > 0 ? footer[0] : null,
       pagination: {
         page,
         limit,

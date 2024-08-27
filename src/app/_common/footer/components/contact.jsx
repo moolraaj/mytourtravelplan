@@ -1,39 +1,13 @@
-// components/contactLinks.js
-'use client';
-import React, { useEffect, useState } from 'react';
-import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 
-const ContactLinks = () => {
-  const [footerData, setFooterData] = useState(null);
-
-  const fetchFooterData = async () => {
-    try {
-      const api = EXPORT_ALL_APIS();
-      const data = await api.loadFooterDeatails();
-      if (data && data.result) {
-        setFooterData(data.result[0]);
-      } else {
-        console.error('No data found');
-      }
-    } catch (error) {
-      console.error('Error fetching footer data:', error);
-    }
-  };
-  
-  
-  useEffect(() => {
-    fetchFooterData();
-  }, []);
-
-  if (!footerData) return <p>No footer data available</p>;
-
+const ContactLinks = ({result}) => {
+  let{phoneNumbers=[],emailAddresses=[],address}=result||{}
   return (
     <div className="contact-links-container">
       <div className="other-links">
         <h3 className="contact-title">Contact Us</h3>
         <ul className="contact-list">
-          {footerData.phoneNumbers?.length ? (
-            footerData.phoneNumbers.map((phone, index) => (
+          {phoneNumbers?.length ? (
+            phoneNumbers.map((phone, index) => (
               <li className="contact-item" key={index}>
                 <a href={`tel:${phone}`}>{phone}</a>
               </li>
@@ -41,8 +15,8 @@ const ContactLinks = () => {
           ) : (
             <li>No phone numbers available</li>
           )}
-          {footerData.emailAddresses?.length ? (
-            footerData.emailAddresses.map((email, index) => (
+          {emailAddresses?.length ? (
+            emailAddresses.map((email, index) => (
               <li className="contact-item" key={index}>
                 <a href={`mailto:${email}`}>{email}</a>
               </li>
@@ -55,7 +29,7 @@ const ContactLinks = () => {
       <div className="address-us">
         <h3 className="contact-title">Address Us:</h3>
         <div className="address-description">
-          <p>{footerData.address || 'No address available'}</p>
+          <p>{address || 'No address available'}</p>
         </div>
       </div>
     </div>
