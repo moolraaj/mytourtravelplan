@@ -14,7 +14,7 @@ function page({ params }) {
 
   const slugArray = Array.isArray(slug) ? slug : slug.split('/');
 
-  console.log(slug)
+  
 
    
 

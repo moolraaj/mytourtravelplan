@@ -5,6 +5,8 @@ import TravelGallery from './slider'
 import Itinerary from './overview'
 
 function PackagePage({slug}) {
+
+ 
     let api = EXPORT_ALL_APIS()
 
   let [data, setData] = useState([])   
@@ -14,12 +16,13 @@ function PackagePage({slug}) {
     let resp = await api.loadSinglePackage(slug)
     setData(resp)
   }
-
   useEffect(() => {
     fetchSinglePackgedetails()
   }, [])
 
    let result=data?data.result:[]
+
+ 
   return (
     <>
      <TravelGallery result={result}/>
