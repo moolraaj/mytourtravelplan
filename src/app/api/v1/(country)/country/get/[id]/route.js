@@ -43,7 +43,7 @@ export async function GET(req, { params }) {
             images: country.images,
             title: country.title,
             description: country.description,
-
+            continent_id: country.continent_id,
             slug: country.slug,
             totalResults,
             cities: paginatedCities.map(city => ({

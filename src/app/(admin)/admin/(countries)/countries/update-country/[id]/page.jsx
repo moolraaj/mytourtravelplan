@@ -48,6 +48,7 @@ function UpdateCountry({ params }) {
           setCountry({
             ...data.result,
             images: data.result.images.map(img => img.name), // Extract image names
+            continent_id : data.result.continent_id || ''
           });
           console.log('Data:', data);
         } else {

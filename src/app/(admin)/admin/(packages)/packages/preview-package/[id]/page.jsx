@@ -81,7 +81,7 @@ function PreviewPackage({ params }) {
               </li>
             ))}
           </ul>
-          <table className="packages-table">
+          <table className="admin-packages-table">
             <thead>
               <tr>
                 <th>Inclusions:</th>
@@ -99,7 +99,7 @@ function PreviewPackage({ params }) {
               </tr>
             </tbody>
           </table>
-          <table className="packages-table">
+          <table className="admin-packages-table">
             <thead>
               <tr>
                 <th>Package Price</th>

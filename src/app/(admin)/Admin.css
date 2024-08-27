@@ -1160,6 +1160,139 @@ g.recharts-layer.recharts-pie:focus{
 
 
 
+/* users page stye */
+/* Modal Overlay */
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.edit-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal Header */
+.edit-modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Input Fields */
+.edit-modal-content label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.edit-modal-content input,
+.edit-modal-content select {
+  max-width: 95%;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.edit-modal-content input:focus,
+.edit-modal-content select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Buttons */
+.edit-modal-content button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-modal-content button:hover {
+  background-color: #0056b3;
+}
+
+.edit-modal-content .cancel-button {
+  background-color: #6c757d;
+}
+
+.edit-modal-content .cancel-button:hover {
+  background-color: #5a6268;
+}
+
+/* Search Input Container */
+.search-users-input {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+/* Search Input Field */
+.search-users-input input {
+  width: 300px;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Search Input Focus State */
+.search-users-input input:focus {
+  border-color: #007bff;
+}
+
+/* Search Input Placeholder */
+.search-users-input input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+
+
+
+
 
 /* footer styles */
 .footer_content_wrapper{
@@ -1304,4 +1437,24 @@ g.recharts-layer.recharts-pie:focus{
     font-size: 12px;
   }
   /* add continent page style end*******************************/
+
+
+  .edit-modal-content {
+    padding: 15px;
+    width: 100%;
+    max-width: 95%;
+  }
+
+  .edit-modal-content h2 {
+    font-size: 20px;
+  }
+
+  .edit-modal-content button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .edit-modal-content .cancel-button {
+    margin-right: 0;
+  }
 }
