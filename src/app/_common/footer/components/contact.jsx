@@ -1,33 +1,6 @@
-// components/contactLinks.js
-'use client';
-import React, { useEffect, useState } from 'react';
-import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 
 const ContactLinks = ({result}) => {
   let{phoneNumbers=[],emailAddresses=[],address}=result||{}
-  const [footerData, setFooterData] = useState(null);
-
-  const fetchFooterData = async () => {
-    try {
-      const api = EXPORT_ALL_APIS();
-      const data = await api.loadFooterDeatails();
-      if (data && data.result) {
-        setFooterData(data.result[0]);
-      } else {
-        console.error('No data found');
-      }
-    } catch (error) {
-      console.error('Error fetching footer data:', error);
-    }
-  };
-  
-  
-  useEffect(() => {
-    fetchFooterData();
-  }, []);
-
-  if (!footerData) return <p>No footer data available</p>;
-
   return (
     <div className="contact-links-container">
       <div className="other-links">
