@@ -9,7 +9,7 @@ import useFetchAllSections from '@/hooks/useLoadApiHook'
 
 function CombineActivitiesPage() {
     let response=useFetchAllSections()
-    let {cities,blogs,activities} = response.data
+    const { cities = [], blogs = [], activities = [] } = response.data || {};
 
 
     const memoActivities = useMemo(() => ({
