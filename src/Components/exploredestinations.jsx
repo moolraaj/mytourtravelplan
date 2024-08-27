@@ -48,7 +48,7 @@ const ExploreDestinations = ({ packagescat }) => {
                     className="image"
                   />
                 )}
-                <p >{destination.name}</p>
+                <p>{destination.title}</p>
               </Link>
             </div>
           )))}

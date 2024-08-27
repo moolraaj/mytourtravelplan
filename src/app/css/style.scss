@@ -1873,7 +1873,6 @@ span.trending img {
 .blog-bg {
 	background: #F4FBFF;
 	padding: 50px 0px;
-	margin-bottom: 70px;
 	background-repeat: no-repeat;
 }
 
@@ -3714,6 +3713,7 @@ img.carimage {
 }
 
 @media(max-width:767px) {
+
 	.destination .image {
 		min-height: 180px !important;
 	}
@@ -3922,6 +3922,17 @@ img.carimage {
 }
 
 @media(max-width:467px) {
+
+	.destinations-container-countries{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+	}
+	.destination img {
+		width: 140px;
+		height: 140px;
+		object-fit: cover;
+	}
 	.login-wrapper{
 		width: 90%;
 		margin: auto;

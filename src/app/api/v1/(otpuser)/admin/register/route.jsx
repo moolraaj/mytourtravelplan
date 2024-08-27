@@ -9,7 +9,7 @@ DbConnect();
 export async function POST(req) {
   return handelAsyncErrors(async () => {
     let payload = await req.json();
-    let { name, email, password } = payload;
+    let { registerusername, email, password } = payload;
 
      
     let isEmail = await OtpUserModel.findOne({ email:email });
@@ -22,7 +22,7 @@ export async function POST(req) {
     let hashPassword = await bcryptjs.hash(password, salt);
 
     let newAdmin = new OtpUserModel({
-      name: name,
+      registerusername: registerusername,
       email: email,
       password: hashPassword,
       role: 'admin'
