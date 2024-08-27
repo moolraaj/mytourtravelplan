@@ -1,14 +1,14 @@
 import { DbConnect } from "@/database/database";
-import { handelAsyncErrors } from "@/helpers/asyncErrors";
 import PackagesModel from "@/model/packagesModel";
 import { NextResponse } from "next/server";
 
-// Connect to the database
+ 
 DbConnect();
 
 export async function GET(req, { params }) {
-    return handelAsyncErrors(async () => {
+ 
         const { slug } = params;
+       
 
         if (!slug) {
             return NextResponse.json({ status: 400, success: false, message: 'Package slug is required' });
@@ -17,7 +17,7 @@ export async function GET(req, { params }) {
         
 
         try {
-            // Fetch the package by ID and populate necessary fields
+ 
             const result = await PackagesModel.findOne({slug:slug})
                 .populate({
                     path: 'city_id',
@@ -40,8 +40,6 @@ export async function GET(req, { params }) {
             if (!result) {
                 return NextResponse.json({ status: 404, success: false, message: 'Package not found' });
             }
-
-           
             const formattedResult = {
                 _id: result._id,
                 title: result.title,
@@ -85,5 +83,5 @@ export async function GET(req, { params }) {
             console.error('Error fetching package by ID:', error);
             return NextResponse.json({ status: 500, success: false, message: 'Internal Server Error' });
         }
-    });
+    
 }

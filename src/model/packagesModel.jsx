@@ -52,6 +52,6 @@ const PackagesSchema = new mongoose.Schema({
     timestamps: true   
 });
 
-// Create the package model
+
 const PackagesModel = mongoose.models.packages || mongoose.model('packages', PackagesSchema);
 export default PackagesModel;
