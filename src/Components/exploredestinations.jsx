@@ -10,7 +10,7 @@ const ExploreDestinations = ({ packagescat }) => {
   // let result = packagescat ? packagescat.result : []
 
   // let reversedPackagesCat=Array.isArray(result)?[...result].reverse():[]
-
+console.log('aaaaaaaaaaaaaaaaaa',packagescat)
 
   return (
     <div className='explore-theme-destination' style={{ backgroundImage: `url(${exploretheme.src})` }}>
@@ -48,7 +48,7 @@ const ExploreDestinations = ({ packagescat }) => {
                     className="image"
                   />
                 )}
-                <p>{destination.title}</p>
+                <p>{destination.slug}</p>
               </Link>
             </div>
           )))}
