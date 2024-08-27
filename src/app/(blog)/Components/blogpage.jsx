@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 
 import { PER_PAGE_LIMIT } from '@/utils/apis/api';
@@ -15,10 +15,17 @@ const [page, setPage] = useState(1);
   const { blogs = [], pagination = {} } = response.data || {};
   const { totalBlogs = 0 } = pagination;
 
+  const memoizedBlogs = useMemo(() => ({
+    blogs: blogs,
+  }), [ blogs]);
+
+  
+
+  let reversedBlogs=Array.isArray(memoizedBlogs.blogs)?[...memoizedBlogs.blogs].reverse():[]
   return (
     <>
       <BlogCard 
-      result={blogs} 
+      result={reversedBlogs} 
       setPage={setPage}
       page={page}
       totalBlogs={totalBlogs}

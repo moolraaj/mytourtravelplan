@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm';
 import LoginPopup from '@/Components/loginPopup/Components/popup';
 import Image from 'next/image';
@@ -18,9 +18,18 @@ const Allpackages = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [selectedPackageId, setSelectedPackageId] = useState(null);
 
-  const { data, loading } = useFetchAllSections(page, PER_PAGE_LIMIT); 
-  const { packages = [], pagination = {} } = data;
+  const response = useFetchAllSections(page, PER_PAGE_LIMIT); 
+    
+  
+  const { packages = [], pagination = {} } = response.data;
   const { totalPackages = 0 } = pagination;
+
+
+  const memoizedPackages = useMemo(() => ({
+    packages: packages,
+  }), [ packages]);
+
+  let reversedPackages=Array.isArray(memoizedPackages.packages)?[...memoizedPackages.packages].reverse():[]
 
   const checkUserVerification = async () => {
     try {
@@ -59,7 +68,7 @@ const Allpackages = () => {
 
           {
           
-          packages===undefined||packages===null ? <LoadingBar/> : packages?.map((pkg, index) => (
+          reversedPackages===undefined||reversedPackages===null ? <LoadingBar/> : reversedPackages?.map((pkg, index) => (
             <div key={index} className="package">
               {pkg.images ? pkg.images.map((e) => (
                 <Image
