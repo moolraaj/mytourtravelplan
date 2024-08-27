@@ -1,5 +1,5 @@
 import { DbConnect } from "@/database/database";
-import { handelAsyncErrors } from "@/helpers/asyncErrors";
+ 
 import { getPaginationParams } from "@/helpers/paginations";
 import PackagesModel from "@/model/packagesModel";
 import { NextResponse } from "next/server";
