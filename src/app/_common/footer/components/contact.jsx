@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 
-const ContactLinks = () => {
+const ContactLinks = ({result}) => {
+  let{phoneNumbers=[],emailAddresses=[],address}=result||{}
   const [footerData, setFooterData] = useState(null);
 
   const fetchFooterData = async () => {
@@ -32,8 +33,8 @@ const ContactLinks = () => {
       <div className="other-links">
         <h3 className="contact-title">Contact Us</h3>
         <ul className="contact-list">
-          {footerData.phoneNumbers?.length ? (
-            footerData.phoneNumbers.map((phone, index) => (
+          {phoneNumbers?.length ? (
+            phoneNumbers.map((phone, index) => (
               <li className="contact-item" key={index}>
                 <a href={`tel:${phone}`}>{phone}</a>
               </li>
@@ -41,8 +42,8 @@ const ContactLinks = () => {
           ) : (
             <li>No phone numbers available</li>
           )}
-          {footerData.emailAddresses?.length ? (
-            footerData.emailAddresses.map((email, index) => (
+          {emailAddresses?.length ? (
+            emailAddresses.map((email, index) => (
               <li className="contact-item" key={index}>
                 <a href={`mailto:${email}`}>{email}</a>
               </li>
@@ -55,7 +56,7 @@ const ContactLinks = () => {
       <div className="address-us">
         <h3 className="contact-title">Address Us:</h3>
         <div className="address-description">
-          <p>{footerData.address || 'No address available'}</p>
+          <p>{address || 'No address available'}</p>
         </div>
       </div>
     </div>
