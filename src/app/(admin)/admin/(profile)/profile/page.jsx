@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { FaUserCircle, FaEnvelope, FaPhone } from 'react-icons/fa';
+import Breadcrumb from '@/app/(admin)/_common/Breadcrumb';
 
 function ProfilePage() {
   const { data: session } = useSession();
@@ -25,6 +26,8 @@ function ProfilePage() {
   }, [session]);
 
   return (
+    <>
+    <Breadcrumb path="/admin/profile"/>
     <div className="profile-page">
       <h1>Admin Profile</h1>
       <div className="profile-details">
@@ -42,6 +45,7 @@ function ProfilePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
