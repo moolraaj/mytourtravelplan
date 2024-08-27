@@ -1,3 +1,5 @@
+// /api/(nextauth)/auth/[...nextauth]/options.jsx
+
 import { DbConnect } from '@/database/database';
 import OtpUserModel from '@/model/otpUser';
    
