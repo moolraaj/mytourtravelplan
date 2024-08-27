@@ -12,7 +12,6 @@ function AdminLoginPage() {
     const [data, setData] = useState({
         email: '',
         password: '',
-        rememberMe: false,
     });
     let [erros, setErrors] = useState({})
     const [loading, setLoading] = useState(false);

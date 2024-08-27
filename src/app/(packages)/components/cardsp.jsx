@@ -87,7 +87,7 @@ const Allpackages = () => {
                 </p>
                 <p className="price">From {pkg.package_price}</p>
                 <div className="buttons">
-                  <Link href={`/packages/${pkg.slug}`}>
+                  <Link href={`/packages/${pkg.slug.toLowerCase().replace(' ', '-')}`}>
                     <button className="details-btn">View Details</button>
                   </Link>
                   <button className="enquiry-btn" onClick={() => bookingAndLogin(pkg._id)}>Book Now</button>

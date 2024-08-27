@@ -131,7 +131,7 @@ function CityPage() {
                   <td data-label="ID">{city._id}</td>
                   <td data-label="Title">{city.title}</td>
                   <td data-label="Description">{city.description}</td>
-                  <td data-label="Package Count">{city.admin-packages ? city.admin-packages.length : 0}</td>
+                  <td data-label="Package Count">{city.packagesCount ? city.packagesCount : 0}</td>
                   <td data-label="Actions">
                     <span className="actions">
                       <FaEye className="action-icon view" title="View" onClick={() => handlePreview(city._id)} />

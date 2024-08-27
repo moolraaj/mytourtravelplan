@@ -388,6 +388,7 @@ ul.destinations-list li {
 	gap: 20px;
 	width: 100%;
 	margin-bottom: 50px;
+	cursor: zoom-in;
 }
 
 .leftImage {
@@ -2744,6 +2745,7 @@ h2.heading_inner_page {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	cursor: zoom-in;
 }
 
 .iten_inner {
@@ -3196,6 +3198,55 @@ img.carimage {
 }
 
 
+/* TravelGallery.css */
+.preview_package_gallery_image {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+  }
+  
+  .modal-content {
+	position: relative;
+	max-width: 1000px;
+	width: 100%;
+	height: 650px;
+	background: #fff;
+	object-fit: cover;
+	padding: 20px;
+	border-radius: 8px;
+  }
+  
+  .modal-image {
+	width: 100%;
+	height: 100%;
+	cursor: zoom-out;
+  }
+  
+  .close {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	font-size: 24px;
+	color:  $primrywhite;
+	cursor: pointer;
+	background-color:  $primaryred;
+	width: 30px;
+	height: 30px;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+
+
 
 // Responsive Screen Start Here 
 
@@ -3396,6 +3447,12 @@ img.carimage {
 
 
 @media only screen and (max-width:1023px) {
+
+	.modal-content {
+		max-width: 600px;
+		height: 400px;
+	  }
+
 	.right_query {
 		margin-top: 20px;
 	}
@@ -3612,6 +3669,14 @@ img.carimage {
 		grid-template-columns: 1fr;
 		box-shadow: unset;
 		padding: 0;
+	}
+	.modal-content{
+		padding: 10px;
+	}
+	.close{
+		right: 5px;
+		width: 25px;
+		height: 25px;
 	}
 }
 
