@@ -52,6 +52,7 @@ const PackageResults = ({ results }) => {
         ''
       ) : (
         <>
+        
           <h2>Packages:</h2>
           <div className="container card_main_section">
             <div className='card_discount'>
