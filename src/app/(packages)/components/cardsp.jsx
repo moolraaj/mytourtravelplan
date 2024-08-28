@@ -110,6 +110,7 @@ const Allpackages = () => {
     </>
   );
 };
+
 function EmptyPackageComponent() {
   return (
     <>
@@ -124,14 +125,6 @@ function EmptyPackageComponent() {
             height={380}
             className="image"
           />
-          </div>
-          <div className="info">
-            <h3></h3>
-            <p></p>
-            <p className="rating">
-              <span className="star"></span>
-            </p>
-            <p className="price"></p>
           </div>
         </div>
       ))}

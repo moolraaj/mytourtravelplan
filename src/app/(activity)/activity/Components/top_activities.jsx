@@ -3,8 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import activitytop from '../../../assets/home_images/activity-top.png';
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
-// import styles from './TopActivities.module.css';
-
+import emptyImage from '../../../assets/home_images/empty.jpg'
  
 
 const TopActivities = ({ result }) => {
@@ -15,7 +14,7 @@ const TopActivities = ({ result }) => {
         <h2 className="top-act-title">Top Activities</h2>
         <p className="top-act-subtitle">Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="top-act-gridContainer">
-          {result === undefined || result === null ? <LoadingBar/> : (result?.slice(0,8)?.map((activity, index) => (
+          {result.length === 0 ? <EmptyComponent/> : (result?.slice(0,8)?.map((activity, index) => (
             <Link className="top-act-cardOuter" href={`/activity/${activity.slug.toLowerCase().replace(' ', '-')}`} key={index}>
               <div className="top-act-card">
                 <div className='image-container-act'>
@@ -64,5 +63,30 @@ const TopActivities = ({ result }) => {
     </div>
   );
 };
+
+function EmptyComponent() {
+  return (
+    <>
+      {Array(8).fill().map((_, index) => (
+        <Link className="top-act-cardOuter" href="#" key={index}>
+        <div className="top-act-card">
+          <div className='image-container-act'>
+           <div className="skeleton">
+           <div className='skeleton_animation'></div>
+          <Image
+            src={emptyImage.src}
+            alt="Loading"
+            width={1000}
+            height={1000}
+            className="top-act-image"
+          />
+          </div>
+          </div>
+          </div>
+          </Link>
+      ))}
+    </>
+  );
+}
 
 export default TopActivities;

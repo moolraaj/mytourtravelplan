@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import discountactivitybg from '../../../assets/home_images/discount-activity-bg.png';
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
+import emptyImage from '../../../assets/home_images/empty.jpg'
 
 const discountedActivities = [
   {
@@ -45,7 +46,7 @@ const TopDiscountedActivities = ({result}) => {
       <h2 className="top-discounted-title">Top Discounted Activities</h2>
       <p className="top-discounted-subtitle">Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
       <div className="top-discounted-gridContainer">
-        {result===undefined||result===null?<LoadingBar/>:(result?.map((activity, index) => (
+        {result.length === 0?<EmptyComponent/>:(result?.map((activity, index) => (
           <Link className="top-discounted-cardOuter" href={`/${activity.slug.toLowerCase().replace(' ', '-')}`} key={index}>
             <div className="top-discounted-card">
               <div className="top-discounted-overlay">
@@ -74,5 +75,28 @@ const TopDiscountedActivities = ({result}) => {
     </div>
   );
 };
+
+function EmptyComponent() {
+  return (
+    <>
+      {Array(8).fill().map((_, index) => (
+        <Link className="top-discounted-cardOuter" href="#" key={index}>
+        <div className="top-discounted-card">
+           <div className="skeleton">
+           <div className='skeleton_animation'></div>
+          <Image
+            src={emptyImage.src}
+            alt="Loading"
+            width={1000}
+            height={300}
+            className="top-discounted-image"
+          />
+          </div>
+          </div>
+          </Link>
+      ))}
+    </>
+  );
+}
 
 export default TopDiscountedActivities;

@@ -1,5 +1,5 @@
 'use client'
-import { EXPORT_ALL_APIS } from '@/utils/apis/api';
+import { EXPORT_ALL_APIS, PER_PAGE_LIMIT } from '@/utils/apis/api';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -8,6 +8,7 @@ import LoginPopup from '@/Components/loginPopup/Components/popup';
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm';
 import Topbanner from '@/app/_common/layout/topbanner';
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
+import emptyImage from '../../../../assets/home_images/empty.jpg';
 
 
 const ContinentAllpackages = ({ slug_three }) => {
@@ -62,12 +63,11 @@ const ContinentAllpackages = ({ slug_three }) => {
         {isopenForm && <BookingForm setIsopenForm={setIsopenForm} packageId={selectedPackageId} />}
       {isLogin && <LoginPopup setIsLogin={setIsLogin}  />}
       <Topbanner slug={slug_three}/>
-      <div className="container card_main_section">
+      <div className="container card_main_section" style={{margin:'50px auto'}}>
             <div className="card_discount">
                 <div className="packages">
-                    {result === undefined || result === null ? <LoadingBar/> : (result?.map((pkg, index) => (
+                    {result === undefined || result === null ? <EmptyCards/> : (result?.map((pkg, index) => (
                         <div key={index} className="package">
-
                             {pkg.images ? pkg.images.map((e) => (
                                 <Image
                                     key={e._id}
@@ -100,5 +100,26 @@ const ContinentAllpackages = ({ slug_three }) => {
         
     );
 };
+
+function EmptyCards() {
+  return (
+    <>
+      {Array(PER_PAGE_LIMIT).fill().map((_, index) => (
+        <div key={index} className="package">
+           <div className="skeleton">
+           <div className='skeleton_animation'></div>
+          <Image
+            src={emptyImage.src}
+            alt="Loading"
+            width={333}
+            height={380}
+            className="image"
+          />
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
 
 export default ContinentAllpackages;
