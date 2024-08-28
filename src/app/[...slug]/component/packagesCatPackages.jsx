@@ -5,7 +5,7 @@ import { EXPORT_ALL_APIS } from '@/utils/apis/api'
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import explorebg from '../../../app/assets/home_images/explore-package-bg.png';
-import emptyImage from '../../../app/assets/empty.jpg';
+import emptyImage from '../../../app/assets/home_images/empty.jpg';
 import Image from 'next/image';
 import { getSession } from 'next-auth/react';
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm';

@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import blogbg from '../app/assets/home_images/blog-bg.png';
-import emptyImage from '../app/assets/empty.jpg';
+import emptyImage from '../app/assets/home_images/empty.jpg';
  
 import { format } from 'date-fns';
 
@@ -23,7 +23,7 @@ const LatestBlog = ({blogs}) => {
         </div>
 
         <div className="blog-container">
-          {blogs=== undefined||blogs===null ? (
+          {blogs.length === 0 ? (
             <EmptyBlogComponent/>
           ) : (
             <>
@@ -100,6 +100,8 @@ function EmptyBlogComponent() {
     <>
       <div className="blog-main">
         <div className="blog-placeholder">
+        <div className="skeleton">
+        <div className='skeleton_animation'></div>
           <Image
             src={emptyImage.src}
             alt="Loading"
@@ -107,12 +109,13 @@ function EmptyBlogComponent() {
             height={250}
             className="image"
           />
+          </div>
           <div className="blog-content">
             <div className='title_date'>
-              <span className="category">loading...</span>
-              <span className="date">loading...</span>
+              <span className="category"></span>
+              <span className="date"></span>
             </div>
-            <h3>loading...</h3>
+            <h3></h3>
           </div>
         </div>
       </div>
@@ -121,6 +124,8 @@ function EmptyBlogComponent() {
         {Array(2).fill().map((_, index) => (
         
           <div key={index} className="blog-side-item">
+            <div className="skeleton">
+            <div className='skeleton_animation'></div>
             <Image
               src={emptyImage.src}
               alt="Loading"
@@ -128,12 +133,13 @@ function EmptyBlogComponent() {
               height={125}
               className="blog-image"
             />
+            </div>
             <div className="blog-content">
               <div className='title_date'>
-                <span className="category">loading...</span>
-                <span className="date">loading...</span>
+                <span className="category"></span>
+                <span className="date"></span>
               </div>
-              <h3>loading...</h3>
+              <h3></h3>
             </div>
           </div>
         ))}

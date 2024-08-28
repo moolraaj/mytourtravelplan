@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import discountc from '../app/assets/home_images/discountcards.png';
 import explorebg from '../app/assets/home_images/explore-package-bg.png';
-import emptyImage from '../app/assets/empty.jpg';
+import emptyImage from '../app/assets/home_images/empty.jpg';
 import { useEffect, useState } from 'react';
 import { getSession } from 'next-auth/react'; 
 import BookingForm from './(bookings)/bookings/bookingForm';
@@ -62,7 +62,7 @@ const BestSellingPackages = ({ packages, loading }) => {
 
           <div className='card_discount'>
             <div className="packages">
-              {packages=null||packages===undefined ? (
+              {packages.length === 0 ? (
                 <EmptyPackageComponent />
               ) : (
                 packages?.slice(0, 4)?.map((pkg, index) => (
@@ -122,6 +122,8 @@ function EmptyPackageComponent() {
     <>
       {Array(4).fill().map((_, index) => (
         <div key={index} className="package">
+           <div className="skeleton">
+           <div className='skeleton_animation'></div>
           <Image
             src={emptyImage.src}
             alt="Loading"
@@ -129,17 +131,14 @@ function EmptyPackageComponent() {
             height={380}
             className="image"
           />
+          </div>
           <div className="info">
-            <h3>loading...</h3>
-            <p>loading...</p>
+            <h3></h3>
+            <p></p>
             <p className="rating">
-              <span className="star">★ loading...</span> (loading...)
+              <span className="star"></span>
             </p>
-            <p className="price">From ₹ loading...</p>
-            <div className="buttons">
-              <button className="details-btn">loading...</button>
-              <button className="enquiry-btn">loading...</button>
-            </div>
+            <p className="price"></p>
           </div>
         </div>
       ))}

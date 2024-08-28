@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import triangle from '../app/assets/home_images/triangle.png';
 import camerabg from '../app/assets/home_images/camera-bg.png';
-import emptyImage from '../app/assets/empty.jpg';
+import emptyImage from '../app/assets/home_images/empty.jpg';
 
 function WorldSection({ continent }) {
 
@@ -65,14 +65,14 @@ function EmptyComponent() {
             <div className="overlay">
             </div>
              <div className="skeleton">
-              <span></span>
+             <div className='skeleton_animation'></div>
               <Image
               src={emptyImage.src}
               alt="Loading"
               style={{ width: '100%', height: '100%'}}
               width={1000}
               height={300}
-              className="image"
+              className="image word_section_image"
             /></div>
             <div className="text"></div>
           </div>

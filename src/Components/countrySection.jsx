@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import emptyImage from '../app/assets/empty.jpg';
+import emptyImage from '../app/assets/home_images/empty.jpg';
 import exploresection from '../app/assets/home_images/explore-bg.png';
 
 function ExplorationsFarAway({ loading, city }) {
@@ -23,43 +23,43 @@ function ExplorationsFarAway({ loading, city }) {
         </div>
 
         <div className="destinations-grid">
-          {city===null && city===undefined ? (
-           <EmptyExplorationComponent/>
+          {city.length === 0 ? (
+            <EmptyExplorationComponent />
           ) : (
-            city?.slice(0, 6)?.map((destination) =>{
-              return(
+            city?.slice(0, 6)?.map((destination) => {
+              return (
                 <>
-                <Link href={`/cities/${destination.slug}`} key={destination._id}>
-                <div className="destination-card">
-                  {destination.images && destination.images.length > 0 ? (
-                    <Image
-                      key={destination.images[0]._id}
-                      src={`/uploads/${destination.images[0].name}`}
-                      alt={destination.name || 'loading...'}
-                      className="destination-image"
-                      width={1000}
-                      height={300}
-                      priority
-                    />
-                  ) : (
-                    <Image
-                      src={emptyImage.src}
-                      alt="empty_image"
-                      className="destination-image"
-                      width={1000}
-                      height={300}
-                      priority
-                    />
-                  )}
-                  <div className="destination-info">
-                    <h3>{destination.title}</h3>
-                    <p>
-                      From ₹{' '}
-                      {destination.package ? destination.package.price : 'N/A'}
-                    </p>
-                  </div>
-                </div>
-              </Link>
+                  <Link href={`/cities/${destination.slug}`} key={destination._id}>
+                    <div className="destination-card">
+                      {destination.images && destination.images.length > 0 ? (
+                        <Image
+                          key={destination.images[0]._id}
+                          src={`/uploads/${destination.images[0].name}`}
+                          alt={destination.name || 'loading...'}
+                          className="destination-image"
+                          width={1000}
+                          height={300}
+                          priority
+                        />
+                      ) : (
+                        <Image
+                          src={emptyImage.src}
+                          alt="empty_image"
+                          className="destination-image"
+                          width={1000}
+                          height={300}
+                          priority
+                        />
+                      )}
+                      <div className="destination-info">
+                        <h3>{destination.title}</h3>
+                        <p>
+                          From ₹{' '}
+                          {destination.package ? destination.package.price : 'N/A'}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
                 </>
               )
             })
@@ -73,24 +73,29 @@ function ExplorationsFarAway({ loading, city }) {
 function EmptyExplorationComponent() {
   return (
     <>
-      {Array(6)
-        .fill()
-        .map((_, index) => (
-          <div key={index} className="destination-card">
-            <Image
-              src={emptyImage.src}
-              alt="Loading"
-              className="destination-image"
-              width={1000}
-              height={300}
-              priority
-            />
-            <div className="destination-info">
-              <h3>loading...</h3>
-              <p>loading...</p>
+      <div className="destinations-grid">
+        {Array(6).fill().map((_, index) => (
+           <Link href="#" key={index}>
+            <div className="destination-card">
+              <div className="skeleton">
+                <div className='skeleton_animation'></div>
+                <Image
+                  src={emptyImage.src}
+                  alt="Loading"
+                  className="destination-image"
+                  width={1000}
+                  height={300}
+                  priority
+                />
+              </div>
+              <div className="destination-info">
+                <h3></h3>
+                <p></p>
+              </div>
             </div>
-          </div>
-        ))}
+            </Link>
+          ))}
+      </div>
     </>
   );
 }

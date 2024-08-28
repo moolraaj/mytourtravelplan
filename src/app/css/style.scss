@@ -13,22 +13,28 @@
 .skeleton {
 	position: relative;
 	overflow: hidden;
+	height: 100%;
   }
-  .skeleton span{
+  .skeleton .skeleton_animation{
 	position: absolute;
 	z-index: 999;
 	top: 0;
 	left: -150%;
 	width: 150%;
 	height: 100%;
+	opacity: 1 !important;
 	background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
 	animation: loading 1.5s infinite;
   }
   .skeleton img{
-	z-index: -9999;
-	opacity: 0;
-	background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+	z-index: -9999 !important;
+	background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%) !important;
+	filter: brightness(.8) !important;
   }
+  .skeleton .word_section_image{
+	filter: none !important;
+  }
+  
   @keyframes loading {
 	0% {
 	  left: -150%;
