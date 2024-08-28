@@ -48,11 +48,11 @@ const PackageResults = ({ results }) => {
       {isOpenForm && <BookingForm setIsOpenForm={setIsOpenForm} packageId={selectedPackageId} />}
       {isLogin && <LoginPopup setIsLogin={setIsLogin} />}
 
-      {(reversedPackages === undefined || reversedPackages === null) ? (
-        ''
+      {(reversedPackages.length === 0) ? (
+        <EmptyPackageComponent/>
       ) : (
         <>
-        
+
           <h2>Packages:</h2>
           <div className="container card_main_section">
             <div className='card_discount'>
@@ -103,5 +103,35 @@ const PackageResults = ({ results }) => {
     </div>
   );
 };
+
+
+function EmptyPackageComponent() {
+  return (
+    <>
+      {Array(4).fill().map((_, index) => (
+        <div key={index} className="package">
+           <div className="skeleton">
+           <div className='skeleton_animation'></div>
+          <Image
+            src={emptyImage.src}
+            alt="Loading"
+            width={333}
+            height={380}
+            className="image"
+          />
+          </div>
+          <div className="info">
+            <h3></h3>
+            <p></p>
+            <p className="rating">
+              <span className="star"></span>
+            </p>
+            <p className="price"></p>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
 
 export default PackageResults;
