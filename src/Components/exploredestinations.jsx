@@ -66,7 +66,7 @@ function EmptyExplorationDestinations() {
     <>
       <div className="destinations-container-countries">
         {Array(6).fill().map((_, index) => (
-          <div key={index} className="destinations">
+          <div key={index} className="destination">
             <Link href="#">
               <div className="skeleton">
                 <div className='skeleton_animation'></div>
