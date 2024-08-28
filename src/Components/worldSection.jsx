@@ -63,17 +63,18 @@ function EmptyComponent() {
         <Link className="card_outer" href="#" key={index}>
           <div className="card">
             <div className="overlay">
-              <div className="label">Loading... <Image src={triangle} alt="Triangle" style={{ width: 'auto', height: 'auto' }} /></div>
             </div>
-            <Image
+             <div className="skeleton">
+              <span></span>
+              <Image
               src={emptyImage.src}
               alt="Loading"
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: '100%', height: '100%'}}
               width={1000}
               height={300}
               className="image"
-            />
-            <div className="text">Loading...</div>
+            /></div>
+            <div className="text"></div>
           </div>
         </Link>
       ))}
