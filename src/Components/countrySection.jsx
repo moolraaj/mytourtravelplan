@@ -73,7 +73,6 @@ function ExplorationsFarAway({ loading, city }) {
 function EmptyExplorationComponent() {
   return (
     <>
-      <div className="destinations-grid">
         {Array(6).fill().map((_, index) => (
            <Link href="#" key={index}>
             <div className="destination-card">
@@ -95,7 +94,6 @@ function EmptyExplorationComponent() {
             </div>
             </Link>
           ))}
-      </div>
     </>
   );
 }
