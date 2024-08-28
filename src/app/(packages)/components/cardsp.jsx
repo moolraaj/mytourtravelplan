@@ -10,6 +10,8 @@ import LoadingBar from '@/app/_common/innerLoader/innerLoader';
 import useFetchAllSections from '@/hooks/useLoadApiHook';
 import Paginations from '@/app/_common/_paginations/paginations';
 import { PER_PAGE_LIMIT } from '@/utils/apis/api';
+import emptyImage from '../../assets/home_images/empty.jpg';
+
 
 const Allpackages = () => {
   const [page, setPage] = useState(1);
@@ -67,8 +69,9 @@ const Allpackages = () => {
         <div className="packages">
 
           {
-          
-          reversedPackages===undefined||reversedPackages===null ? <LoadingBar/> : reversedPackages?.map((pkg, index) => (
+          reversedPackages.length === 0 ? 
+          <EmptyPackageComponent/>
+          : reversedPackages?.map((pkg, index) => (
             <div key={index} className="package">
               {pkg.images ? pkg.images.map((e) => (
                 <Image
@@ -107,5 +110,32 @@ const Allpackages = () => {
     </>
   );
 };
-
+function EmptyPackageComponent() {
+  return (
+    <>
+      {Array(PER_PAGE_LIMIT).fill().map((_, index) => (
+        <div key={index} className="package">
+           <div className="skeleton">
+           <div className='skeleton_animation'></div>
+          <Image
+            src={emptyImage.src}
+            alt="Loading"
+            width={333}
+            height={380}
+            className="image"
+          />
+          </div>
+          <div className="info">
+            <h3></h3>
+            <p></p>
+            <p className="rating">
+              <span className="star"></span>
+            </p>
+            <p className="price"></p>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
 export default Allpackages;
