@@ -3,14 +3,17 @@
 'use client'
 import LatestBlog from '@/Components/blogs';
 import useFetchAllSections from '@/hooks/useLoadApiHook';
+import { PER_PAGE_LIMIT } from '@/utils/apis/api';
 
 function TransferPage() {
-  let response=useFetchAllSections()
-  let {blogs}=response.data;
+
+  const { data } = useFetchAllSections(1, PER_PAGE_LIMIT); 
+
+  if (!data || !data.blogs) return <p></p>;
   
   return (
     <>
-    <LatestBlog blogs={blogs}/>
+    <LatestBlog blogs={data.blogs}/>
     </>
   )
 }
