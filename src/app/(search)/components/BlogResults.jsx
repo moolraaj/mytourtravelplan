@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import blogbg from '../../assets/home_images/blog-bg.png';
-import emptyImage from '../../assets/empty.jpg';
+import emptyImage from '../../assets/home_images/empty.jpg';
 import { format } from 'date-fns';
 
 const BlogResults = ({ results }) => {

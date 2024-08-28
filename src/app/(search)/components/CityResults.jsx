@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import emptyImage from '../../assets/empty.jpg';
+import emptyImage from '../../assets/home_images/empty.jpg';
 import exploresection from '../../assets/home_images/explore-bg.png';
 
 const CityResults = ({ results }) => {

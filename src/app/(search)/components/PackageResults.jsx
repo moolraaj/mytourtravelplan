@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import discountc from '../../assets/home_images/discountcards.png';
 import explorebg from '../../assets/home_images/explore-package-bg.png';
-import emptyImage from '../../assets/empty.jpg';
+import emptyImage from '../../assets/home_images/empty.jpg';
 import { useEffect, useState } from 'react';
 import { getSession } from 'next-auth/react'; 
 import BookingForm from "@/Components/(bookings)/bookings/bookingForm";

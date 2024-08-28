@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import trending from '../../assets/home_images/trending.png';
 import ribbon from '../../assets/home_images/ribbon.png';
-import emptyImage from '../../assets/empty.jpg';
+import emptyImage from '../../assets/home_images/empty.jpg';
 
 const CountryResults = ({ results }) => {
   // Reverse the results array if it exists and is an array

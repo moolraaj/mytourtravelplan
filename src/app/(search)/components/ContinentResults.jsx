@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import triangle from '../../assets/home_images/triangle.png';
-import emptyImage from '../../assets/empty.jpg';
+import emptyImage from '../../assets/home_images/empty.jpg';
 
 const ContinentResults = ({ results }) => {
   let reversedContinents = Array.isArray(results) ? [...results].reverse() : [];
