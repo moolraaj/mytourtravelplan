@@ -28,7 +28,7 @@ function Destinations({ country }) {
 
         <div className="destinations expert-travel">
 
-          {reversedCountries.length === 0 ? (
+          { reversedCountries === null || reversedCountries === undefined || reversedCountries.length === 0 ? (
             <EmptyDestinationComponent />
           ) : (reversedCountries.slice(0, 8).map((country, index) => (
             <Link className="destination" href={`/countries/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>

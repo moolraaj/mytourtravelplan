@@ -23,7 +23,7 @@ const LatestBlog = ({blogs}) => {
         </div>
 
         <div className="blog-container">
-          {blogs.length === 0 ? (
+          { blogs === null || blogs === undefined || blogs.length === 0 ? (
             <EmptyBlogComponent/>
           ) : (
             <>

@@ -23,7 +23,7 @@ function WorldSection({ continent }) {
           </div>
         <div className="grid-container">
 
-          {reversedContinents.length === 0 ? (
+          { reversedContinents === null || reversedContinents === undefined || reversedContinents.length === 0 ? (
             <EmptyComponent />
           ) : (
             reversedContinents.slice(0, 5).map((country, index) => (

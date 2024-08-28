@@ -14,7 +14,7 @@ const TopActivities = ({ result }) => {
         <h2 className="top-act-title">Top Activities</h2>
         <p className="top-act-subtitle">Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="top-act-gridContainer">
-          {result.length === 0 ? <EmptyComponent/> : (result?.slice(0,8)?.map((activity, index) => (
+          { result === null || result === undefined || result.length === 0 ? <EmptyComponent/> : (result?.slice(0,8)?.map((activity, index) => (
             <Link className="top-act-cardOuter" href={`/activity/${activity.slug.toLowerCase().replace(' ', '-')}`} key={index}>
               <div className="top-act-card">
                 <div className='image-container-act'>

@@ -62,7 +62,7 @@ const BestSellingPackages = ({ packages, loading }) => {
 
           <div className='card_discount'>
             <div className="packages">
-              {packages.length === 0 ? (
+               { packages === null || packages === undefined || packages.length === 0 ? (
                 <EmptyPackageComponent />
               ) : (
                 packages?.slice(0, 4)?.map((pkg, index) => (

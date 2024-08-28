@@ -11,7 +11,7 @@ function BlogCard({ result, setPage, page, totalBlogs, limit }) {
   return (
     <>
       <div className="blog-page">
-        {result.length === 0 ? <EmptyBlogComponent /> : (
+        {result === null || result === undefined || result.length === 0 ? <EmptyBlogComponent /> : (
           result?.map((ele) => {
             const formattedDate = format(new Date(ele.createdAt), 'dd MMM yyyy');
             return <div className="blogpagecard" key={ele._id}>

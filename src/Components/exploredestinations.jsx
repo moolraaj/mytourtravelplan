@@ -18,7 +18,7 @@ const ExploreDestinations = ({ packagescat }) => {
         <h2 className='same_heading'>Explore Destinations By Theme</h2>
         <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="destinations-container-countries">
-          {packagescat.length === 0 ? (
+          { packagescat === null || packagescat === undefined || packagescat.length === 0 ? (
             <EmptyExplorationDestinations />
           ) : (packagescat?.slice(0, 6)?.map((destination, index) => (
             <div key={index} className="destination">
@@ -66,7 +66,7 @@ function EmptyExplorationDestinations() {
     <>
       <div className="destinations-container-countries">
         {Array(6).fill().map((_, index) => (
-          <div key={index} className="destination">
+          <div key={index} className="destinations">
             <Link href="#">
               <div className="skeleton">
                 <div className='skeleton_animation'></div>

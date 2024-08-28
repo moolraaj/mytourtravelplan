@@ -15,7 +15,7 @@ const TopDestinations = ({ response }) => {
         <h2 className="top-dest-title">Top Destination By Our Travel Experts</h2>
         <p className="top-dest-subtitle">Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="top-dest-gridContainer">
-          {reversedCities.length === 0 ? <EmptyComponent /> : (reversedCities.map((destination, index) => (
+          { reversedCities === null || reversedCities === undefined || reversedCities.length === 0 ? <EmptyComponent /> : (reversedCities.map((destination, index) => (
             <Link className="top-dest-cardOuter" href={`/${destination.slug.toLowerCase().replace(' ', '-')}`} key={index}>
               <div className="top-dest-card">
 
