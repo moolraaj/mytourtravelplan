@@ -2,6 +2,7 @@
 'use client'
 import BookingForm from '@/Components/(bookings)/bookings/bookingForm'
 import LoginPopup from '@/Components/loginPopup/Components/popup'
+import { getSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react'
 
 function BookingAndLogin({pkg}) {
