@@ -3787,7 +3787,9 @@ img.carimage {
 	.car-animation{
 		height: 80px;
 		top: -60px;
+		animation: carMove 3s infinite ease-in-out;
 	}
+	
 
 	.destination .image {
 		min-height: 180px !important;
