@@ -2,14 +2,6 @@ import Layout from "@/app/_common/layout/layout";
 import CityAllpackages from "./components/cityAllPackages";
  
 
-
- 
- 
- 
-
- 
- 
-
 function page({ params }) {
   let { slug } = params
 
@@ -18,11 +10,6 @@ function page({ params }) {
   console.log(slug)
 
    
-
-
-
-
-
   return (
     <>
       <Layout>

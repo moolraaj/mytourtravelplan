@@ -4,42 +4,10 @@ import Link from 'next/link';
 import discountc from '../app/assets/home_images/discountcards.png';
 import explorebg from '../app/assets/home_images/explore-package-bg.png';
 import emptyImage from '../app/assets/home_images/empty.jpg';
-import { useEffect, useState } from 'react';
-import { getSession } from 'next-auth/react'; 
-import BookingForm from './(bookings)/bookings/bookingForm';
-import LoginPopup from './loginPopup/Components/popup';
+import BookingAndLogin from '@/app/_common/bookingAndLogin';
 
 const BestSellingPackages = ({ packages, loading }) => {
-  const [userVerified, setUserVerified] = useState(false);
-  const [isopenForm, setIsopenForm] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
-  const [selectedPackageId, setSelectedPackageId] = useState(null);
-
-  const checkUserVerification = async () => {
-    try {
-      const session = await getSession();
-      if (session && session.user) {
-        setUserVerified(session.user.role === 'user');
-      } else {
-        setUserVerified(false);
-      }
-    } catch (error) {
-      console.error('Error checking verification:', error);
-    }
-  };
-
-  useEffect(() => {
-    checkUserVerification();
-  }, []);
-
-  const bookingAndLogin = (pkgId) => {
-    if (!userVerified) {
-      setIsLogin(true);
-    } else {
-      setSelectedPackageId(pkgId);
-      setIsopenForm(true);
-    }
-  };
+  
 
   // Ensure result is an array; if not, use an empty array as a fallback
   // let result = Array.isArray(packages?.result) ? packages.result : [];
@@ -47,8 +15,6 @@ const BestSellingPackages = ({ packages, loading }) => {
 
   return (
     <>
-      {isopenForm && <BookingForm setIsopenForm={setIsopenForm} packageId={selectedPackageId} />}
-      {isLogin && <LoginPopup setIsLogin={setIsLogin} />}
 
       <div className="explore-packages" style={{ backgroundImage: `url(${explorebg.src})` }}>
         <div className="container card_main_section">
@@ -94,7 +60,7 @@ const BestSellingPackages = ({ packages, loading }) => {
                       <p className="price">From ₹ {pkg.package_price || 0}</p>
                       <div className="buttons">
                         <Link href={`/packages/${pkg.slug}`}><button className="details-btn">View Details</button></Link>
-                        <button className="enquiry-btn" onClick={() => bookingAndLogin(pkg._id)}>Book Now</button>
+                       <BookingAndLogin pkg={pkg}/>
                       </div>
                     </div>
                   </div>

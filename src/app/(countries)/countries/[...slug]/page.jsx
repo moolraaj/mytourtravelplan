@@ -3,22 +3,12 @@ import CountryAllpackages from "./components/packagesCard";
 import CountryCitiesExplorations from "./components/cityCard";
 
 
- 
-
- 
- 
-
 function page({ params }) {
   let { slug } = params
 
   const slugArray = Array.isArray(slug) ? slug : slug.split('/');
 
   console.log(slug)
-
-   
-
-
-
 
 
   return (

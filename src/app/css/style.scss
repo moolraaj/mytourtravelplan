@@ -547,7 +547,7 @@ body::-webkit-scrollbar-thumb {
 	color: white;
 }
 
-.card_main_section .package img {
+.card_main_section .package .image {
 	height: 189px;
 	object-fit: cover;
 	max-width: 236px;
@@ -706,7 +706,8 @@ h2.same_heading {
 }
 
 
-.card_main_section .buttons button {
+.card_main_section .buttons .enquiry-btn,
+.card_main_section .buttons .details-btn{
 	padding: 7px 15px;
 	margin-right: 10px;
 	border-color: #000;
@@ -1773,7 +1774,7 @@ a.navbar-item {
 	padding: 5px;
 }
 
-.card_main_section .package img {
+.card_main_section .package .image {
 	height: 270px;
 	object-fit: cover;
 	max-width: 236px;
@@ -3397,7 +3398,7 @@ img.carimage {
 	  transform: translateY(-15px);
 	}
   }
-  
+
 /* not found page style ends */
 
 // Responsive Screen Start Here 
@@ -3440,7 +3441,8 @@ img.carimage {
 		column-gap: 8px;
 	}
 
-	.card_main_section .buttons button {
+	.card_main_section .buttons .enquiry-btn,
+.card_main_section .buttons .details-btn{
 		padding: 7px 5px;
 	}
 
@@ -3592,7 +3594,7 @@ img.carimage {
 		grid-template-columns: 1fr 2fr;
 	}
 
-	.card_main_section .package img {
+	.card_main_section .package .image {
 		max-width: 220px;
 	}
 }
@@ -3791,7 +3793,7 @@ img.carimage {
 		column-gap: 20px;
 	}
 
-	.card_main_section .package img {
+	.card_main_section .package .image {
 		max-width: 300px;
 	}
 
@@ -3983,11 +3985,12 @@ img.carimage {
 		column-gap: 10px;
 	}
 
-	.card_main_section .package img {
+	.card_main_section .package .image {
 		max-width: 200px;
 	}
 
-	.card_main_section .buttons button {
+	.card_main_section .buttons .enquiry-btn,
+.card_main_section .buttons .details-btn {
 		font-size: 14px;
 	}
 
@@ -4357,7 +4360,7 @@ img.carimage {
 		margin-top: 45px;
 	}
 
-	.card_main_section .package img {
+	.card_main_section .package .image {
 		height: 169px;
 		object-fit: cover;
 		max-width: 236px;
@@ -4368,7 +4371,7 @@ img.carimage {
 		padding: 10px;
 	}
 
-	.card_main_section .package img {
+	.card_main_section .package .image {
 		max-width: 100%;
 		width: 100%;
 	}
@@ -4394,7 +4397,8 @@ img.carimage {
 		margin: 30px auto;
 	}
 
-	.card_main_section .buttons button {
+	.card_main_section .buttons .enquiry-btn,
+.card_main_section .buttons .details-btn {
 		font-size: 16px;
 	}
 

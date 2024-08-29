@@ -7,20 +7,10 @@ import CitiesExplorations from './components/citiesCard';
 import ContinentAllpackages from './components/packagesCard';
 import ContinentCountrycard from './components/countriesCard';
  
- 
-
 function page({ params }) {
   let { slug } = params
 
   const slugArray = Array.isArray(slug) ? slug : slug.split('/');
-
-  
-
-   
-
-
-
-
 
   return (
     <>
