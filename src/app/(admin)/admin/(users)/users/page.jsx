@@ -1,8 +1,8 @@
-// // /app/(admin)/admin/(users)/users/page.jsx
+// /app/(admin)/admin/(users)/users/page.jsx
 
 'use client';
 import React, { useEffect, useState } from 'react';
-import { FaTrashAlt, FaEdit } from 'react-icons/fa';
+import { FaTrashAlt, FaEdit, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import ModalWrapper from '@/app/(admin)/_common/modal/modal';
@@ -23,16 +23,22 @@ function UsresPage() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [deleteItem, setDeleteItem] = useState(null);
-
+  const [showPassword, setShowPassword] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [editData, setEditData] = useState({
     registerusername: '',
     email: '',
     phoneNumber: '',
-    role: ''
+    role: '',
+    password: '', // Add password field
   });
 
+  const [showPasswordField, setShowPasswordField] = useState(false); // Track if password field should be shown
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+};
   async function fetchContacts() {
     const response = await fetch(`/api/v1/otpuser/getallusers?page=${currentPage}&limit=${itemsPerPage}`);
     const data = await response.json();
@@ -64,7 +70,7 @@ function UsresPage() {
     } else {
       setFilteredContacts(contacts);
     }
-  }, [contacts, searchQuery]);  
+  }, [contacts, searchQuery]);
 
   const handleConfirm = async () => {
     const response = await fetch(`/api/v1/otpuser/delete/${deleteItem}`, { method: 'DELETE' });
@@ -98,17 +104,29 @@ function UsresPage() {
       registerusername: contact.registerusername || '',
       email: contact.email || '',
       phoneNumber: contact.phoneNumber || '',
-      role: contact.role || 'user'
+      role: contact.role || 'user',
+      password: '', // Reset password field
     });
+
+    setShowPasswordField(contact.role === 'user'); // Show password field only if role is 'user'
   };
 
   const handleEditSubmit = async () => {
+
+    setLoading(true);
+    const updateData = { ...editData };
+
+    // If role is admin, remove the password field from the update data
+    if (editData.role === 'admin') {
+      delete updateData.password;
+    }
+
     const response = await fetch(`/api/v1/otpuser/update/${editItem}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(editData),
+      body: JSON.stringify(updateData),
     });
     const data = await response.json();
 
@@ -117,6 +135,7 @@ function UsresPage() {
         fetchContacts();
         toast.success(data.message || 'Contact updated successfully');
         setIsEditOpen(false);
+        setLoading(false);
       } else {
         toast.error(data.message || 'Failed to update contact');
       }
@@ -138,8 +157,8 @@ function UsresPage() {
         onConfirm={handleConfirm}
       />
       <div className="package_header">
-      <Breadcrumb path="/admin/users" />
-      <div className="search-users-input">
+        <Breadcrumb path="/admin/users" />
+        <div className="search-users-input">
           <input
             type="text"
             placeholder="Search by Name, Email, or Phone Number"
@@ -148,7 +167,7 @@ function UsresPage() {
           />
         </div>
       </div>
-      
+
 
       {/* Edit Modal */}
       {isEditOpen && (
@@ -181,7 +200,27 @@ function UsresPage() {
               <option value="user">User</option>
               <option value="admin">Admin</option>
             </select>
-            <button onClick={handleEditSubmit}>Save Changes</button>
+            {showPasswordField && (
+              <> 
+              <label htmlFor="password">Password:</label>
+              <div className="password-wrapper">
+              <input
+                   type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  value={editData.password}
+                  onChange={handleEditChange}
+                />
+                <span onClick={togglePasswordVisibility} className="password-toggle">
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </span>
+              </div>
+                
+              </>
+            )}
+            <button onClick={handleEditSubmit} disabled={loading}>
+              {loading ? 'Updating...' : 'Save Changes'}
+            </button>
+
             <button onClick={() => setIsEditOpen(false)} className="cancel-button">
               Cancel
             </button>
@@ -247,7 +286,9 @@ function UsresPage() {
         >
           {'<'}
         </button>
-        <span className="pagination-info">Page {currentPage} of {totalPages}</span>
+        <span className="pagination-info">
+          Page {currentPage} of {totalPages}
+        </span>
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
