@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Inclusions from './inclusions';
 import LoadingBar from '@/app/_common/innerLoader/innerLoader';
+import BookingAndLogin from '@/app/_common/bookingAndLogin';
+import emptyImage from '../../../../assets/home_images/empty.jpg';
 
 const Itinerary = ({ result }) => {
   const [openDay, setOpenDay] = useState(null);
@@ -28,7 +30,7 @@ const Itinerary = ({ result }) => {
     <>
       {result === undefined || result === null ? (
         <div className='overview' style={{ margin: '20px auto' }}>
-          <LoadingBar />
+          <EmptyComponent />
         </div>
       ) : (
         result.map((ele) => (
@@ -95,10 +97,16 @@ const Itinerary = ({ result }) => {
                       'no result found'
                     )}
                   </div>
-                  <button className="book-now-btn">
+                  {/* <button className="book-now-btn">
                     <a href='/contact-us'>Book Now</a>
-                  </button>
+                  </button> */}
+                  <div className="card_main_section">
+                    <div className="buttons">
+                      <BookingAndLogin pkg={ele} />
+                    </div>
+                  </div>
                 </div>
+
 
                 <div className='right_query'>
                   <div className='card_contact'>
@@ -152,5 +160,55 @@ const Itinerary = ({ result }) => {
     </>
   );
 };
+
+
+function EmptyComponent() {
+  return (
+      <>
+          {Array(1).fill().map((_, index) => (
+             <div className='overview' key={index}>
+             <div className='summary_slider'>
+               <div className="itinerary_inner">
+                 <div className='itenary_contact'>
+                   <div className='top_summary aaa'>
+                     <div className='top_summary_inner'>
+                     </div>
+                   </div>
+ 
+                   <div className='iten_inner aaa'>
+                     <h2 className='heading_inner_page'></h2>
+                     <div className='day_content'>
+                     </div>
+                   </div>
+                   <div className="tabs_inclusion">
+                   </div>
+                   <div className="tabContent aaa">
+                   </div>
+                 </div>
+ 
+ 
+                 <div className='right_query'>
+                   <div className='card_contact aaa'>
+                     
+                   </div>
+
+                     <div className='gallery_inner_page'>
+                       <div className="sidebar-gallery">
+                         <div className="galleryGrid aaa">
+                             <img
+                               src={emptyImage.src}
+                             />
+                         </div>
+                       </div>
+                     </div>
+
+                 </div>
+               </div>
+             </div>
+           </div>
+          ))}
+      </>
+  );
+}
 
 export default Itinerary;

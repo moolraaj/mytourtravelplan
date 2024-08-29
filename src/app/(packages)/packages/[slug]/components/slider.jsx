@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import emptyImage from '../../../../assets/home_images/empty.jpg';
+
 
 const TravelGallery = ({ result }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -19,7 +21,7 @@ const TravelGallery = ({ result }) => {
   return (
     <div className="gallery">
       {result === undefined || result === null ? (
-        ''
+        <EmptyComponent/>
       ) : (
         result.map((ele, index) => (
           <div key={index}>
@@ -27,8 +29,8 @@ const TravelGallery = ({ result }) => {
             <div className="images">
               <div className="imageContainer">
                 {ele.packages_galleries === null ||
-                ele.packages_galleries === undefined ||
-                ele.packages_galleries.length === 0 ? (
+                  ele.packages_galleries === undefined ||
+                  ele.packages_galleries.length === 0 ? (
                   ''
                 ) : (
                   <>
@@ -69,5 +71,37 @@ const TravelGallery = ({ result }) => {
     </div>
   );
 };
+
+
+function EmptyComponent() {
+  return (
+    <>
+      {Array(1).fill().map((_, index) => (
+        <div className="gallery">
+          <div key={index}>
+            <div className="images">
+              <div className="imageContainer">
+                <div className="leftImage" >
+                  <img
+                    src={emptyImage.src}
+                    alt="Large Image"
+                    className="largeImage"
+                  />
+                </div>
+                <div className="rightImages">
+                  <img
+                    src={emptyImage.src}
+                    className="smallImage"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </>
+  );
+}
 
 export default TravelGallery;

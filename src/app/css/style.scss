@@ -24,7 +24,7 @@
 	height: 100%;
 	opacity: 1 !important;
 	background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
-	animation: loading 1.5s infinite;
+	animation: SkeletonLoading 1.5s infinite;
   }
   
   .skeleton img{
@@ -36,7 +36,7 @@
 	filter: none !important;
   }
   
-  @keyframes loading {
+  @keyframes SkeletonLoading {
 	0% {
 	  left: -150%;
 	}
@@ -47,7 +47,10 @@
 	  left: 150%;
 	}
   }
-
+.package_skeleton,
+.aaa{
+	min-height: 200px;
+}
   
   
 
