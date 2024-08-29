@@ -21,7 +21,7 @@ const TravelGallery = ({ result }) => {
   return (
     <div className="gallery">
       {result === undefined || result === null ? (
-        <EmptyComponent/>
+        ''
       ) : (
         result.map((ele, index) => (
           <div key={index}>
