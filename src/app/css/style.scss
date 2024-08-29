@@ -3866,7 +3866,8 @@ img.carimage {
 
 @media(max-width:767px) {
 
-	.card_category_section .packages{
+	.card_category_section .packages,
+	.card_main_section .packages{
 		gap: 30px;
 	}
 
