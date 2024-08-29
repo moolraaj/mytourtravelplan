@@ -3,7 +3,8 @@ import popupbg from '../../../../public/images/popup-bg.png';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { signIn } from 'next-auth/react';
-import popupImage from '../../../../public/images/popup-img.png'
+import popupImage from '../../../../public/images/popup-img.png';
+import car from '../../../app/assets/home_images/car2.png';
 
 
 const LoginPopup = ({ setIsLogin }) => {
@@ -148,6 +149,7 @@ const LoginPopup = ({ setIsLogin }) => {
                                 </button>
                             </form>
                         </div>
+                        <img src={car.src} alt="Car" className="car-animation" />
                     </div>
                 </div>
             </div>
