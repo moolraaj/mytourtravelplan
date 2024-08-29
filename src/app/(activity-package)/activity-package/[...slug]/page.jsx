@@ -1,8 +1,9 @@
 
 import React from 'react'
 import PackagesCatPackages from './component/packagesCatPackages'
-import Topbanner from '../_common/layout/topbanner'
-import Layout from '../_common/layout/layout'
+import Topbanner from '@/app/_common/layout/topbanner'
+import Layout from '@/app/_common/layout/layout'
+
 
 function page({params}) {
     let {slug}=params

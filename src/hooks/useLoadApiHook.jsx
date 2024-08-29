@@ -27,9 +27,10 @@
 
 
 'use client';
+import { PER_PAGE_LIMIT } from '@/utils/apis/api';
 import { useState, useEffect, useMemo } from 'react';
 
-const useFetchAllSections = (page, limit) => {
+const useFetchAllSections = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -37,7 +38,7 @@ const useFetchAllSections = (page, limit) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/v1/all-queries/get?page=${page}&limit=${limit}`);
+        const response = await fetch(`/api/v1/all-queries/get?page=${1}&limit=${PER_PAGE_LIMIT}`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -51,7 +52,7 @@ const useFetchAllSections = (page, limit) => {
     };
 
     fetchData();
-  }, [page, limit]);
+  }, []);
 
   const memoizedData = useMemo(() => data, [data]);
 

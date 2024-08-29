@@ -10,7 +10,7 @@ const ExploreDestinations = ({ packagescat }) => {
   // let result = packagescat ? packagescat.result : []
 
   // let reversedPackagesCat=Array.isArray(result)?[...result].reverse():[]
-  console.log('aaaaaaaaaaaaaaaaaa', packagescat)
+
 
   return (
     <div className='explore-theme-destination' style={{ backgroundImage: `url(${exploretheme.src})` }}>
@@ -22,7 +22,7 @@ const ExploreDestinations = ({ packagescat }) => {
             <EmptyExplorationDestinations />
           ) : (packagescat?.slice(0, 6)?.map((destination, index) => (
             <div key={index} className="destination">
-              <Link href={`/${destination.slug}`}>
+              <Link href={`/activity-package/${destination.slug}`}>
 
                 {destination.image && destination.image.length > 0 ? (
                   destination.image.map((e) => (

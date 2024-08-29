@@ -553,6 +553,9 @@ body::-webkit-scrollbar-thumb {
 	max-width: 236px;
 }
 
+.card_category_section {
+    margin: 20px auto 30px auto;
+}
 
 
 .exploration-item img {
@@ -3316,7 +3319,86 @@ img.carimage {
   }
   
 
+  /* not found page style starts */
 
+  .notfound-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	color: #333;
+	text-align: center;
+	font-family: 'Arial', sans-serif;
+  }
+  .notfound-container {
+	margin: 20px;
+	padding: 30px;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+	animation: fadeIn-A 1s ease-out;
+  }
+  .notfound-icon {
+	margin-bottom: 20px;
+	color: #ff6b6b;
+  }
+  .notfound-title {
+	font-size: 80px;
+	margin-bottom: 10px;
+	color: #333;
+	animation: bounce-A 1s infinite;
+  }
+  .notfound-subtitle {
+	font-size: 24px;
+	margin-bottom: 15px;
+	color: #555;
+  }
+  .notfound-text {
+	font-size: 18px;
+	margin-bottom: 25px;
+	color: #777;
+	line-height: 1.6;
+  }
+  .notfound-home-link {
+	display: inline-flex;
+	align-items: center;
+	padding: 12px 20px;
+	gap:20px;
+	background: #ff6b6b;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 5px;
+	transition: background 0.3s ease;
+	font-size: 16px;
+  }
+  .notfound-home-link:hover {
+	background: #ff4c4c;
+  }
+  .notfound-home-link svg {
+	margin-right: 8px;
+  }
+  @keyframes fadeIn-A {
+	from {
+	  opacity: 0;
+	  transform: translateY(20px);
+	}
+	to {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+  @keyframes bounce-A {
+	0%, 20%, 50%, 80%, 100% {
+	  transform: translateY(0);
+	}
+	40% {
+	  transform: translateY(-30px);
+	}
+	60% {
+	  transform: translateY(-15px);
+	}
+  }
+  
+/* not found page style ends */
 
 // Responsive Screen Start Here 
 
@@ -3775,15 +3857,17 @@ img.carimage {
 		padding-left: 0px !important;
 	}
 
-
-
-
 	.navbar-item {
 		padding: 0 1rem;
 	}
 }
 
 @media(max-width:767px) {
+
+	.card_category_section .packages{
+		gap: 30px;
+	}
+
 	.car-animation{
 		height: 80px;
 		top: -60px;

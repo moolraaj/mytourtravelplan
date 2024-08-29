@@ -39,7 +39,7 @@ async function MyOrders() {
             <Layout>
                 <Topbanner slug="my-orders" />
                 <div className="my-orders-container">
-                    {reversedBookings === null || reversedBookings === undefined ? (
+                    {reversedBookings === null || reversedBookings === undefined || reversedBookings.length===0 ? (
                         <p className="no-bookings">No bookings found</p>
                     ) : (
                         reversedBookings.map((ele) => {
