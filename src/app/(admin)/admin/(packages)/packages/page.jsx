@@ -8,13 +8,14 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import ModalWrapper from '@/app/(admin)/_common/modal/modal';
 import Breadcrumb from '@/app/(admin)/_common/Breadcrumb';
+import { PER_PAGE_LIMIT } from '@/utils/apis/api';
 
 function Packages() {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-  const [itemsPerPage] = useState(8); // Number of items per page
+  const [itemsPerPage] = useState(PER_PAGE_LIMIT); // Number of items per page
   const totalPages = Math.ceil(totalResults / itemsPerPage); // Calculate total pages
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);

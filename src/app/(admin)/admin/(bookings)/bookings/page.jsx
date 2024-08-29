@@ -9,6 +9,7 @@ import ModalWrapper from '@/app/(admin)/_common/modal/modal';
 import { handelAsyncErrors } from '@/helpers/asyncErrors';
 import Breadcrumb from '@/app/(admin)/_common/Breadcrumb';
 import { format } from 'date-fns';
+import { PER_PAGE_LIMIT } from '@/utils/apis/api';
 
 
 function BookingPage() {
@@ -17,7 +18,7 @@ function BookingPage() {
   const [error, setError] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-  const [itemsPerPage] = useState(4); // Number of items per page
+  const [itemsPerPage] = useState(PER_PAGE_LIMIT); // Number of items per page
   const totalPages = Math.ceil(totalResults / itemsPerPage); // Calculate total pages
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);

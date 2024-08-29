@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import ModalWrapper from '@/app/(admin)/_common/modal/modal';
 import { handelAsyncErrors } from '@/helpers/asyncErrors';
 import Breadcrumb from '@/app/(admin)/_common/Breadcrumb';
+import { PER_PAGE_LIMIT } from '@/utils/apis/api';
 
 function UsresPage() {
   const [contacts, setContacts] = useState([]);
@@ -16,7 +17,7 @@ function UsresPage() {
   const [error, setError] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-  const [itemsPerPage] = useState(8);
+  const [itemsPerPage] = useState(PER_PAGE_LIMIT);
   const [searchQuery, setSearchQuery] = useState('');
   const totalPages = Math.ceil(totalResults / itemsPerPage);
   const router = useRouter();
