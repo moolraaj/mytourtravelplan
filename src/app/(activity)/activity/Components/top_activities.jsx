@@ -7,6 +7,7 @@ import emptyImage from '../../../assets/home_images/empty.jpg'
  
 
 const TopActivities = ({ result }) => {
+  console.log(`memoize activities`,result)
   
   return (
     <div className="top-act-container" style={{ backgroundImage: `url(${activitytop.src})` }} >

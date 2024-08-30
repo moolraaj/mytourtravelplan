@@ -9,8 +9,11 @@ import ModalWrapper from '@/app/(admin)/_common/modal/modal';
 import { handelAsyncErrors } from '@/helpers/asyncErrors';
 import Breadcrumb from '@/app/(admin)/_common/Breadcrumb';
 import { PER_PAGE_LIMIT } from '@/utils/apis/api';
+import ApiData from '@/app/(admin)/_common/propsProviders/apiData';
 
-function ContinentPage() {
+function ContinentPage({continentsData}) {
+  let reversedContinents = Array.isArray(continentsData) ? [...continentsData].reverse() : [];
+  console.log(`continentsData .............`,reversedContinents)
   const [continents, setContinents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -91,7 +94,7 @@ function ContinentPage() {
         onClose={() => setIsOpen(false)}
         onConfirm={handleConfirm}
       />
-
+<ApiData/>
       <div className="package_header">
         <Breadcrumb path="/admin/continents" />
         <div className="floating-plus" onClick={handleAddClick}>

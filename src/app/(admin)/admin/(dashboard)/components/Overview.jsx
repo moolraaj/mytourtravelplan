@@ -14,7 +14,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
-const Overview = () => {
+const Overview = ({responses}) => {
+  console.log('aaaaaaaaaaaaaaaaaaaaaaa',responses)
   const [data, setData] = useState({
     users: 0,
     contacts: 0,

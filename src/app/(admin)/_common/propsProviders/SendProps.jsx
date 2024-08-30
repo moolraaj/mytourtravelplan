@@ -9,20 +9,28 @@ import CountryPage from '../../admin/(countries)/countries/page'
 import FlightsPage from '../../admin/(flights)/flights/page'
 import FooterPage from '../../admin/(footer)/footer/page'
 import Packages from '../../admin/(packages)/packages/page'
+import PackageCategories from '../../admin/(packages)/package-category/PackageCategories'
+import CategoryManagement from '../../admin/(blog)/category-management/page'
+import UsresPage from '../../admin/(users)/users/page'
+import Overview from '../../admin/(dashboard)/components/Overview'
 
-function SendProps({loading,continent,country,city,packages,blogs,packagescat}) {
+function SendProps({loading,continent,country,city,packages,blogs,packagescat,activities,pagination}) {
   return (
     <>
-    <ActivityPage />
+    <ActivityPage activitiesData={activities} loading={loading}/>
+    <CategoryManagement/>
     <BlogPage blogs={blogs} loading={loading}/>
     <BookingPage/>
     <CityPage city={city} loading={loading}/>
     <ContactsPage/>
-    <ContinentPage continent={continent} loading={loading}/>
+    <ContinentPage continentsData={continent} loading={loading}/>
     <CountryPage country={country} loading={loading}/>
+    <PackageCategories packagescat={packagescat} loading={loading}/>
     <Packages packages={packages} loading={loading}/>
     <FlightsPage/>
     <FooterPage/>
+    <UsresPage/>
+    <Overview responses={pagination}/>
     </>
   )
 }
