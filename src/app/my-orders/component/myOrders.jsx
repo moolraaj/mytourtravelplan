@@ -6,58 +6,74 @@ import { EXPORT_ALL_APIS } from '@/utils/apis/api';
 import Topbanner from '@/app/_common/layout/topbanner';
 import Layout from '@/app/_common/layout/layout';
 
-async function MyOrders() {
-    const { data: session } = useSession();
-    const user_id = session?.user?._id ? session?.user?._id : null;
-    console.log(user_id)
-    let api = EXPORT_ALL_APIS()
-
+function MyOrders() {
+    const { data: session, status } = useSession(); // Include status to handle loading state
+    const user_id = session?.user?._id || null;
     const [booking, setBookings] = useState([]);
 
-    const fetchAllBookings = async () => {
-        if (user_id) {
-            try {
-                const resp = await api.loadSingleUserbookingsdetails(user_id);
-                setBookings(resp.result)
-
-            } catch (error) {
-                
-            }
-        }
-    };
-
     useEffect(() => {
+        const fetchAllBookings = async () => {
+            if (user_id) {
+                try {
+                    const api = EXPORT_ALL_APIS(); // Moved inside the useEffect to ensure it's only called when necessary
+                    const resp = await api.loadSingleUserbookingsdetails(user_id);
+                    setBookings(resp.result || []);
+                } catch (error) {
+                    console.error('Error fetching bookings:', error);
+                }
+            }
+        };
+
         fetchAllBookings();
-    }, []);
+    }, [user_id]); // Re-run effect when user_id changes
 
-
-    let bookings = booking ? booking.bookings : []
-    let reversedBookings=Array.isArray(bookings)?[...bookings].reverse():[]
+    const reversedBookings = Array.isArray(booking.bookings) ? [...booking.bookings].reverse() : [];
 
     return (
-        <>
-            <Layout>
-                <Topbanner slug="my-orders" />
-                <div className="my-orders-container">
-                    {reversedBookings === null || reversedBookings === undefined || reversedBookings.length===0 ? (
+        <Layout>
+            <Topbanner slug="my-orders" />
+            <div className="my-orders-container">
+                {status === 'loading' ? (
+                    <EmptyOrders />
+                ) : reversedBookings.length === 0 ? (
+                    <EmptyOrders>
                         <p className="no-bookings">No bookings found</p>
-                    ) : (
-                        reversedBookings.map((ele) => {
-                            const date = format(new Date(ele.createdAt), 'dd MMM yyyy');
-                            return (
-                                <div key={ele._id} className="booking-card">
-                                    <p className="booking-id">Booking ID: {ele.booking_id}</p>
-                                    <p className="booking-description">Description: {ele.description}</p>
-                                    <p className="booking-package-id">Package ID: {ele._id}</p>
-                                    <p className="booking-date">Date: {date}</p>
-                                </div>
-                            )
-                        })
-                    )}
-                </div>
-            </Layout>
-        </>
-    )
+                    </EmptyOrders>
+
+                ) : (
+                    reversedBookings.map((ele) => {
+                        const date = format(new Date(ele.createdAt), 'dd MMM yyyy');
+                        return (
+                            <div key={ele._id} className="booking-card">
+                                <p className="booking-id">Booking ID: {ele.booking_id}</p>
+                                <p className="booking-description">Description: {ele.description}</p>
+                                <p className="booking-package-id">Package ID: {ele._id}</p>
+                                <p className="booking-date">Date: {date}</p>
+                            </div>
+                        );
+                    })
+                )}
+            </div>
+        </Layout>
+    );
 }
 
-export default MyOrders
+
+export function EmptyOrders() {
+    return (
+        <>
+        <div className="my-orders-container">
+            {Array(4).fill().map((_, index) => (
+                <div key={index} className="booking-card">
+                    <div className="myorder-skeleton">
+                        <div className='skeleton_animation'></div>
+
+                    </div>
+                </div>
+            ))}
+            </div>
+        </>
+    );
+}
+
+export default MyOrders;
