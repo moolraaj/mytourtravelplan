@@ -32,6 +32,7 @@ export async function GET(req) {
             },
           },
         })
+        .sort({ createdAt: -1 }) // Sort continents by creation time in descending order
         .limit(limit)
         .skip(skip)
         .lean()
@@ -45,16 +46,19 @@ export async function GET(req) {
             select: "_id title package_price package_discounted_price",
           },
         })
+        .sort({ createdAt: -1 }) // Sort countries by creation time in descending order
         .limit(limit)
         .skip(skip)
         .lean()
         .exec(),
       CitiesModel.find()
+        .sort({ createdAt: -1 }) // Sort cities by creation time in descending order
         .limit(limit)
         .skip(skip)
         .lean()
         .exec(),
       PackagesModel.find()
+        .sort({ createdAt: -1 }) // Sort packages by creation time in descending order
         .limit(limit)
         .skip(skip)
         .populate({
@@ -74,18 +78,21 @@ export async function GET(req) {
         .exec(),
       BlogModel.find()
         .populate("blog_category", "_id name slug")
+        .sort({ createdAt: -1 }) // Sort blogs by creation time in descending order
         .limit(limit)
         .skip(skip)
         .select("_id images title description slug blog_category blog_overview blog_description createdAt")
         .lean()
         .exec(),
       ActivitiesModel.find()
+        .sort({ createdAt: -1 }) // Sort activities by creation time in descending order
         .limit(limit)
         .skip(skip)
         .select("_id icon images title description slug activity_price activity_discounted_price")
         .lean()
         .exec(),
       PackageCategoryModel.find()
+        .sort({ createdAt: -1 }) // Sort package categories by creation time in descending order
         .limit(limit)
         .skip(skip)
         .select("_id image title description slug")
@@ -251,5 +258,3 @@ export async function GET(req) {
     });
   });
 }
-
-

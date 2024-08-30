@@ -6,7 +6,7 @@ import { EmptyContinents } from '@/app/_common/EmptyComponents';
 
 function WorldSection({ continent }) {
 
-  let reversedContinents = Array.isArray(continent) ? [...continent].reverse() : [];
+   
 
   return (
     <>
@@ -23,10 +23,10 @@ function WorldSection({ continent }) {
           </div>
         <div className="grid-container">
 
-          { reversedContinents === null || reversedContinents === undefined || reversedContinents.length === 0 ? (
+          { continent === null || continent === undefined || continent.length === 0 ? (
             <EmptyContinents />
           ) : (
-            reversedContinents.slice(0, 5).map((country, index) => (
+            continent.slice(0, 5).map((country, index) => (
               <Link className="card_outer" href={`/continents/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
                 <div className="card">
                   <div className="overlay">
