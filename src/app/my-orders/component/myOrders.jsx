@@ -43,12 +43,14 @@ function MyOrders() {
                 ) : (
                     reversedBookings.map((ele) => {
                         const date = format(new Date(ele.createdAt), 'dd MMM yyyy');
+                        const dateTime = format(new Date(ele.createdAt), 'HH:mm:ss a');
                         return (
                             <div key={ele._id} className="booking-card">
                                 <p className="booking-id">Booking ID: {ele.booking_id}</p>
                                 <p className="booking-description">Description: {ele.description}</p>
                                 <p className="booking-package-id">Package ID: {ele._id}</p>
                                 <p className="booking-date">Date: {date}</p>
+                                <p className="booking-date">Time: {dateTime}</p>
                             </div>
                         );
                     })
