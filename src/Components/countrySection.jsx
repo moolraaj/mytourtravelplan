@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import emptyImage from '../app/assets/home_images/empty.jpg';
 import exploresection from '../app/assets/home_images/explore-bg.png';
+import { EmptyCities } from '@/app/_common/EmptyComponents';
 
 function ExplorationsFarAway({ loading, city }) {
 
@@ -24,7 +25,7 @@ function ExplorationsFarAway({ loading, city }) {
 
         <div className="destinations-grid">
           { city === null || city === undefined || city.length === 0 ? (
-            <EmptyExplorationComponent />
+            <EmptyCities />
           ) : (
             city?.slice(0, 6)?.map((destination) => {
               return (
@@ -67,34 +68,6 @@ function ExplorationsFarAway({ loading, city }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function EmptyExplorationComponent() {
-  return (
-    <>
-        {Array(6).fill().map((_, index) => (
-           <Link href="#" key={index}>
-            <div className="destination-card">
-              <div className="skeleton">
-                <div className='skeleton_animation'></div>
-                <Image
-                  src={emptyImage.src}
-                  alt="Loading"
-                  className="destination-image"
-                  width={1000}
-                  height={300}
-                  priority
-                />
-              </div>
-              <div className="destination-info">
-                <h3></h3>
-                <p></p>
-              </div>
-            </div>
-            </Link>
-          ))}
-    </>
   );
 }
 

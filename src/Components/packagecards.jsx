@@ -5,6 +5,7 @@ import discountc from '../app/assets/home_images/discountcards.png';
 import explorebg from '../app/assets/home_images/explore-package-bg.png';
 import emptyImage from '../app/assets/home_images/empty.jpg';
 import BookingAndLogin from '@/app/_common/bookingAndLogin';
+import { EmptyPackages } from '@/app/_common/EmptyComponents';
 
 const BestSellingPackages = ({ packages, loading }) => {
   
@@ -29,7 +30,7 @@ const BestSellingPackages = ({ packages, loading }) => {
           <div className='card_discount'>
             <div className="packages">
                { packages === null || packages === undefined || packages.length === 0 ? (
-                <EmptyPackageComponent />
+                <EmptyPackages />
               ) : (
                 packages?.slice(0, 4)?.map((pkg, index) => (
                   <div key={pkg._id} className="package">
@@ -83,25 +84,5 @@ const BestSellingPackages = ({ packages, loading }) => {
   );
 };
 
-function EmptyPackageComponent() {
-  return (
-    <>
-      {Array(4).fill().map((_, index) => (
-        <div key={index} className="package">
-           <div className="skeleton">
-           <div className='skeleton_animation'></div>
-          <Image
-            src={emptyImage.src}
-            alt="Loading"
-            width={333}
-            height={380}
-            className="image"
-          />
-          </div>
-        </div>
-      ))}
-    </>
-  );
-}
 
 export default BestSellingPackages;

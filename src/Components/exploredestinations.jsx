@@ -3,6 +3,7 @@ import Image from 'next/image';
 import exploretheme from '../app/assets/home_images/theme-destination.png';
 import Link from 'next/link';
 import emptyImage from '../app/assets/home_images/empty.jpg';
+import { EmptyActivityPackages } from '@/app/_common/EmptyComponents';
 const ExploreDestinations = ({ packagescat }) => {
 
 
@@ -19,7 +20,7 @@ const ExploreDestinations = ({ packagescat }) => {
         <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
         <div className="destinations-container-countries">
           { packagescat === null || packagescat === undefined || packagescat.length === 0 ? (
-            <EmptyExplorationDestinations />
+            <EmptyActivityPackages />
           ) : (packagescat?.slice(0, 6)?.map((destination, index) => (
             <div key={index} className="destination">
               <Link href={`/activity-package/${destination.slug}`}>
@@ -60,31 +61,5 @@ const ExploreDestinations = ({ packagescat }) => {
 
   );
 };
-
-function EmptyExplorationDestinations() {
-  return (
-    <>
-      <div className="destinations-container-countries">
-        {Array(6).fill().map((_, index) => (
-          <div key={index} className="destination">
-            <Link href="#">
-              <div className="skeleton">
-                <div className='skeleton_animation'></div>
-                <Image
-                  src={emptyImage.src}
-                  alt='packages_categories'
-                  width={100}
-                  height={100}
-                  className="destination-image"
-                />
-              </div>
-              <p></p>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </>
-  );
-}
 
 export default ExploreDestinations;

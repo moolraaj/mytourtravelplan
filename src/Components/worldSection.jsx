@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import triangle from '../app/assets/home_images/triangle.png';
 import camerabg from '../app/assets/home_images/camera-bg.png';
-import emptyImage from '../app/assets/home_images/empty.jpg';
+import { EmptyContinents } from '@/app/_common/EmptyComponents';
 
 function WorldSection({ continent }) {
 
@@ -24,7 +24,7 @@ function WorldSection({ continent }) {
         <div className="grid-container">
 
           { reversedContinents === null || reversedContinents === undefined || reversedContinents.length === 0 ? (
-            <EmptyComponent />
+            <EmptyContinents />
           ) : (
             reversedContinents.slice(0, 5).map((country, index) => (
               <Link className="card_outer" href={`/continents/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
@@ -52,32 +52,6 @@ function WorldSection({ continent }) {
         </div>
       </div>
       </div>
-    </>
-  );
-}
-
-function EmptyComponent() {
-  return (
-    <>
-      {Array(5).fill().map((_, index) => (
-        <Link className="card_outer" href="#" key={index}>
-          <div className="card">
-            <div className="overlay">
-            </div>
-             <div className="skeleton">
-             <div className='skeleton_animation'></div>
-              <Image
-              src={emptyImage.src}
-              alt="Loading"
-              style={{ width: '100%', height: '100%'}}
-              width={1000}
-              height={300}
-              className="image word_section_image"
-            /></div>
-            <div className="text"></div>
-          </div>
-        </Link>
-      ))}
     </>
   );
 }

@@ -6,16 +6,11 @@ import Image from 'next/image';
 import trending from '../app/assets/home_images/trending.png';
 import ribbon from '../app/assets/home_images/ribbon.png';
 import fishbg from '../app/assets/home_images/fish-bg.png';
-import emptyImage from '../app/assets/home_images/empty.jpg';
+import { EmptyCountries } from '@/app/_common/EmptyComponents';
 
 function Destinations({ country }) {
 
-
-
-
   let reversedCountries = Array.isArray(country) ? [...country].reverse() : [];
-
-
 
   return (
     <div className='top-destination' style={{ backgroundImage: `url(${fishbg.src})` }}>
@@ -29,7 +24,7 @@ function Destinations({ country }) {
         <div className="destinations expert-travel">
 
           { reversedCountries === null || reversedCountries === undefined || reversedCountries.length === 0 ? (
-            <EmptyDestinationComponent />
+            <EmptyCountries />
           ) : (reversedCountries.slice(0, 8).map((country, index) => (
             <Link className="destination" href={`/countries/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
 
@@ -68,38 +63,6 @@ function Destinations({ country }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function EmptyDestinationComponent() {
-  return (
-    <>
-      {Array(8).fill().map((_, index) => (
-        <Link href="#" className="destination" key={index}>
-          <div  key={index}>
-            <div className="skeleton">
-              <div className='skeleton_animation'></div>
-              <Image
-                src={emptyImage.src}
-                alt="Loading"
-                width={1000}
-                height={300}
-                className="image-travel-expert"
-                style={{ width: '100%', height: '100%' }}
-              />
-              <span
-                className="trending"
-              >
-              </span>
-            </div>
-            <div className="info">
-              <h3></h3>
-              <p></p>
-            </div>
-          </div>
-        </Link>
-      ))}
-    </>
   );
 }
 
