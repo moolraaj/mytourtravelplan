@@ -15,7 +15,8 @@
 	overflow: hidden;
 	height: 100%;
   }
-  .skeleton .skeleton_animation{
+  .skeleton .skeleton_animation,
+  .myorder-skeleton .skeleton_animation{
 	position: absolute;
 	z-index: 999;
 	top: 0;
@@ -51,8 +52,12 @@
 .aaa{
 	min-height: 200px;
 }
-  
-  
+.myorder-skeleton{
+	min-height: 120px;
+	filter: brightness(.8);
+	position: relative;
+	overflow: hidden;
+}
 
 /* search page style start*/
 .search-page {
