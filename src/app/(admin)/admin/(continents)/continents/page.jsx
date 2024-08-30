@@ -10,9 +10,7 @@ import { handelAsyncErrors } from '@/helpers/asyncErrors';
 import Breadcrumb from '@/app/(admin)/_common/Breadcrumb';
 import { PER_PAGE_LIMIT } from '@/utils/apis/api';
 
-function ContinentPage({continentsData}) {
-  let reversedContinents = Array.isArray(continentsData) ? [...continentsData].reverse() : [];
-  console.log(`continentsData .............`,reversedContinents)
+function ContinentPage() {
   const [continents, setContinents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -93,6 +91,7 @@ function ContinentPage({continentsData}) {
         onClose={() => setIsOpen(false)}
         onConfirm={handleConfirm}
       />
+
       <div className="package_header">
         <Breadcrumb path="/admin/continents" />
         <div className="floating-plus" onClick={handleAddClick}>

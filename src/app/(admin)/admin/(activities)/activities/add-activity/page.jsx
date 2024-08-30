@@ -135,7 +135,7 @@ const AddActivity = () => {
     <div className="add-activity-container">
       <h2>Add Activity</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className='form-group'>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -145,7 +145,7 @@ const AddActivity = () => {
             required
           />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="description">Description</label>
           <textarea
             name="description"
@@ -154,7 +154,7 @@ const AddActivity = () => {
             required
           />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="slug">Slug</label>
           <input
             type="text"
@@ -164,7 +164,7 @@ const AddActivity = () => {
             required
           />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="activityOverview">Activity Overview</label>
           <textarea
             name="activityOverview"
@@ -173,7 +173,7 @@ const AddActivity = () => {
             required
           />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="activityTopSummary">Activity Top Summary</label>
           <textarea
             name="activityTopSummary"
@@ -182,19 +182,19 @@ const AddActivity = () => {
             required
           />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="file">Main Image</label>
           <input type="file" name="file" onChange={handleChange} required />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="icon">Icon</label>
           <input type="file" name="icon" onChange={handleChange} />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="gallery_files">Gallery Images</label>
           <input type="file" name="gallery_files" onChange={handleGalleryChange} multiple />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="city_id">City</label>
           <select name="city_id" value={formData.city_id} onChange={handleChange} required>
             <option value="">Select City</option>
@@ -205,7 +205,7 @@ const AddActivity = () => {
             ))}
           </select>
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="activity_price">Price</label>
           <input
             type="number"
@@ -215,7 +215,7 @@ const AddActivity = () => {
             required
           />
         </div>
-        <div>
+        <div className='form-group'>
           <label htmlFor="activity_discounted_price">Discounted Price</label>
           <input
             type="number"
