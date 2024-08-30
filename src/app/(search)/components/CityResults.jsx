@@ -19,7 +19,7 @@ const CityResults = ({ results }) => {
               <div className="explorations-container container inner-w-container">
                 <div className="destinations-grid">
                   {reversedFilterCities.slice(0, 6).map((destination) => (
-                    <Link href={`/city/${destination.slug}`} key={destination._id}>
+                    <Link href={`/cities/${destination.slug}`} key={destination._id}>
                       <div className="destination-card">
                         {destination.images && destination.images.length > 0 ? (
                           <Image

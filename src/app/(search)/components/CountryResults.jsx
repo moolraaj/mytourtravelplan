@@ -20,7 +20,7 @@ const CountryResults = ({ results }) => {
               <div className="topdestination container inner-w-container">
                 <div className="destinations expert-travel">
                   {reversedCountries.map((country, index) => (
-                    <Link className="destination" href={`/country/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
+                    <Link className="destination" href={`/countries/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
                       <div key={index}>
                         {country.images === null || country.images === undefined || country.images.length === 0 ? (
                           <div className="no-image">No Image Available</div>

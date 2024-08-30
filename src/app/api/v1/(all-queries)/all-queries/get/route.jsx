@@ -253,6 +253,3 @@ export async function GET(req) {
 }
 
 
-export const config={
-  runtime:'experimental-edge'
-}

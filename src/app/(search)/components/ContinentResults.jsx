@@ -17,7 +17,7 @@ const ContinentResults = ({ results }) => {
             <div className='world-country'>
               <div className="grid-container">
                 {reversedContinents.map((country, index) => (
-                  <Link className="card_outer" href={`/continent/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
+                  <Link className="card_outer" href={`/continents/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
                     <div className="card">
                       <div className="overlay">
                         <div className="label">

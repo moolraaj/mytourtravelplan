@@ -93,7 +93,7 @@ const SearchResults = ({ query, closePopup }) => {
             <div>
               <h4>Continents</h4>
               {results.continents.map(item => (
-                <div className='resp_url' key={item._id} onClick={() => handleResultClick(item.title, 'continent')}>
+                <div className='resp_url' key={item._id} onClick={() => handleResultClick(item.title, 'continents')}>
                   {item.title}
                 </div>
               ))}
@@ -103,7 +103,7 @@ const SearchResults = ({ query, closePopup }) => {
             <div>
               <h4>Countries</h4>
               {results.countries.map(item => (
-                <div className='resp_url' key={item._id} onClick={() => handleResultClick(item.title, 'country')}>
+                <div className='resp_url' key={item._id} onClick={() => handleResultClick(item.title, 'countries')}>
                   {item.title}
                 </div>
               ))}
@@ -113,7 +113,7 @@ const SearchResults = ({ query, closePopup }) => {
             <div>
               <h4>Cities</h4>
               {results.cities.map(item => (
-                <div className='resp_url' key={item._id} onClick={() => handleResultClick(item.title, 'city')}>
+                <div className='resp_url' key={item._id} onClick={() => handleResultClick(item.title, 'cities')}>
                   {item.title}
                 </div>
               ))}
@@ -123,7 +123,7 @@ const SearchResults = ({ query, closePopup }) => {
             <div>
               <h4>Packages</h4>
               {results.packages.map(item => (
-                <div className='resp_url' key={item._id} onClick={() => handleResultClick(item.title, 'package')}>
+                <div className='resp_url' key={item._id} onClick={() => handleResultClick(item.title, 'packages')}>
                   {item.title}
                 </div>
               ))}

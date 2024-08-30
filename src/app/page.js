@@ -184,6 +184,9 @@ import Homepage from './_homepage/homepage';
 import LoginPopup from '@/Components/loginPopup/Components/popup';
 import QueryForm from '@/Components/autoloadPopup/QueryForm';
 import useFetchAllSections from '@/hooks/useLoadApiHook';
+import dynamic from 'next/dynamic';
+
+ 
 
 export default function Home() {
  

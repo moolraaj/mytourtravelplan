@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const connection = {};
 
 export const DbConnect = async () => {
+  console.log(process.env.NEXT_PUBLIC_MONGO_URL)
   if (connection.isConnected) {
     console.log('Using existing database connection');
     return;
