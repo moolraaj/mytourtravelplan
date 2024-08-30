@@ -16,6 +16,7 @@ export async function GET(req) {
         let users = await OtpUserModel.find()
             .skip(skip)
             .limit(limit)
+            .sort({ createdAt: -1 })
             .populate({
                 path: 'bookings',
                 select: 'package_id createdAt',

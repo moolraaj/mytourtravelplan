@@ -8,7 +8,7 @@ export async function GET(req){
     return handelAsyncErrors(async()=>{
          let {page,limit,skip}=getPaginationParams(req)
     
-        let result=await FlightModel.find().limit(limit).skip(skip)
+        let result=await FlightModel.find().sort({ createdAt: -1 }).limit(limit).skip(skip)
         let totalResults=await FlightModel.countDocuments()
         return NextResponse.json({status:200,totalResults,result,page,limit})
 

@@ -15,6 +15,7 @@ export async function GET(req) {
                 path: 'user_id', 
                 select: '_id registerusername phoneNumber', 
             })
+            .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit);
 

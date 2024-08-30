@@ -14,6 +14,7 @@ export async function GET(req) {
                 path: 'package_id',
                 select: '_id title'
             })
+            .sort({ createdAt: -1 })
             .limit(limit)
             .skip(skip);
 

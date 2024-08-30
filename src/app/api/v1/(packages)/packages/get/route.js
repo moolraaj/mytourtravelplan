@@ -15,6 +15,7 @@ export async function GET(req) {
         let data = await PackagesModel.find()
             .skip(skip)
             .limit(limit)
+            .sort({ createdAt: -1 })
             .populate({
                 path: 'city_id',
                 populate: {

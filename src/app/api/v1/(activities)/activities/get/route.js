@@ -10,7 +10,7 @@ export async function GET(req) {
     return handelAsyncErrors(async () => {
         let { page, limit, skip } = getPaginationParams(req);
 
-        let data = await ActivitiesModel.find().skip(skip).limit(limit).exec();
+        let data = await ActivitiesModel.find().sort({ createdAt: -1 }).skip(skip).limit(limit).exec();
         let result = data.map((e) => {
             // Calculate discount percentage
             let discount = 0;

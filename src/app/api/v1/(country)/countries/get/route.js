@@ -10,7 +10,7 @@ export async function GET(req){
         let data=await countriestModel.find().populate({path:'all_cities',path: 'all_cities',
             populate: {
                 path: 'all_packages',
-            }}).limit(limit).skip(skip).exec()
+            }}).limit(limit).sort({ createdAt: -1 }).skip(skip).exec()
     
              
     

@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     await DbConnect();
-    const result = await FooterModel.find();
+    const result = await FooterModel.find().sort({ createdAt: -1 });
     if (!result || result.length === 0) {
       return NextResponse.json({ status: 200, message: 'No records available', result: [] });
     }

@@ -26,6 +26,7 @@ export async function GET(req) {
     // Fetch continents with nested population
     const continents = await continentModel
       .find()
+      .sort({ createdAt: -1 })
       .populate({
         path: 'all_countries',
         populate: {

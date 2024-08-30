@@ -12,9 +12,11 @@ export async function GET(req) {
         const data = await CitiesModel.find()
             .populate('all_packages')
             .skip(skip)
+            .sort({ createdAt: -1 })
             .limit(limit)
             .lean()
             .exec();
+            
         const result = data.map(e => ({
             _id: e._id,
             images: e.images,

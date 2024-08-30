@@ -12,7 +12,7 @@ export async function GET(req, { params }) {
         let { page, limit, skip } = getPaginationParams(req);
     
         // Fetch the country by slug and populate all cities and their packages
-        const country = await countriesModel.findOne({ slug: slug }).populate({
+        const country = await countriesModel.findOne({ slug: slug }).sort({ createdAt: -1 }).populate({
             path: 'all_cities',
             populate: {
                 path: 'all_packages',

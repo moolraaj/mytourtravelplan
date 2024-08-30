@@ -14,6 +14,7 @@ export async function GET(req) {
         // Fetch blogs with pagination and populate categories
         let blogs = await BlogModel.find()
             .populate('blog_category')
+            .sort({ createdAt: -1 })
             .limit(limit)
             .skip(skip)
             .exec();
