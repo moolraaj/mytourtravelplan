@@ -8,9 +8,7 @@ const ExploreDestinations = ({ packagescat }) => {
 
 
 
-  // let result = packagescat ? packagescat.result : []
-
-  // let reversedPackagesCat=Array.isArray(result)?[...result].reverse():[]
+ 
 
 
   return (

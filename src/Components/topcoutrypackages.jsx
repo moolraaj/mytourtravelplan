@@ -10,7 +10,7 @@ import { EmptyCountries } from '@/app/_common/EmptyComponents';
 
 function Destinations({ country }) {
 
-  let reversedCountries = Array.isArray(country) ? [...country].reverse() : [];
+ 
 
   return (
     <div className='top-destination' style={{ backgroundImage: `url(${fishbg.src})` }}>
@@ -23,9 +23,9 @@ function Destinations({ country }) {
 
         <div className="destinations expert-travel">
 
-          { reversedCountries === null || reversedCountries === undefined || reversedCountries.length === 0 ? (
+          { country === null || country === undefined || country.length === 0 ? (
             <EmptyCountries />
-          ) : (reversedCountries.slice(0, 8).map((country, index) => (
+          ) : (country.slice(0, 8).map((country, index) => (
             <Link className="destination" href={`/countries/${country.slug.toLowerCase().replace(' ', '-')}`} key={index}>
 
               <div key={index} >

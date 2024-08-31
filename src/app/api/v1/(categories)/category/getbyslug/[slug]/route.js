@@ -8,7 +8,7 @@ export async function GET(req,{params}) {
      return handelAsyncErrors(async()=>{
         let {slug}=params
 
-        let isValidId=await CategoryModel.findOne({slug})
+        let isValidId=await CategoryModel.findOne({slug}).sort({ createdAt: -1 }) 
         if(!isValidId){
             return NextResponse.json({status:200,success:false,message:'missing credentials! please provide valid slug'})
         }

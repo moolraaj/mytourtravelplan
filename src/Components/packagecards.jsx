@@ -10,8 +10,7 @@ import { EmptyPackages } from '@/app/_common/EmptyComponents';
 const BestSellingPackages = ({ packages, loading }) => {
   
 
-  // Ensure result is an array; if not, use an empty array as a fallback
-  // let result = Array.isArray(packages?.result) ? packages.result : [];
+ 
  
 
   return (
