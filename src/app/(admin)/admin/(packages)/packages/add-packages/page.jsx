@@ -8,6 +8,7 @@ import { FaMinus } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { handelAsyncErrors } from '@/helpers/asyncErrors';
 import PackageCategories from '../../package-category/PackageCategories';
+import { InputGroup } from '@/hooks/slugUtils';
 
 const generateOptions = (start, end) => {
   return Array.from({ length: end - start + 1 }, (_, i) => i + start);
@@ -179,17 +180,11 @@ const AddPackages = () => {
         <div className="add-package-container">
           <h2>Add Package</h2>
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="title">Title</label>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-                placeholder="Enter title"
-              />
-            </div>
+            <InputGroup
+              title={formData.title}
+              slug={formData.slug}
+              setFormData={setFormData}
+            />
             <div className="form-group">
               <label htmlFor="description">Description</label>
               <textarea
@@ -200,17 +195,7 @@ const AddPackages = () => {
                 placeholder="Enter description"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="slug">Slug</label>
-              <input
-                type="text"
-                id="slug"
-                name="slug"
-                value={formData.slug}
-                onChange={handleChange}
-                placeholder="Enter slug"
-              />
-            </div>
+
             <div className="form-group">
               <label htmlFor="package_price">Package Price</label>
               <input

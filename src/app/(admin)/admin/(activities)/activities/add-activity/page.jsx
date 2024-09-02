@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { handelAsyncErrors } from '@/helpers/asyncErrors';
+import { InputGroup } from '@/hooks/slugUtils';
 
 const AddActivity = () => {
   const router = useRouter();
@@ -135,16 +136,11 @@ const AddActivity = () => {
     <div className="add-activity-container">
       <h2>Add Activity</h2>
       <form onSubmit={handleSubmit}>
-        <div className='form-group'>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <InputGroup
+          title={formData.title}
+          slug={formData.slug}
+          setFormData={setFormData}
+        />
         <div className='form-group'>
           <label htmlFor="description">Description</label>
           <textarea
@@ -154,16 +150,7 @@ const AddActivity = () => {
             required
           />
         </div>
-        <div className='form-group'>
-          <label htmlFor="slug">Slug</label>
-          <input
-            type="text"
-            name="slug"
-            value={formData.slug}
-            onChange={handleChange}
-            required
-          />
-        </div>
+
         <div className='form-group'>
           <label htmlFor="activityOverview">Activity Overview</label>
           <textarea

@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { handelAsyncErrors } from '@/helpers/asyncErrors';
 import { toast } from 'react-toastify';
+import { InputGroup } from '@/hooks/slugUtils';
 
 
 const AddCountry = () => {
@@ -23,16 +24,16 @@ const AddCountry = () => {
   useEffect(() => {
     const fetchContinents = async () => {
       return handelAsyncErrors(async () => {
-        const res = await fetch(`/api/v1/continents/get?page=1&limit=1000`,{
-          headers:{
+        const res = await fetch(`/api/v1/continents/get?page=1&limit=1000`, {
+          headers: {
             'Cache-Control': 'no-cache'
-         }
+          }
         });
         const data = await res.json();
         setContinents(data.result || []);
       })
-       
-     
+
+
     };
 
     fetchContinents();
@@ -80,26 +81,20 @@ const AddCountry = () => {
         toast.error(data.message || 'An error occurred.');
       }
 
-    setIsLoading(false);
+      setIsLoading(false);
     })
-      
+
   };
 
   return (
     <div className="add-continent">
       <h2>Add Country</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            placeholder="Enter title"
-          />
-        </div>
+        <InputGroup
+          title={formData.title}
+          slug={formData.slug}
+          setFormData={setFormData}
+        />
         <div className="form-group">
           <label htmlFor="description">Description</label>
           <textarea
@@ -108,17 +103,6 @@ const AddCountry = () => {
             value={formData.description}
             onChange={handleChange}
             placeholder="Enter description"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="slug">Slug</label>
-          <input
-            type="text"
-            id="slug"
-            name="slug"
-            value={formData.slug}
-            onChange={handleChange}
-            placeholder="Enter slug"
           />
         </div>
         <div className="form-group">
