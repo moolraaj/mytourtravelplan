@@ -15,6 +15,7 @@ function Destinations({ country }) {
   return (
     <div className='top-destination' style={{ backgroundImage: `url(${fishbg.src})` }}>
       <div className="topdestination container inner-w-container">
+        <h1>this is a testing  heading to check on the live sever</h1>
         <h2 className='same_heading'>Top Destination By Our Travel Experts</h2>
         <div className='link_heading'>
           <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>

@@ -258,6 +258,7 @@ export default function Home() {
       {isLogin && <LoginPopup setIsLogin={setIsLogin} />}
 
       <Layout>
+     
         <Homepage
           continent={memoizedHomepageData.continent}
           loading={loading}
