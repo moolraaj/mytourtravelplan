@@ -1,13 +1,15 @@
 name: Deploy
 
-# Trigger the workflow on push and pull request events on the main branch
+# Trigger the workflow on push and
+# pull request events on the main branch
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
 
-# Authenticate to the server via SSH and run our deployment script
+# Authenticate to the server via SSH
+# and run our deployment script
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,7 +22,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: |
-            mkdir -p ~/mytourtravelplan
-            cd ~/mytourtravelplan
-            ./.scripts/deploy.sh
+          script: "cd /root/travel/mytourtravelplan && ./.scripts/deploy.sh"
