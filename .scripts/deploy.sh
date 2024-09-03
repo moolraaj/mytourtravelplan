@@ -14,6 +14,6 @@ echo "Creating Production Build..."
 npm run build
 
 echo "PM2 Reload"
-pm2 reload 0
+pm2 reload mytravplan
 
 echo "Deployment Finished!"
