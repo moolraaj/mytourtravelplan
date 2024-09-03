@@ -22,4 +22,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: "cd ~/mytourtravelplan && ./.scripts/deploy.sh"
+          script: "cd /root/travel/mytourtravelplan && ./.scripts/deploy.sh"
