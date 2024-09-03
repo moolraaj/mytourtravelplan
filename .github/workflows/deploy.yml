@@ -1,20 +1,20 @@
 name: Deploy
 
-# Trigger the workflow on push and pull request events on the main branch
+# Trigger the workflow on push and
+# pull request events on the main branch
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
 
-# Authenticate to the server via SSH and run our deployment script
+# Authenticate to the server via SSH
+# and run our deployment script
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v3
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -22,6 +22,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: |
-            cd /root/travel/mytourtravelplan
-            ./scripts/deploy.sh
+          script: "cd ~/mytourtravelplan && ./.scripts/deploy.sh"
