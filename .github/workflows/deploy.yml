@@ -23,5 +23,5 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           script: |
-            cd /root/travel/mytourtravelplan
+            cd ~/mytourtravelplan
             ./scripts/deploy.sh
