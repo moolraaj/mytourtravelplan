@@ -17,6 +17,7 @@ function WorldSection({ continent }) {
           <div className="continents-headers">
             <h2 className='same_heading'>Explore Continents</h2>
             <h2 className='same_heading'>Explore Continents</h2>
+            <h2 className='same_heading'>Explore Continents</h2>
            
             <div className='link_heading'>
               <p>Unlimited Choices | Best Prices | Happy Memories | Hot Deals</p>
